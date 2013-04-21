@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Byldit" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
+  <Role name="BylditWebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=byldit;AccountKey=+8xzSO5RnN0k1YhNOx5mfxbRfVSyijtSy2H+zdQ9zXPl44sK8CfPVEAOJVeUDyu//seU8uwjXaplCGwuBjXgNw==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="bylditadmin" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEG80v0ygz+afTfTMD2rU2QUwDQYJKoZIhvcNAQEBBQAEggEATASKum6pBU/v5l5b+EObhuaUSSjUToKjDUz7rF8O+lKQuZLK4XazXqSq71NVyrCc1/MnN7azDWGLOlAHrPUl56cFqIcOqYpCKFpSkQn3D2g3t+i5yXLZLLM/nxBWlGsuLSxYaDA7FyGAl9kxTotQXygeJAPe4FCLBqmWuO7Wivb9snr5wKMAktL5k7rdWMFPbS+bwHCQZFANsBT4X8RsPZO2klQxQMqPK0LBeePH4unaDF8lbkLp/Baal/V+LkeILYkEZ6+Ot8gU7v9LPOBxseimVIKGUdqUSQ9a2DhZQpxkxLigOhVGJEldTXDMzW7k5LW3lNVmvWf5MTdyuo64cjAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECBprUSd/5qligBAHc0qxZ+JbVZ5Uv8wbOvsU" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-04-20T23:59:59.0000000-04:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="A0AF68596CB5F4C5D3A484B4C1112C9383E31B54" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

@@ -1,0 +1,25 @@
+﻿#Default ignores
+[Oo]bj/
+[Bb]in/
+*.suo
+*.user
+TestResults
+*.vspscc
+*.vssscc
+*.dotCover
+*.ncrunchsolution
+*.crunchsolution*
+*_Resharper*
+*_TeamCity*
+*.vsmdi
+*.ncrunchproject
+*.tmpl.*
+*.vsmdi
+*.DS_Store
+cassette-cache/
+csx/
+
+#Ignore packages
+[Pp]ackages/
+#Need to include the appconfigtransform package because it includes a .target that the project needs to load
+![Pp]ackages/*AppConfigTransform*

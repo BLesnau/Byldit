@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "BylditCloud", "BylditCloud\BylditCloud.ccproj", "{FF0B0866-4340-413D-AB66-D8AF2264353A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BylditWebRole", "BylditWebRole\BylditWebRole.csproj", "{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BylditWebRole.Tests", "BylditWebRole.Tests\BylditWebRole.Tests.csproj", "{52980862-BBA3-45AC-87D9-FBA6F22709C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF0B0866-4340-413D-AB66-D8AF2264353A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF0B0866-4340-413D-AB66-D8AF2264353A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF0B0866-4340-413D-AB66-D8AF2264353A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF0B0866-4340-413D-AB66-D8AF2264353A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52980862-BBA3-45AC-87D9-FBA6F22709C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52980862-BBA3-45AC-87D9-FBA6F22709C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52980862-BBA3-45AC-87D9-FBA6F22709C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52980862-BBA3-45AC-87D9-FBA6F22709C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
