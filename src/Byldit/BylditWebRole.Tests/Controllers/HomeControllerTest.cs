@@ -17,7 +17,7 @@ namespace BylditWebRole.Tests.Controllers
       {
          // Arrange
          HomeController controller = new HomeController();
-
+         //comment
          // Act
          ViewResult result = controller.Index() as ViewResult;
 
