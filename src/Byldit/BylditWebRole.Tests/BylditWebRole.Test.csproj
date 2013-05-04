@@ -9,8 +9,8 @@
     <ProjectGuid>{52980862-BBA3-45AC-87D9-FBA6F22709C5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BylditWebRole.Tests</RootNamespace>
-    <AssemblyName>BylditWebRole.Tests</AssemblyName>
+    <RootNamespace>BylditWebRole.Test</RootNamespace>
+    <AssemblyName>BylditWebRole.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
