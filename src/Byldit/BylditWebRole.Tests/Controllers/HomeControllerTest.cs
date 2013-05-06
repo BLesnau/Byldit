@@ -17,14 +17,14 @@ namespace BylditWebRole.Tests.Controllers
       {
          // Arrange
          HomeController controller = new HomeController();
-
+         //comment
          // Act
          ViewResult result = controller.Index() as ViewResult;
 
          // Assert
          Assert.AreEqual( "Modify this template to jump-start your ASP.NET MVC application.", result.ViewBag.Message );
       }
-
+      //comment2
       [TestMethod]
       public void About()
       {
