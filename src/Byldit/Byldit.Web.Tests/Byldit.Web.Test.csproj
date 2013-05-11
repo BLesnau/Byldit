@@ -108,7 +108,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BylditWebRole\Byldit.Web.csproj">
+    <ProjectReference Include="..\Byldit.Web\Byldit.Web.csproj">
       <Project>{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}</Project>
       <Name>Byldit.Web</Name>
     </ProjectReference>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "BylditCloud", "BylditCloud\BylditCloud.ccproj", "{FF0B0866-4340-413D-AB66-D8AF2264353A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byldit.Web", "BylditWebRole\Byldit.Web.csproj", "{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byldit.Web", "Byldit.Web\Byldit.Web.csproj", "{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byldit.Web.Test", "BylditWebRole.Tests\Byldit.Web.Test.csproj", "{52980862-BBA3-45AC-87D9-FBA6F22709C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byldit.Web.Test", "Byldit.Web.Tests\Byldit.Web.Test.csproj", "{52980862-BBA3-45AC-87D9-FBA6F22709C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D8D06DE5-30FA-4A06-B778-5F2090B93016}"
 	ProjectSection(SolutionItems) = preProject

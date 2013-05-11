@@ -43,7 +43,7 @@
     <PublishProfile Include="Profiles\bylditProduction.azurePubxml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BylditWebRole\Byldit.Web.csproj">
+    <ProjectReference Include="..\Byldit.Web\Byldit.Web.csproj">
       <Name>Byldit.Web</Name>
       <Project>{d244f19f-7cf5-4f99-b9d3-37f8a4c45a32}</Project>
       <Private>True</Private>
