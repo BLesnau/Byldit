@@ -37,20 +37,20 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BylditWebRole\BylditWebRole.csproj">
-      <Name>BylditWebRole</Name>
-      <Project>{d244f19f-7cf5-4f99-b9d3-37f8a4c45a32}</Project>
-      <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <RoleName>BylditWebRole</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
     <PublishProfile Include="Profiles\bylditProduction.azurePubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BylditWebRole\Byldit.Web.csproj">
+      <Name>Byldit.Web</Name>
+      <Project>{d244f19f-7cf5-4f99-b9d3-37f8a4c45a32}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>Byldit.Web</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

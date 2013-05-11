@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace BylditWebRole
+namespace Byldit.Web
 {
    public class FilterConfig
    {

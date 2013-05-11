@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="Byldit" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
-  <Role name="BylditWebRole">
+  <Role name="Byldit.Web">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=byldit;AccountKey=+8xzSO5RnN0k1YhNOx5mfxbRfVSyijtSy2H+zdQ9zXPl44sK8CfPVEAOJVeUDyu//seU8uwjXaplCGwuBjXgNw==" />

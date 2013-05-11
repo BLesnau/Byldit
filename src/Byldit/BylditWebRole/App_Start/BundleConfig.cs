@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace BylditWebRole
+namespace Byldit.Web
 {
    public class BundleConfig
    {

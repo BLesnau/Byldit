@@ -100,15 +100,17 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config" />
+    <Content Include="App.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BylditWebRole\BylditWebRole.csproj">
+    <ProjectReference Include="..\BylditWebRole\Byldit.Web.csproj">
       <Project>{D244F19F-7CF5-4F99-B9D3-37F8A4C45A32}</Project>
-      <Name>BylditWebRole</Name>
+      <Name>Byldit.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
