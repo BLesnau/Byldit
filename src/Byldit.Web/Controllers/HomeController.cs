@@ -24,5 +24,12 @@ namespace Byldit.Web.Controllers
 
          return View();
       }
+
+      public ActionResult Beta()
+      {
+         ViewBag.Message = "This is Byldit!";
+
+         return View();
+      }
    }
 }
