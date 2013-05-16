@@ -1,21 +1,21 @@
 
 @font-face {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
 	font-weight: 400;
 }
 
 @font-face {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
 	font-weight: 300;
 }
 
 @font-face {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
 	font-weight: 500;
 }
 
 @font-face {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
 	font-weight: 600;
 }
 
@@ -31,7 +31,7 @@ a {
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
 }
 
 img.download-button {
@@ -386,9 +386,41 @@ footer ul li a:hover {
 
 .teaser-page .inner p {
 	padding: 0px 0px 0 0px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+   font-weight: bold;
 	font-size: 50px;
 	color: #FFF;
+}
+
+.formtextdark {
+	padding: 0px 0px 0 0px;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+   font-weight: bold;
+	font-size: 15px;
+	color: #221f1f;
+}
+
+.formtextwhite {
+	padding: 0px 0px 0 0px;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+   font-weight: bold;
+	font-size: 25px;
+	color: #FFF;
+}
+
+.formbutton {
+   color: #1a3f4e;
+   font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+   background: #3a8cae;
+   font-weight: bold;
+   font-size: 20px;
+   border: 3px solid #1a3f4e;
+   padding: 3px;
+}
+
+.formbutton:hover {
+   color: white;
+   background: #1a3f4e;
 }
 
 ul.joblist li {
