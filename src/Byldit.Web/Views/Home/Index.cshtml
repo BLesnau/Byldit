@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Byldit.Web.Models.EmailModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,14 +28,13 @@
         })();
 
     </script>
-    <style type="text/css"></style>
 </head>
 
 <body class="teaser-page" id="dummybodyid">
 
 
 
-    <div class="bg"></div>
+    @*<div class="bg"></div>*@
     <div class="outer">
         <div class="middle">
             <div class="inner">
@@ -41,7 +42,39 @@
                 <p>
                     BYLDIT
                 </p>
+                
+                <br/>
 
+                <section id="loginForm">
+                    <div class="formtextdark">Do you want to let other know what types of businesses you want where you live?</div>                  
+                    <div class="formtextdark">Are you an entrepreneur or business who wants to know what potential customers want?</div>
+                    <div class="formtextdark">Byldit may be just what you need.</div>
+                    <br/>
+                    <div class="formtextwhite">Submit your information to receive notifications about Byldit.</div>
+                    @using ( Html.BeginForm( new { ReturnUrl = ViewBag.ReturnUrl } ) )
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary( true )
+
+                        <fieldset>
+                            @*<legend>Email Submission Form</legend>*@
+                            <ol>
+                                <li>
+                                    @Html.LabelFor( m => m.Name, new { @class= "formtextdark" } )
+                                    @Html.TextBoxFor( m => m.Name )
+                                    @Html.ValidationMessageFor( m => m.Name )
+                                </li>
+                                <li>
+                                    @Html.LabelFor( m => m.Email, new { @class= "formtextdark" } )
+                                    @Html.TextBoxFor( m => m.Email )
+                                    @Html.ValidationMessageFor( m => m.Email )
+                                </li>
+                            </ol>
+                            <br/>
+                            <input class="formbutton" type="submit" value="Submit" />
+                        </fieldset>
+                    }
+                </section>
             </div>
         </div>
     </div>
@@ -54,10 +87,13 @@
     </footer>
 
     <div class="diigolet notice" id="diigolet-notice" style="display: none;">
-        <div><b>&nbsp;</b><p>Ok, done!</p>
-            <span id="close"></span></div>
+        <div>
+            <b>&nbsp;</b><p>Ok, done!</p>
+            <span id="close"></span>
+        </div>
     </div>
-    <div id="diigolet-csm2" style="position: absolute; display: none;"><a id="diigolet-csm-highlight2" href="javascript:void(0);"></a><a id="diigolet-csm-search2" href="javascript:void(0);"></a>
+    <div id="diigolet-csm2" style="position: absolute; display: none;">
+        <a id="diigolet-csm-highlight2" href="javascript:void(0);"></a><a id="diigolet-csm-search2" href="javascript:void(0);"></a>
         <div id="diigolet-csm-color"><a class="diigolet-csm-coloritem" id="diigolet-csm-yellow"></a><a class="diigolet-csm-coloritem" id="diigolet-csm-blue"></a><a class="diigolet-csm-coloritem" id="diigolet-csm-green"></a><a class="diigolet-csm-coloritem" id="diigolet-csm-pink"></a></div>
     </div>
 </body>
