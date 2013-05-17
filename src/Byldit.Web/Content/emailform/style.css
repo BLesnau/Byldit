@@ -400,6 +400,14 @@ footer ul li a:hover {
 	color: #221f1f;
 }
 
+.formtextred {
+	padding: 0px 0px 0 0px;
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+   font-weight: bold;
+	font-size: 15px;
+	color: red;
+}
+
 .formtextwhite {
 	padding: 0px 0px 0 0px;
 	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;

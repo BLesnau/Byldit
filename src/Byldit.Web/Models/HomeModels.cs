@@ -1,15 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TechSmith.Hyde.Common.DataAnnotations;
 
 namespace Byldit.Web.Models
 {
    public class EmailModel
    {
-      [Required]
+      public EmailModel()
+      {
+         Version = 1;
+         Submitted = false;
+      }
+
+      [PartitionKey, RowKey]
+      [Display( Name = "Email" ), EmailAddress( ErrorMessage = "Please enter a valid email address" ), Required( ErrorMessage = "Please enter a valid email address" )]
+      public string Email { get; set; }
+
       [Display( Name = "Name" )]
       public string Name { get; set; }
 
-      [Required]
-      [Display( Name = "Email" )]
-      public string Email { get; set; }
+      [DontSerializeAttribute]
+      public bool Submitted { get; set; }
+
+      public int Version { get; private set; }
    }
 }
