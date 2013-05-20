@@ -12,10 +12,10 @@ namespace Byldit.Web.Models
       }
 
       [PartitionKey, RowKey]
-      [Display( Name = "Email" ), EmailAddress( ErrorMessage = "Please enter a valid email address" ), Required( ErrorMessage = "Please enter a valid email address" )]
+      [Display( Name = "Email:" ), EmailAddress( ErrorMessage = "*" ), Required( ErrorMessage = "*" )]
       public string Email { get; set; }
 
-      [Display( Name = "Name" )]
+      [Display( Name = "Name:" )]
       public string Name { get; set; }
 
       [DontSerializeAttribute]
