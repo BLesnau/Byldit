@@ -60,5 +60,29 @@ namespace Byldit.Web.Controllers
 
          return View();
       }
+	  
+	  public ActionResult LoginFacebook()
+      {
+         ViewBag.JS = "loginToFacebook()";
+         return View( "Beta" );
+      }
+
+      public ActionResult LoginTwitter()
+      {
+         ViewBag.JS = "loginToTwitter()";
+         return View( "Beta" );
+      }
+
+      public ActionResult LoginGoogle()
+      {
+         ViewBag.JS = "loginToGoogle()";
+         return View( "Beta" );
+      }
+
+      public ActionResult LoginMicrosoft()
+      {
+         ViewBag.JS = "loginToMicrosoft()";
+         return View( "Beta" );
+      }
    }
 }
