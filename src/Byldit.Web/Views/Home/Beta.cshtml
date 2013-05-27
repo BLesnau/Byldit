@@ -32,6 +32,10 @@
             };
             googleMap = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
+            
+            google.maps.event.addListener(googleMap, 'click', function (event) {
+                placeMarker(event.latLng);
+            });
 
             getLocation();
         }

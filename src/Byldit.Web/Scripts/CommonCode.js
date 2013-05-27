@@ -57,3 +57,14 @@ function storePosition(position) {
     });
     myLoc.setPosition(position);
 }
+
+function placeMarker(location) {
+    if (isLoggedIn) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: googleMap
+        });
+
+        map.setCenter(location);
+    }
+}
