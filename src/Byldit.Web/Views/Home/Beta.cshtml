@@ -35,7 +35,6 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-    <script type="text/javascript">@ViewBag.JS</script>
 }
 <h3 style="display: inline;">You are logged in as: <div class="userName" style="display: inline;"></div></h3>
 
@@ -44,11 +43,5 @@
 <a href="javascript:login(&quot;facebook&quot;)">Facebook</a> |
 <a href="javascript:login(&quot;twitter&quot;)">Twitter</a> |
 <a href="javascript:login(&quot;google&quot;)">Google</a> |
-<a href="javascript:login(&quot;microsoftaccount&quot;)">Microsoft</a>
-
-@*@Html.ActionLink("Facebook", "LoginFacebook") |
-@Html.ActionLink("Twitter", "LoginTwitter") |
-@Html.ActionLink("Google", "LoginGoogle") |
-@Html.ActionLink("Microsoft", "LoginMicrosoft")*@
 
 <div id="map-canvas" />
