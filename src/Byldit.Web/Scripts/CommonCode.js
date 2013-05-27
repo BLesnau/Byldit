@@ -11,19 +11,3 @@
         alert("Error: " + err);
     });
 }
-
-function loginToFacebook() {
-    login("facebook");
-}
-
-function loginToTwitter() {
-    login("twitter");
-}
-
-function loginToGoogle() {
-    login("google");
-}
-
-function loginToMicrosoft() {
-    login("microsoftaccount");
-}
