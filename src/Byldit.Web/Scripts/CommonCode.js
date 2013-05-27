@@ -65,6 +65,11 @@ function placeMarker(location) {
             map: googleMap
         });
 
-        map.setCenter(location);
+        //googleMap.setCenter(location);
+
+        var client = getMobileServicesClient();
+
+        var pin = { latitude: location.lat().toString(), longitude: location.lng().toString() };
+        client.getTable("Pin").insert(pin);
     }
 }
