@@ -21,7 +21,7 @@
         }
     </style>
     <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZMdkkoh0DdR8d06ifz0JeREYVdPsmpU&sensor=true">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZMdkkoh0DdR8d06ifz0JeREYVdPsmpU&sensor=true&libraries=geometry">
     </script>
     <script type="text/javascript">
         function initialize() {
@@ -48,6 +48,9 @@
 <b>Login with:</b>
 <a href="javascript:login(&quot;facebook&quot;)">Facebook</a> |
 <a href="javascript:login(&quot;twitter&quot;)">Twitter</a> |
-<a href="javascript:login(&quot;google&quot;)">Google</a> |
+<a href="javascript:login(&quot;google&quot;)">Google</a>
+
+<br/>
+<a href="javascript:loadPins()">Load Pins</a>
 
 <div id="map-canvas" />
