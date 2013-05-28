@@ -3,8 +3,8 @@ var isLoggedIn = false;
 var authProviderUsed = "";
 var userId = "";
 var amsAuthToken = "";
-var locLat = 0;
-var locLon = 0;
+var locLat = 37;
+var locLon = -40;
 var googleMap = null;
 
 function getMobileServicesClient() {
@@ -41,9 +41,11 @@ function getLocation() {
 function storePosition(position) {
     locLat = position.coords.latitude;
     locLon = position.coords.longitude;
+
     var position = new google.maps.LatLng(locLat, locLon);
 
     googleMap.setCenter(position);
+    googleMap.setZoom(14);
 
     var myLoc = new google.maps.Marker({
         clickable: false,
