@@ -1,0 +1,25 @@
+{exec} = require 'child_process'
+glob = require 'glob'
+
+task 'jade:compile', 'compile jade templates from /src/jade to /src/html', ->
+	exec 'jade src/jade/ -o src/html/', (err, stdout, stderr) ->
+		err && throw err
+		console.log stdout
+		console.log 'Jade templates compiled!'
+		invoke 'html:rename'
+
+task 'html:rename', 'Rename HTML to Handlebars', ->
+	glob 'src/html/*.html', (er, files) ->
+		for element in files
+			console.log element
+			exec 'REN ' + element + ' a.handlebars', (err, stdout, stderr) ->
+				console.log stdout
+				console.log stderr
+				err && throw err
+				console.log 'Renaming HTML to Handlebard completed!'
+				invoke 'handlebars:compile'
+
+task 'handlebars:compile', 'compile Handlebars templates', ->
+	exec 'handlebars src/html/ -f templates.js', (err, stdout, stderr) ->
+	err && throw err
+	console.log 'Handlebars compiled!'
