@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Byldit.Test.Integration
 {
@@ -8,7 +10,8 @@ namespace Byldit.Test.Integration
       [TestMethod, TestCategory("Integration")]
       public void TestMethod1()
       {
-
+         var setting = ConfigurationManager.AppSettings["TestSetting"];
+         Console.WriteLine( setting );
       }
 
       [TestMethod, TestCategory( "Integration" )]
