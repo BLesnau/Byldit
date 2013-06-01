@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Web.Hosting;
 
 namespace Byldit.Configs
 {
    public static class GlobalConfig
    {
-      private static Dictionary<string, string> Settings = new Dictionary<string, string>();
+      private static string _rootPath = string.Empty;
+      private static readonly Dictionary<string, string> _settings = new Dictionary<string, string>();
+
+      public static void SetRoot( string root )
+      {
+         _rootPath = root;
+      }
 
       public static void SetEnvironment( string environment )
       {
-         Settings.Clear();
+         _settings.Clear();
 
          try
          {
-            var filePath = HostingEnvironment.MapPath( "~/Configs/" + environment + ".mysettings" );
+            var filePath = _rootPath + environment + ".mysettings";
             if ( !string.IsNullOrWhiteSpace( filePath ) )
             {
                var streamReader = new StreamReader( filePath );
@@ -31,9 +35,9 @@ namespace Byldit.Configs
                   var match = regex.Match( setting );
                   if ( match.Success && match.Groups.Count == 3 )
                   {
-                     if ( !Settings.ContainsKey( match.Groups[1].Value ) )
+                     if ( !_settings.ContainsKey( match.Groups[1].Value ) )
                      {
-                        Settings[match.Groups[1].Value] = match.Groups[2].Value;
+                        _settings[match.Groups[1].Value] = match.Groups[2].Value;
                      }
                   }
                }
@@ -49,7 +53,7 @@ namespace Byldit.Configs
       public static string GetString( string setting )
       {
          var value = string.Empty;
-         if ( Settings.TryGetValue( setting, out value ) )
+         if ( _settings.TryGetValue( setting, out value ) )
          {
             return value;
          }

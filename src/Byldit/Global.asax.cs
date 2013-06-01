@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -14,6 +15,8 @@ namespace Byldit
    {
       protected void Application_Start()
       {
+         GlobalConfig.SetRoot( HostingEnvironment.MapPath( "~/Configs/" ) ); 
+
          var environment = ConfigurationManager.AppSettings["Environment"];
          if ( string.IsNullOrWhiteSpace( environment ) )
          {

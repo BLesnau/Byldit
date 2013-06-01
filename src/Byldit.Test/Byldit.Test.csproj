@@ -94,7 +94,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\IntTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
