@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Linq;
-using System.Web.Mvc;
-using Byldit.Web.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.ServiceRuntime;
+﻿using System.Web.Mvc;
+using Byldit.DataModel;
+using Byldit.Web.Configs;
 using Microsoft.WindowsAzure.Storage;
 using TechSmith.Hyde;
 using TechSmith.Hyde.Table;
@@ -14,20 +11,18 @@ namespace Byldit.Web.Controllers
    {
       public ActionResult Index()
       {
-         ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
          return View();
       }
 
       [HttpPost]
-      public ActionResult Index( EmailModel model )
+      public ActionResult Index( SubmitEmail model )
       {
          if ( ModelState.IsValid )
          {
-            var connectionString = CloudConfigurationManager.GetSetting( "BylditStorageAccountConnectionString" );
+            var connectionString = GlobalConfig.GetString( "BylditStorageAccountConnectionString" );
             var storageAccount = CloudStorageAccount.Parse( connectionString );
             var tableStorageProvider = new AzureTableStorageProvider( new CloudStorageAccountAdapter( storageAccount ) );
-            var emailTableName = CloudConfigurationManager.GetSetting( "SubmitEmailTableName" );
+            var emailTableName = GlobalConfig.GetString( "SubmitEmailTableName" );
 
             storageAccount.CreateCloudTableClient().GetTableReference( emailTableName ).CreateIfNotExists();
 
@@ -40,49 +35,12 @@ namespace Byldit.Web.Controllers
          return View( model );
       }
 
-      public ActionResult About()
-      {
-         ViewBag.Message = "Your app description page.";
-
-         return View();
-      }
-
-      public ActionResult Contact()
-      {
-         ViewBag.Message = "Your contact page.";
-
-         return View();
-      }
-
       public ActionResult Beta()
       {
-         ViewBag.Message = "This is Byldit!";
+         ViewBag.AzureMobileServiceUrl = GlobalConfig.GetString( "AzureMobileServiceUrl" );
+         ViewBag.AzureMobileServiceKey = GlobalConfig.GetString( "AzureMobileServiceKey" );
 
          return View();
-      }
-	  
-	  public ActionResult LoginFacebook()
-      {
-         ViewBag.JS = "loginToFacebook()";
-         return View( "Beta" );
-      }
-
-      public ActionResult LoginTwitter()
-      {
-         ViewBag.JS = "loginToTwitter()";
-         return View( "Beta" );
-      }
-
-      public ActionResult LoginGoogle()
-      {
-         ViewBag.JS = "loginToGoogle()";
-         return View( "Beta" );
-      }
-
-      public ActionResult LoginMicrosoft()
-      {
-         ViewBag.JS = "loginToMicrosoft()";
-         return View( "Beta" );
       }
    }
 }

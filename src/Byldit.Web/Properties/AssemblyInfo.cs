@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle( "Byldit.Web" )]
+[assembly: AssemblyTitle( "Byldit" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "" )]
-[assembly: AssemblyProduct( "Byldit.Web" )]
+[assembly: AssemblyProduct( "Byldit" )]
 [assembly: AssemblyCopyright( "Copyright ©  2013" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible( false )]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid( "3ce7023c-2a98-4086-bcc5-d55890436e89" )]
+[assembly: Guid( "064ca875-7a10-431f-b3f9-d03a71b09fab" )]
 
 // Version information for an assembly consists of the following four values:
 //
