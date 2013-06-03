@@ -1,0 +1,4 @@
+﻿<BylditStorageAccountConnectionString> UseDevelopmentStorage=true
+<SubmitEmailTableName> SubmitEmails
+<AzureMobileServiceUrl> https://bylditstage.azure-mobile.net/
+<AzureMobileServiceKey> YLBZpaVeaaSyBDgrPjlfRLnQfXkuxS49
