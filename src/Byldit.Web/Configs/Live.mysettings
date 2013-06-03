@@ -1,0 +1,4 @@
+﻿<BylditStorageAccountConnectionString> DefaultEndpointsProtocol=https;AccountName=byldit;AccountKey=bIkQD/NLoPP3AYH7OSNnSkld27jEFCVl+piqE0CGuVHbA85HSzL453egtG4Cuyw3X0aJaFLinT8l03ILOkaZBA==
+<SubmitEmailTableName> SubmitEmails
+<AzureMobileServiceUrl> https://byldit.azure-mobile.net/
+<AzureMobileServiceKey> bduEIkOePLucjzWXwVUBmevdjzTReh22
