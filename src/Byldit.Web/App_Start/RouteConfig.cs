@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Byldit.Web
+namespace Byldit.Web.App_Start
 {
    public class RouteConfig
    {

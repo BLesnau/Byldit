@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Byldit.Web
+namespace Byldit.Web.App_Start
 {
    public class FilterConfig
    {

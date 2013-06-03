@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>TechSmith.Hyde</id>
+    <version>5.2.0.0</version>
+    <title>TechSmith.Hyde</title>
+    <authors>TechSmith Corporation</authors>
+    <owners>TechSmith Corporation</owners>
+    <licenseUrl>https://raw.github.com/TechSmith/hyde/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://techsmith.github.com/hyde</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Object to Entity mapper for Windows Azure</description>
+    <releaseNotes>* Added support for (de)serializing Enums.</releaseNotes>
+    <copyright>Copyright TechSmith Corporation 2012</copyright>
+    <language />
+    <tags>TechSmith, Azure, Storage, Table Azure</tags>
+    <dependencies>
+      <dependency id="ImpromptuInterface" version="6.0.6" />
+      <dependency id="WindowsAzure.Storage" version="2.0.4.0" />
+    </dependencies>
+    <references>
+      <reference file="TechSmith.Hyde.dll" />
+    </references>
+  </metadata>
+</package>

@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Byldit.Web
+namespace Byldit.Web.App_Start
 {
    public static class WebApiConfig
    {
