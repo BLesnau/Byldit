@@ -29,7 +29,7 @@
         function initialize() {
             mobileServicesUrl = "@GlobalConfig.GetString( "AzureMobileServiceUrl" )";
             mobileServicesKey = "@GlobalConfig.GetString( "AzureMobileServiceKey" )";
-            
+
             var mapOptions = {
                 center: new google.maps.LatLng(locLat, locLon),
                 zoom: 4,
@@ -37,28 +37,44 @@
             };
             googleMap = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
-            
+
             google.maps.event.addListener(googleMap, 'click', function (event) {
                 placeMarker(event.latLng);
             });
 
             getLocation();
+
+            google.maps.event.trigger(googleMap, 'resize');
+
+            alert($(window).height());
+            $("#content").height($(window).height() - 80);
+            $(window).resize(function () {
+                //alert($(window).height());
+                $("#content").height($(window).height() - 80);
+            });
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 }
-<h3 style="display: inline;">You are logged in as:
+
+<div id="topBarContainer">
+    <div class="lockedHeader">
+        <h3 style="display: inline;">You are logged in as:
     <div class="userName" style="display: inline;"></div>
-</h3>
+        </h3>
 
-<br />
-<br />
-<b>Login with:</b>
-<a href="javascript:login(&quot;facebook&quot;)">Facebook</a> |
-<a href="javascript:login(&quot;twitter&quot;)">Twitter</a> |
-<a href="javascript:login(&quot;google&quot;)">Google</a>
+        <br />
+        <br />
+        <b>Login with:</b>
+        <a href="javascript:login(&quot;facebook&quot;)">Facebook</a> |
+    <a href="javascript:login(&quot;twitter&quot;)">Twitter</a> |
+    <a href="javascript:login(&quot;google&quot;)">Google</a>
 
-<br />
-<a href="javascript:loadPins()">Load Pins</a>
+        <br />
+        <a href="javascript:loadPins()">Load Pins</a>
+    </div>
+</div>
 
-<div id="map-canvas" />
+<div id="content">
+    <div id="map-canvas" />
+</div>
