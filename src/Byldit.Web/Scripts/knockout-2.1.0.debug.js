@@ -1616,7 +1616,7 @@ ko.exportSymbol('jsonExpressionRewriting.insertPropertyAccessorsIntoJson', ko.js
     // If you call the DOM-manipulating functions on ko.virtualElements, you will be able to read and write the state
     // of that virtual hierarchy
     //
-    // The point of all this is to support containerless templates (e.g., <!-- ko foreach:someCollection -->blah<!-- /ko -->)
+    // The point of all this is to support topBarContainerless templates (e.g., <!-- ko foreach:someCollection -->blah<!-- /ko -->)
     // without having to scatter special cases all over the binding and templating code.
 
     // IE 9 cannot reliably read the "nodeValue" property of a comment node (see https://github.com/SteveSanderson/knockout/issues/186)
@@ -1906,7 +1906,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
         // Perf optimisation: Apply bindings only if...
         // (1) We need to store the binding context on this node (because it may differ from the DOM parent node's binding context)
         //     Note that we can't store binding contexts on non-elements (e.g., text nodes), as IE doesn't allow expando properties for those
-        // (2) It might have bindings (e.g., it has a data-bind attribute, or it's a marker for a containerless template)
+        // (2) It might have bindings (e.g., it has a data-bind attribute, or it's a marker for a topBarContainerless template)
         var isElement = (nodeVerified.nodeType === 1);
         if (isElement) // Workaround IE <= 8 HTML parsing weirdness
             ko.virtualElements.normaliseVirtualElementDomStructure(nodeVerified);
@@ -3172,13 +3172,13 @@ ko.exportSymbol('utils.compareArrays', ko.utils.compareArrays);
 
 (function () {
     // Objective:
-    // * Given an input array, a container DOM node, and a function from array elements to arrays of DOM nodes,
-    //   map the array elements to arrays of DOM nodes, concatenate together all these arrays, and use them to populate the container DOM node
-    // * Next time we're given the same combination of things (with the array possibly having mutated), update the container DOM node
+    // * Given an input array, a topBarContainer DOM node, and a function from array elements to arrays of DOM nodes,
+    //   map the array elements to arrays of DOM nodes, concatenate together all these arrays, and use them to populate the topBarContainer DOM node
+    // * Next time we're given the same combination of things (with the array possibly having mutated), update the topBarContainer DOM node
     //   so that its children is again the concatenation of the mappings of the array elements, but don't re-map any array elements that we
     //   previously mapped - retain those nodes, and just insert/delete other ones
 
-    // "callbackAfterAddingNodes" will be invoked after any "mapping"-generated nodes are inserted into the container node
+    // "callbackAfterAddingNodes" will be invoked after any "mapping"-generated nodes are inserted into the topBarContainer node
     // You can use this, for example, to activate bindings on those nodes.
 
     function fixUpVirtualElements(contiguousNodeArray) {
