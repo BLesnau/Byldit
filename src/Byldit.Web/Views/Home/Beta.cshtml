@@ -46,7 +46,6 @@
 
             google.maps.event.trigger(googleMap, 'resize');
 
-            alert($(window).height());
             $("#content").height($(window).height() - 80);
             $(window).resize(function () {
                 //alert($(window).height());
@@ -59,19 +58,24 @@
 
 <div id="topBarContainer">
     <div class="lockedHeader">
-        <h3 style="display: inline;">You are logged in as:
-    <div class="userName" style="display: inline;"></div>
-        </h3>
+        <img class="logoPadding" src="~/Content/Images/byldit-header-logo-combined.jpg"/>
+
+        <div class="floatRight socialPadding">
+            <div class="signInText">Sign In:</div>
+
+            <a class="socialButton" href="javascript:login(&quot;facebook&quot;)">
+                <img src="~/Content/Images/facebook-widget.jpg" />
+            </a>
+            <a class="socialButton" href="javascript:login(&quot;twitter&quot;)">
+                <img src="~/Content/Images/twitter-widget.jpg" />
+            </a>
+            <a class="socialButton" href="javascript:login(&quot;google&quot;)">
+                <img src="~/Content/Images/google-widget.jpg" />
+            </a>
+        </div>
 
         <br />
-        <br />
-        <b>Login with:</b>
-        <a href="javascript:login(&quot;facebook&quot;)">Facebook</a> |
-    <a href="javascript:login(&quot;twitter&quot;)">Twitter</a> |
-    <a href="javascript:login(&quot;google&quot;)">Google</a>
-
-        <br />
-        <a href="javascript:loadPins()">Load Pins</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:loadPins()">Load Pins</a>
     </div>
 </div>
 
