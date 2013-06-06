@@ -163,6 +163,7 @@
     <Content Include="Content\emailform\byldit_logo.png" />
     <Content Include="Content\emailform\ga.js" />
     <Content Include="Content\emailform\style.css" />
+    <Content Include="Content\Images\byldit-header-background-teal.jpg" />
     <Content Include="Content\Images\byldit-header-logo-combined.jpg" />
     <Content Include="Content\Images\facebook-widget.jpg" />
     <Content Include="Content\Images\google-widget.jpg" />
@@ -243,6 +244,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\ShowTagsButton.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
