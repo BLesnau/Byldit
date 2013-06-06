@@ -164,7 +164,7 @@
     <Content Include="Content\emailform\ga.js" />
     <Content Include="Content\emailform\style.css" />
     <Content Include="Content\Images\byldit-header-background-teal.jpg" />
-    <Content Include="Content\Images\byldit-header-logo-combined.jpg" />
+    <Content Include="Content\Images\byldit-header-logo-combined.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\facebook-widget.jpg" />
     <Content Include="Content\Images\google-widget.jpg" />
