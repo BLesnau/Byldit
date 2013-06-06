@@ -24,7 +24,7 @@ header, footer, nav, section {
 
 .lockedHeader {
    margin: 0;
-   background: #3b8daf;
+   background: #3b8daf url(Images/byldit-header-background-teal.jpg) repeat;
    position: fixed;
    top: 0;
    left: 0;
