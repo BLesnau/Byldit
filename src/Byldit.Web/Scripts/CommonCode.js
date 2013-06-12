@@ -18,8 +18,6 @@ function getMobileServicesClient() {
 }
 
 function login(provider) {
-    var remember = true;
-
     var client = getMobileServicesClient();
 
     client.login(provider).done(function (results) {
@@ -28,6 +26,7 @@ function login(provider) {
         userId = results.userId;
         amsAccessToken = results.mobileServiceAuthenticationToken;
 
+        var remember = $("#rememberMeCheck").is(':checked');
         if (remember) {
             rememberMe = true;
             SaveSettings();
