@@ -23,15 +23,20 @@
         }
     </style>
     <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZMdkkoh0DdR8d06ifz0JeREYVdPsmpU&sensor=true&libraries=geometry">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZMdkkoh0DdR8d06ifz0JeREYVdPsmpU&sensor=true&libraries=geometry">
     </script>
     <script type="text/javascript"
         src="~/Scripts/ShowTagsButton.js">
     </script>
     <script type="text/javascript">
         function initialize() {
+            $("#signedIn").hide();
+            $("#notSignedIn").hide();
+
             mobileServicesUrl = "@GlobalConfig.GetString( "AzureMobileServiceUrl" )";
             mobileServicesKey = "@GlobalConfig.GetString( "AzureMobileServiceKey" )";
+
+            LoadSettings();
 
             var mapOptions = {
                 center: new google.maps.LatLng(locLat, locLon),
@@ -54,7 +59,7 @@
             $(window).resize(function () {
                 $("#content").height($(window).height() - 85);
             });
-            
+
             var showTagControlDiv = document.createElement('div');
             var showTagButton = new ShowTagsButton(showTagControlDiv, googleMap, showTagsClicked);
 
@@ -62,7 +67,7 @@
             googleMap.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(showTagControlDiv);
         }
         google.maps.event.addDomListener(window, 'load', initialize);
-        
+
         function showTagsClicked() {
             loadPins();
         }
@@ -72,16 +77,32 @@
 <div id="topBarContainer">
     <div class="lockedHeader">
         <img class="logoPadding" src="~/Content/Images/byldit-header-logo-combined.png" />
+        
+        <div class="floatRight">
+            <div id="notSignedIn" class="socialPaddingNotSignedIn" >
+                <div class="signInText">Sign in</div>
+                <a class="socialButton" href="javascript:login(&quot;facebook&quot;)"><img src="~/Content/Images/facebook-widget.jpg" /></a>
+                <a class="socialButton" href="javascript:login(&quot;twitter&quot;)"><img src="~/Content/Images/twitter-widget.jpg" /></a>
+                <a class="socialButton" href="javascript:login(&quot;google&quot;)"><img src="~/Content/Images/google-widget.jpg" /></a>
 
-        <div class="floatRight socialPadding">
-            <div class="signInText">Sign In:</div>
+                <br />
 
-            <a class="socialButton" href="javascript:login(&quot;facebook&quot;)"><img src="~/Content/Images/facebook-widget.jpg" /></a>
-            <a class="socialButton" href="javascript:login(&quot;twitter&quot;)"><img src="~/Content/Images/twitter-widget.jpg" /></a>
-            <a class="socialButton" href="javascript:login(&quot;google&quot;)"><img src="~/Content/Images/google-widget.jpg" /></a>
+                <label class="signInText"><input type="checkbox" name="rememberMe" value="value" />Remember me</label>
+            </div>
+            
+            <div id="signedIn" class="socialPaddingSignedIn" >
+                <div>
+                    <label class="signInTextBig vertMiddle">Signed in with</label>
+                    <img id="fbLogo" class="providerIcon vertMiddle" src="~/Content/Images/facebook-widget.jpg" />
+                    <img id="twitterLogo" class="providerIcon vertMiddle" src="~/Content/Images/twitter-widget.jpg" />
+                    <img id="googleLogo" class="providerIcon vertMiddle" src="~/Content/Images/google-widget.jpg" />
+                </div>
+                <div class="signOutTextPadding">
+                    <a class="signOutText" href="javascript:logout();">Sign out</a>
+                </div>
+            </div>
         </div>
 
-        <br />
     </div>
 </div>
 
