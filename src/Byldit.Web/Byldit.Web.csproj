@@ -231,6 +231,7 @@
     <Content Include="Configs\Live.mysettings" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\CommonCode.js" />
+    <Content Include="Scripts\CookieHelper.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -245,6 +246,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\ShowTagsButton.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">

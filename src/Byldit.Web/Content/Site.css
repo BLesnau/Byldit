@@ -33,27 +33,56 @@ header, footer, nav, section {
 }
 
 .signInText {
-   margin-top: 8px;
-   margin-bottom: 8px;
-   font-size: 1.25em;
+   margin-top: 3px;
+   margin-bottom: 3px;
+   font-size: 1.0em;
+   color: white;
+}
+
+.signOutText {
+   font-size: 1.0em;
+   color: white;
+}
+
+.signOutTextPadding {
+   margin-top: 5px;
+}
+
+.signInTextBig {
+   margin-top: 3px;
+   font-size: 1.5em;
    color: white;
 }
 
 .floatRight {
    float: right;
+   white-space: nowrap;
 }
 
 .socialButton {
    margin-right: 7px;
 }
 
-.socialPadding {
+.socialPaddingNotSignedIn {
    margin-right: 3px;
+}
+
+.socialPaddingSignedIn {
+   margin-right: 10px;
+   margin-top: 15px;
 }
 
 .logoPadding {
    margin-left: 5px;
    margin-top: 5px;
+}
+
+.vertMiddle {
+   vertical-align: middle;
+}
+
+.providerIcon {
+   margin-left: 5px;
 }
 
 /* Styles for basic forms
