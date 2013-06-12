@@ -1,8 +1,4 @@
 ﻿var mobileServicesClient = null;
-var isLoggedIn = false;
-var authProviderUsed = "";
-var userId = "";
-var amsAuthToken = "";
 var locLat = 37;
 var locLon = -40;
 var googleMap = null;
@@ -22,17 +18,84 @@ function getMobileServicesClient() {
 }
 
 function login(provider) {
+    var remember = true;
+
     var client = getMobileServicesClient();
 
     client.login(provider).done(function (results) {
         isLoggedIn = true;
-        authProviderUsed = provider;
+        loginProvider = provider;
         userId = results.userId;
-        amsAuthToken = results.mobileServiceAuthenticationToken;
-        $('div.userName').text(userId);
+        amsAccessToken = results.mobileServiceAuthenticationToken;
+
+        if (remember) {
+            rememberMe = true;
+            SaveSettings();
+        }
+
+        setLoginUI(true);
     }, function (err) {
         alert("Error: " + err);
     });
+}
+
+function setLoginUI(animate) {
+    if (animate) {
+        $("#notSignedIn").hide("1000");
+    } else {
+        $("#notSignedIn").hide();
+    }
+
+    $("#signedIn").show();
+    if (loginProvider == "facebook") {
+        $("#fbLogo").show();
+    }
+    else {
+        $("#fbLogo").hide();
+    }
+
+    if (loginProvider == "twitter") {
+        $("#twitterLogo").show();
+    } else {
+        $("#twitterLogo").hide();
+    }
+
+    if (loginProvider == "google") {
+        $("#googleLogo").show();
+    } else {
+        $("#googleLogo").hide();
+    }
+}
+
+function setNotLoggedUI(animate) {
+    $("#signedIn").hide();
+
+    if (animate) {
+        $("#notSignedIn").show("1000");
+    } else {
+        $("#notSignedIn").show();
+    }
+}
+
+function logout() {
+    isLoggedIn = false;
+    loginProvider = null;
+    userId = null;
+    amsAccessToken = null;
+    rememberMe = false;
+    SaveSettings();
+
+    setNotLoggedUI(true);
+}
+
+function setUser(userName, token) {
+    var client = getMobileServicesClient();
+    client.currentUser = {
+        userId: userName,
+        mobileServiceAuthenticationToken: token
+    };
+
+    setLoginUI(false);
 }
 
 function getLocation() {
