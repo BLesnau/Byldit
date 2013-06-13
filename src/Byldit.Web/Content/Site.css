@@ -85,6 +85,12 @@ header, footer, nav, section {
    margin-left: 5px;
 }
 
+.searchBox {
+   width: 345px;
+   margin-left: 8px;
+   margin-top: 10px;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset {
