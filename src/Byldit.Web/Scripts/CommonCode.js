@@ -195,6 +195,42 @@ function getViewableMeters() {
 
 function addMarker(marker) {
     markers[markers.length] = marker;
+
+    google.maps.event.addListener(marker, 'click', function () {
+        //if (!infoBubble.isOpen()) {
+
+        var contentString =
+            '<div class="infoBubbleContainer">' +
+            '<div class="infoBubbleHeader">Some Info</div>' +
+            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
+            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
+            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
+            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
+            '<a href="http://www.coldstonecreamery.com/"><img class="adImage" src="..//Content//Images//coldstone.png" /></a>' +
+            '</div>';
+
+        var infoBubble = new InfoBubble({
+            map: googleMap,
+            maxWidth: 400,
+            content: contentString,
+            position: new google.maps.LatLng(-35, 151),
+            shadowStyle: 0,
+            padding: 0,
+            backgroundColor: 'transparent',
+            borderRadius: 4,
+            arrowSize: 10,
+            borderWidth: 1,
+            borderColor: '#2c2c2c',
+            disableAutoPan: false,
+            hideCloseButton: false,
+            arrowPosition: 50,
+            backgroundClassName: 'infoBubbleBackground',
+            arrowStyle: 0
+        });
+
+        infoBubble.open(googleMap, marker);
+        // }
+    });
 }
 
 function clearMarkers() {
