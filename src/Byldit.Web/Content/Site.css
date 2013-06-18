@@ -89,6 +89,44 @@ header, footer, nav, section {
    width: 345px;
    margin-left: 8px;
    margin-top: 10px;
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+}
+
+.infoBubbleBackground {
+   background-color: #000000;
+   background-color: rgba(0,0, 0, .9);
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+}
+
+.infoBubbleHeader {
+   font-size: 1.25em;
+   color: white;
+   text-decoration: underline;
+}
+
+.infoBubbleContent {
+   font-size: 1.0em;
+   color: white;
+}
+
+.infoBubbleContainer {
+   margin: 5px;
+}
+
+.adImage {
+   width: 350px;
+   border-width: 1px;
+   border-color: white;
+   border-style: solid;
+   margin-top: 10px;
 }
 
 /* Styles for basic forms
@@ -115,7 +153,6 @@ textarea {
 .editor-field {
    margin: 0.5em 0 0 0;
 }
-
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
