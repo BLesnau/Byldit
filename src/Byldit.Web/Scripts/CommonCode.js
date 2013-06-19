@@ -6,6 +6,8 @@ var markers = [];
 var mobileServicesUrl = "";
 var mobileServicesKey = "";
 
+var baseImagePath = "";
+
 function getMobileServicesClient() {
     if (mobileServicesClient == null) {
         mobileServicesClient = new WindowsAzure.MobileServiceClient(
@@ -129,7 +131,8 @@ function placeMarker(location) {
     if (isLoggedIn) {
         var marker = new google.maps.Marker({
             position: location,
-            map: googleMap
+            map: googleMap,
+            icon: baseImagePath + "byldtag_pin.png"
         });
 
         addMarker(marker);
@@ -149,7 +152,6 @@ function loadPins() {
     var currentZoom = googleMap.getZoom();
     var filter = currentCenter.lat().toString() + ", " + currentCenter.lng().toString() + ", " + getViewableMeters().toString();
     //alert(filter);
-
     client.getTable("Pin").where({ Filter: filter })
         .read()
         .done(function (results) {
@@ -162,7 +164,8 @@ function loadPins() {
                         clickable: true,
                         position: new google.maps.LatLng(pin.Latitude, pin.Longitude),
                         zIndex: 999,
-                        map: googleMap
+                        map: googleMap,
+                        icon: baseImagePath + "byldtag_pin.png"
                     });
 
                     addMarker(marker);
@@ -203,11 +206,11 @@ function addMarker(marker) {
             '<div class="infoBubbleContainer">' +
                 '<div class="infoBubbleHeader">Cold Stone Creamery</div>' +
                     //'<div class="indentedTagInfo">' +
-                    '<div class="hashTagContainer">' +
-                        '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
-                        '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
-                        '<a class="hashTag" href="tag/food">#food</a> ' +
-                    '</div>' +
+                '<div class="hashTagContainer">' +
+                    '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
+                    '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
+                    '<a class="hashTag" href="tag/food">#food</a> ' +
+                '</div>' +
                 '<div class="infoBubbleContentContainer">' +
                 '<div>This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome.</div>' +
                 '</br>' +
