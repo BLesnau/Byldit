@@ -102,26 +102,53 @@ header, footer, nav, section {
 }
 
 .infoBubbleHeader {
-   font-size: 1.25em;
+   font-size: 2.0em;
    color: white;
-   text-decoration: underline;
 }
 
-.infoBubbleContent {
+.infoBubbleContentContainer {
+   margin-bottom: 15px;
    font-size: 1.0em;
    color: white;
 }
 
 .infoBubbleContainer {
-   margin: 5px;
+   margin-top: 5px;
+   margin-left: 10px;
+   margin-right: 10px;
+   margin-bottom: 10px;
+   /*max-height: 500px;*/
+}
+
+.adContainer {
+   margin-top: 5px;
+   margin-left: 5px;
+   margin-right: 5px;
+   margin-bottom: 2px;
+   text-align: center;
 }
 
 .adImage {
-   width: 350px;
+   width: 380px;
    border-width: 1px;
    border-color: white;
    border-style: solid;
-   margin-top: 10px;
+}
+
+.indentedTagInfo {
+   margin-left: 10px;
+}
+
+.hashTagContainer {
+   margin-bottom: 15px;
+}
+
+.hashTag {
+   color: white;
+}
+
+.hashTag:hover {
+   color: orange;
 }
 
 /* Styles for basic forms
