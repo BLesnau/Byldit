@@ -93,7 +93,7 @@ header, footer, nav, section {
 
 .infoBubbleBackground {
    background-color: #000000;
-   background-color: rgba(0,0, 0, .9);
+   background-color: rgba(0, 0, 0, .9);
    position: absolute;
    top: 0;
    left: 0;
