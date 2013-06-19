@@ -201,17 +201,28 @@ function addMarker(marker) {
 
         var contentString =
             '<div class="infoBubbleContainer">' +
-            '<div class="infoBubbleHeader">Some Info</div>' +
-            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
-            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
-            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
-            '<div class="infoBubbleContent">This will eventually be filled in with a ton of info.</div>' +
-            '<a href="http://www.coldstonecreamery.com/"><img class="adImage" src="..//Content//Images//coldstone.png" /></a>' +
+                '<div class="infoBubbleHeader">Cold Stone Creamery</div>' +
+                    //'<div class="indentedTagInfo">' +
+                    '<div class="hashTagContainer">' +
+                        '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
+                        '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
+                        '<a class="hashTag" href="tag/food">#food</a> ' +
+                    '</div>' +
+                '<div class="infoBubbleContentContainer">' +
+                '<div>This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome.</div>' +
+                '</br>' +
+                '<div>Ditto everything from above. Ditto everything from above. Ditto everything from above. Ditto everything from above.</div>' +
+                '</div>' +
+                    //'</div>' +
+            '</div>' +
+            '<div class="adContainer">' +
+                '<a href="http://www.coldstonecreamery.com/"><img class="adImage" src="..//Content//Images//coldstone.png" /></a>' +
             '</div>';
 
         var infoBubble = new InfoBubble({
             map: googleMap,
             maxWidth: 400,
+            //maxHeight: 500,
             content: contentString,
             position: new google.maps.LatLng(-35, 151),
             shadowStyle: 0,
@@ -222,7 +233,7 @@ function addMarker(marker) {
             borderWidth: 1,
             borderColor: '#2c2c2c',
             disableAutoPan: false,
-            hideCloseButton: false,
+            hideCloseButton: true,
             arrowPosition: 50,
             backgroundClassName: 'infoBubbleBackground',
             arrowStyle: 0
