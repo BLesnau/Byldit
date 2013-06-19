@@ -2,3 +2,4 @@
 <SubmitEmailTableName> SubmitEmails
 <AzureMobileServiceUrl> https://byldit.azure-mobile.net/
 <AzureMobileServiceKey> bduEIkOePLucjzWXwVUBmevdjzTReh22
+<BaseImagePath> http://www.byld.it/Content/Images/
