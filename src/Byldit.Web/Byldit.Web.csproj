@@ -233,6 +233,9 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\CommonCode.js" />
     <Content Include="Scripts\CookieHelper.js" />
+    <Content Include="Scripts\geolocationmarker-compiled.js" />
+    <Content Include="Scripts\geolocationmarker-exports.js" />
+    <Content Include="Scripts\geolocationmarker.js" />
     <Content Include="Scripts\infobubble-compiled.js" />
     <Content Include="Scripts\infobubble.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
