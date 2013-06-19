@@ -165,6 +165,7 @@
     <Content Include="Content\emailform\style.css" />
     <Content Include="Content\Images\byldit-header-background-teal.jpg" />
     <Content Include="Content\Images\byldit-header-logo-combined.png" />
+    <Content Include="Content\Images\byldtag_pin.png" />
     <Content Include="Content\Images\coldstone.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\facebook-widget.jpg" />

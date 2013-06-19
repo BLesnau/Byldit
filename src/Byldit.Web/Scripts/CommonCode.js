@@ -203,11 +203,11 @@ function addMarker(marker) {
             '<div class="infoBubbleContainer">' +
                 '<div class="infoBubbleHeader">Cold Stone Creamery</div>' +
                     //'<div class="indentedTagInfo">' +
-                    '<div class="hashTagContainer">' +
-                        '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
-                        '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
-                        '<a class="hashTag" href="tag/food">#food</a> ' +
-                    '</div>' +
+                '<div class="hashTagContainer">' +
+                    '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
+                    '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
+                    '<a class="hashTag" href="tag/food">#food</a> ' +
+                '</div>' +
                 '<div class="infoBubbleContentContainer">' +
                 '<div>This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome.</div>' +
                 '</br>' +
