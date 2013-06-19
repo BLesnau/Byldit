@@ -97,33 +97,33 @@ function setUser(userName, token) {
     setLoginUI(false);
 }
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(storePosition);
-    }
-}
+//function getLocation() {
+//    if (navigator.geolocation) {
+//        navigator.geolocation.getCurrentPosition(storePosition);
+//    }
+//}
 
-function storePosition(position) {
-    locLat = position.coords.latitude;
-    locLon = position.coords.longitude;
+//function storePosition(position) {
+//    locLat = position.coords.latitude;
+//    locLon = position.coords.longitude;
 
-    var position = new google.maps.LatLng(locLat, locLon);
+//    var position = new google.maps.LatLng(locLat, locLon);
 
-    googleMap.setCenter(position);
-    googleMap.setZoom(14);
+//    googleMap.setCenter(position);
+//    googleMap.setZoom(15);
 
-    var myLoc = new google.maps.Marker({
-        clickable: false,
-        icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-                                                        new google.maps.Size(22, 22),
-                                                        new google.maps.Point(0, 18),
-                                                        new google.maps.Point(11, 11)),
-        shadow: null,
-        zIndex: 999,
-        map: googleMap
-    });
-    myLoc.setPosition(position);
-}
+//    var myLoc = new google.maps.Marker({
+//        clickable: false,
+//        icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+//                                                        new google.maps.Size(22, 22),
+//                                                        new google.maps.Point(0, 18),
+//                                                        new google.maps.Point(11, 11)),
+//        shadow: null,
+//        zIndex: 999,
+//        map: googleMap
+//    });
+//    myLoc.setPosition(position);
+//}
 
 function placeMarker(location) {
     if (isLoggedIn) {
