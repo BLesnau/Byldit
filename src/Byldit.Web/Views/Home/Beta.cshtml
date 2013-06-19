@@ -31,6 +31,8 @@
     </script>
     <script type="text/javascript" src="~/Scripts/infobubble-compiled.js">
     </script>
+    <script type="text/javascript" src="~/Scripts/geolocationmarker-compiled.js">
+    </script>
     <script type="text/javascript">
         function initialize() {
             $("#signedIn").hide();
@@ -58,7 +60,14 @@
                 placeMarker(event.latLng);
             });
 
-            getLocation();
+            var geoMarker = new GeolocationMarker();
+            geoMarker.setCircleOptions({ fillColor: '#808080' });
+            
+            google.maps.event.addListenerOnce(geoMarker, 'position_changed', function () {
+                googleMap.setCenter(this.getPosition());
+                googleMap.setZoom(15);
+            });
+            geoMarker.setMap(googleMap);
 
             google.maps.event.trigger(googleMap, 'resize');
 
@@ -91,7 +100,7 @@
                 }
 
                 googleMap.fitBounds(bounds);
-                googleMap.setZoom(14);
+                googleMap.setZoom(15);
                 //var listener = google.maps.event.addListener(googleMap, "idle", function () {
                 //    if (googleMap.getZoom() < 4) {
                 //        googleMap.setZoom(4);
