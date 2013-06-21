@@ -61,14 +61,7 @@
                 placeMarker(event.latLng);
             });
 
-            var geoMarker = new GeolocationMarker();
-            geoMarker.setCircleOptions({ fillColor: '#808080' });
-            
-            google.maps.event.addListenerOnce(geoMarker, 'position_changed', function () {
-                googleMap.setCenter(this.getPosition());
-                googleMap.setZoom(15);
-            });
-            geoMarker.setMap(googleMap);
+            getLocation();
 
             google.maps.event.trigger(googleMap, 'resize');
 
