@@ -145,6 +145,8 @@ header, footer, nav, section {
 
 .hashTag {
    color: white;
+   margin-right: 5px;
+   text-decoration: none;
 }
 
 .hashTag:hover {
