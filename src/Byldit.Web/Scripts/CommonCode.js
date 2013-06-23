@@ -245,6 +245,10 @@ function addMarker(marker) {
                 '<div>This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome.</div>' +
                 '</br>' +
                 '<div>Ditto everything from above. Ditto everything from above. Ditto everything from above. Ditto everything from above.</div>' +
+                '</br>' +
+                '<div>This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome.</div>' +
+                '</br>' +
+                '<div>This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome.</div>' +
                 '</div>' +
                     //'</div>' +
             '</div>' +
@@ -254,7 +258,7 @@ function addMarker(marker) {
 
         var infoBubble = new InfoBubble({
             map: googleMap,
-            maxWidth: 400,
+            maxWidth: 450,
             //maxHeight: 500,
             content: contentString,
             position: new google.maps.LatLng(-35, 151),
@@ -273,6 +277,17 @@ function addMarker(marker) {
         });
 
         infoBubble.open(googleMap, marker);
+        
+        google.maps.event.addListener(infoBubble, 'domready', function () {
+            //waitSeconds(3);
+            //alert("In here");
+            //alert($(".infoBubbleContentContainer").size());
+            //code to dynamically load new content to infowindow
+            //for example:
+            //    var existing_content = referenceToInfoWindow.getContent();
+            //    var new_content = "...";
+            //    referenceToInfoWindow.setContent(existing_content + new_content);
+        });
         // }
     });
 }
