@@ -107,12 +107,11 @@ header, footer, nav, section {
 }
 
 .infoBubbleContentContainer {
-   margin-bottom: 15px;
+   margin-bottom: 3px;
    font-size: 1.0em;
    color: white;
-   max-height: 250px;
+   max-height: 150px;
    overflow: auto;
-   
 }
 
 .infoBubbleContainer {
@@ -153,6 +152,23 @@ header, footer, nav, section {
 
 .hashTag:hover {
    color: orange;
+}
+
+.more_link_container {
+   margin-bottom: 15px;
+}
+
+.morelink {
+   color: white;
+   text-decoration: none;
+}
+
+.morelink:hover {
+   color: orange;
+}
+
+.morecontent {
+   display: none;
 }
 
 /* Styles for basic forms
