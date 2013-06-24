@@ -29,7 +29,11 @@
     </script>
     <script type="text/javascript" src="~/Scripts/SearchBox.js">
     </script>
-    <script type="text/javascript" src="~/Scripts/infobubble-compiled.js">
+    @*<script type="text/javascript" src="~/Scripts/infobubble-compiled.js">
+    </script>*@
+    <script type="text/javascript" src="~/Scripts/infobubble.js">
+    </script>
+    <script type="text/javascript" src="~/Scripts/PopupHelper.js">
     </script>
     <script type="text/javascript" src="~/Scripts/geolocationmarker-compiled.js">
     </script>
@@ -40,7 +44,7 @@
 
             mobileServicesUrl = "@GlobalConfig.GetString( "AzureMobileServiceUrl" )";
             mobileServicesKey = "@GlobalConfig.GetString( "AzureMobileServiceKey" )";
-            baseImagePath = "@GlobalConfig.GetString("BaseImagePath")";
+            baseImagePath = "@GlobalConfig.GetString( "BaseImagePath" )";
 
             LoadSettings();
 
