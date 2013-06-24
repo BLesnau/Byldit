@@ -1212,6 +1212,7 @@ InfoBubble.prototype.updateContent_ = function() {
   }
   this.redraw_();
 };
+InfoBubble.prototype['updateContent_'] = InfoBubble.prototype.updateContent_;
 
 /**
  * Image loaded
@@ -1602,13 +1603,14 @@ InfoBubble.prototype.redraw_ = function() {
   this.positionCloseButton_();
   this.draw();
 };
-
+InfoBubble.prototype['redraw_'] =
+    InfoBubble.prototype.redraw_;
 
 /**
  * Figure out the optimum size of the InfoBubble
  * @private
  */
-InfoBubble.prototype.figureOutSize_ = function() {
+InfoBubble.prototype.figureOutSize_ = function () {
   var map = this.get('map');
 
   if (!map) {
@@ -1671,6 +1673,8 @@ InfoBubble.prototype.figureOutSize_ = function() {
     }
     if (content) {
       var contentSize = this.getElementSize_(content, maxWidth, maxHeight);
+
+      //alert("CONTENT SIZE = " + contentSize);
 
       if (width < contentSize.width) {
         width = contentSize.width;
