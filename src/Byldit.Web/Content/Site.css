@@ -107,9 +107,11 @@ header, footer, nav, section {
 }
 
 .infoBubbleContentContainer {
-   margin-bottom: 15px;
+   margin-bottom: 3px;
    font-size: 1.0em;
    color: white;
+   max-height: 150px;
+   overflow: auto;
 }
 
 .infoBubbleContainer {
@@ -117,7 +119,6 @@ header, footer, nav, section {
    margin-left: 10px;
    margin-right: 10px;
    margin-bottom: 10px;
-   /*max-height: 500px;*/
 }
 
 .adContainer {
@@ -129,7 +130,7 @@ header, footer, nav, section {
 }
 
 .adImage {
-   width: 380px;
+   width: 435px;
    border-width: 1px;
    border-color: white;
    border-style: solid;
@@ -145,10 +146,29 @@ header, footer, nav, section {
 
 .hashTag {
    color: white;
+   margin-right: 5px;
+   text-decoration: none;
 }
 
 .hashTag:hover {
    color: orange;
+}
+
+.more_link_container {
+   margin-bottom: 15px;
+}
+
+.morelink {
+   color: white;
+   text-decoration: none;
+}
+
+.morelink:hover {
+   color: orange;
+}
+
+.morecontent {
+   display: none;
 }
 
 /* Styles for basic forms
