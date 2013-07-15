@@ -1,4 +1,4 @@
-﻿var showChar = 100;
+﻿var showChar = 250;
 var ellipsestext = "...";
 var moretext = ">> more";
 var lesstext = "<< less";
@@ -8,124 +8,172 @@ var marker = null;
 var moreShown = false;
 var descriptionText = "";
 
-function showTagInfo(mark, descText) {
-    descriptionText = descText;
-    marker = mark;
+function showTagInfo( mark, descText ) {
+   descriptionText = descText;
+   marker = mark;
 
-    if (currentPopup != null) {
-        currentPopup.close();
-    }
+   if ( currentPopup != null ) {
+      currentPopup.close();
+   }
 
-    var contentString = getContentStr();
+   var contentString = getAllContentString();
 
-    currentPopup = new InfoBubble({
-        map: googleMap,
-        maxWidth: 450,
-        content: contentString,
-        position: new google.maps.LatLng(-35, 151),
-        shadowStyle: 0,
-        padding: 0,
-        backgroundColor: 'transparent',
-        borderRadius: 4,
-        arrowSize: 10,
-        borderWidth: 1,
-        borderColor: '#2c2c2c',
-        disableAutoPan: false,
-        hideCloseButton: true,
-        disableAnimation: false,
-        arrowPosition: 50,
-        backgroundClassName: 'infoBubbleBackground',
-        arrowStyle: 0
-    });
+   currentPopup = new InfoBubble( {
+      map: googleMap,
+      maxWidth: 450,
+      content: contentString,
+      shadowStyle: 0,
+      padding: 0,
+      backgroundColor: 'transparent',
+      borderRadius: 4,
+      arrowSize: 10,
+      borderWidth: 1,
+      borderColor: '#2c2c2c',
+      disableAutoPan: false,
+      hideCloseButton: true,
+      disableAnimation: false,
+      arrowPosition: 50,
+      backgroundClassName: 'infoBubbleBackground',
+      arrowStyle: 0
+   } );
 
-    currentPopup.open(googleMap, marker);
+   currentPopup.open( googleMap, marker );
 }
 
-function moreToggle(obj) {
-    if (currentPopup != null) {
-        moreShown = !moreShown;
+function moreToggle( obj ) {
+   if ( currentPopup != null ) {
+      moreShown = !moreShown;
 
-        currentPopup.close();
+      var descTextBox = $( ".infoBubbleContentContainer" );
+      var initialContentHeight = descTextBox.height();
 
-        var contentString = getContentStr();
+      var contentWithoutAd = $( obj ).parent().parent();
+      contentWithoutAd.replaceWith( getContentString() );
 
-        currentPopup = new InfoBubble({
-            map: googleMap,
-            maxWidth: 450,
-            content: contentString,
-            position: new google.maps.LatLng(-35, 151),
-            shadowStyle: 0,
-            padding: 0,
-            backgroundColor: 'transparent',
-            borderRadius: 4,
-            arrowSize: 10,
-            borderWidth: 1,
-            borderColor: '#2c2c2c',
-            disableAutoPan: false,
-            hideCloseButton: true,
-            disableAnimation: true,
-            arrowPosition: 50,
-            backgroundClassName: 'infoBubbleBackground',
-            arrowStyle: 0
-        });
+      descTextBox = $( ".infoBubbleContentContainer" );
+      var endContentHeight = descTextBox.height();
+      var heightChange = endContentHeight - initialContentHeight;
 
-        currentPopup.open(googleMap, marker);
+      var entireBubble = $( ".infoBubbleBackground" ).parent();
+      var arrow = $( ".infoBubbleBackground" ).parent().next();
+      var underEntireBubble = $( ".infoBubbleBackground" );
 
-        //currentPopup.setContent(getDescText());
-        //currentPopup.updateContent_();
-        //currentPopup.redraw_();
-    }
+      entireBubble.css( 'overflow-x', 'hidden' );
+
+      entireBubble.height( entireBubble.height() + heightChange );
+
+      var entireBubblePos = entireBubble.offset();
+      entireBubble.offset( { top: entireBubblePos.top - heightChange, left: entireBubblePos.left } );
+
+      var arrowPos = arrow.offset();
+      arrow.offset( { top: arrowPos.top - heightChange, left: arrowPos.left } );
+   }
 }
 
-function getContentStr() {
-    var descHtml = getDescText();
+function getAllContentString() {
+   var contentString = getContentString() + getAdContentString();
+   return contentString;
+}
 
-    var contentString =
-        '<div class="infoBubbleContainer">' +
-            '<div class="infoBubbleHeader">Cold Stone Creamery</div>' +
-            '<div class="hashTagContainer">' +
-                '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
-                '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
-                '<a class="hashTag" href="tag/food">#food</a> ' +
-            '</div>' +
-            '<div class="infoBubbleContentContainer more">' +
+function getContentString() {
+   var descHtml = getDescTextHtml();
 
-            descHtml +
+   var contentString =
+      '<div class="infoBubbleContainer">' +
+         '<div class="infoBubbleHeader">Cold Stone Creamery</div>' +
+         '<div class="hashTagContainer">' +
+         '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
+         '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
+         '<a class="hashTag" href="tag/food">#food</a> ' +
+         '</div>' +
+         '<div class="infoBubbleContentContainer more">' +
+         descHtml +
+         '</div>' +
+         getMoreLessLink() +
+         '</div>';
 
-            '</div>' +
+   return contentString;
+}
 
-            getMoreLessLink() +
+function getAdContentString() {
+   var contentString =
+      '<div class="adContainer">' +
+           '<a href="http://www.coldstonecreamery.com/"><img class="adImage" src="..//Content//Images//coldstone.png" /></a>' +
+       '</div>';
 
-        '</div>' +
-        '<div class="adContainer">' +
-            '<a href="http://www.coldstonecreamery.com/"><img class="adImage" src="..//Content//Images//coldstone.png" /></a>' +
-        '</div>';
+   return contentString;
+}
 
-    return contentString;
+function getDescTextHtml() {
+   var consolidatedDesc = getDescText();
+
+   if ( descriptionText.length > showChar ) {
+      if ( moreShown ) {
+      } else {
+         consolidatedDesc = consolidatedDesc + '<span class="moreellipses">' + ellipsestext + '</span>';
+      }
+   }
+
+   return consolidatedDesc;
 }
 
 function getDescText() {
-    var consolidatedDesc = "";
+   var consolidatedDesc = "";
 
-    if (descriptionText.length > showChar) {
-        if (moreShown) {
-            consolidatedDesc = descriptionText;
-        } else {
-            var c = descriptionText.substr(0, showChar);
-            //var h = descriptionText.substr(showChar - 1, descriptionText.length - showChar);
-            consolidatedDesc = c + '<span class="moreellipses">' + ellipsestext + '</span>';
-        }
-    }
+   if ( descriptionText.length > showChar ) {
+      if ( moreShown ) {
+         consolidatedDesc = descriptionText;
+      } else {
+         consolidatedDesc = descriptionText.substr( 0, showChar );
+      }
+   }
 
-    return consolidatedDesc;
+   return consolidatedDesc;
 }
 
 function getMoreLessLink() {
-    if (descriptionText.length > showChar) {
-        if (moreShown) {
-            return '<div class="more_link_container"><a href="#" class="morelink" onclick="moreToggle(this)">' + lesstext + '</a></div>';
-        } else {
-            return '<div class="more_link_container"><a href="#" class="morelink" onclick="moreToggle(this)">' + moretext + '</a></div>';
-        }
-    }
+   if ( descriptionText.length > showChar ) {
+      if ( moreShown ) {
+         return '<div class="more_link_container"><a href="#" class="morelink" onclick="moreToggle(this)">' + lesstext + '</a></div>';
+      } else {
+         return '<div class="more_link_container"><a href="#" class="morelink" onclick="moreToggle(this)">' + moretext + '</a></div>';
+      }
+   }
+}
+
+//function fromLatLngToPoint( latLng, opt_point ) {
+//   var me = this;
+//   var point = opt_point || new google.maps.Point( 0, 0 );
+//   var origin = me.pixelOrigin_;
+
+//   point.x = origin.x + latLng.lng() * me.pixelsPerLonDegree_;
+
+//   // Truncating to 0.9999 effectively limits latitude to 89.189. This is
+//   // about a third of a tile past the edge of the world tile.
+//   var siny = bound( Math.sin( degreesToRadians( latLng.lat() ) ), -0.9999,
+//       0.9999 );
+//   point.y = origin.y + 0.5 * Math.log(( 1 + siny ) / ( 1 - siny ) ) *
+//       -me.pixelsPerLonRadian_;
+//   return point;
+//};
+
+function fromPointToLatLng( point ) {
+   var TILE_SIZE = 256;
+   var pixelsPerLonDegree_ = TILE_SIZE / 360;
+   var pixelsPerLonRadian_ = TILE_SIZE / ( 2 * Math.PI );
+
+   var origin = new google.maps.Point( TILE_SIZE / 2, TILE_SIZE / 2 );
+   var lng = ( point.x - origin.x ) / pixelsPerLonDegree_;
+   var latRadians = ( point.y - origin.y ) / -pixelsPerLonRadian_;
+   var lat = radiansToDegrees( 2 * Math.atan( Math.exp( latRadians ) ) -
+       Math.PI / 2 );
+   return new google.maps.LatLng( lat, lng );
+};
+
+function degreesToRadians( deg ) {
+   return deg * ( Math.PI / 180 );
+}
+
+function radiansToDegrees( rad ) {
+   return rad / ( Math.PI / 180 );
 }
