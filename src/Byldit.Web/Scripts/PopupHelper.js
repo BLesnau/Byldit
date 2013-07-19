@@ -2,11 +2,15 @@
 var ellipsestext = "...";
 var moretext = ">> more";
 var lesstext = "<< less";
+var yellowStarImage = "..//Content//Images//yellow-star.png";
+var grayStarImage = "..//Content//Images//gray-star.png";
 
 var currentPopup = null;
 var marker = null;
 var moreShown = false;
 var descriptionText = "";
+var liked = false;
+var numberOfLikes = 87;
 
 function showTagInfo( mark, descText ) {
    descriptionText = descText;
@@ -71,7 +75,7 @@ function moreToggle( obj ) {
 }
 
 function getAllContentString() {
-   var contentString = getContentString() + getAdContentString();
+   var contentString = getContentString() + getControlBarString() + getAdContentString();
    return contentString;
 }
 
@@ -93,6 +97,35 @@ function getContentString() {
          '</div>';
 
    return contentString;
+}
+
+function getControlBarString() {
+   var barString =
+      '<div class="control-bar">' +
+            getStarImageString() +
+            '<span class="like-text">' + numberOfLikes + ' Likes' + '</span>' +
+
+            '<div class="small-social-container float-right">' +
+               '<a class="small-social-button" href="javascript:alert(&quot;You posted to Facebook dawg!&quot;)">' +
+               '<img src="..//Content//Images//small-facebook-widget.jpg" /></a>' +
+               '<a class="small-social-button" href="javascript:alert(&quot;You posted to Twitter dawg!&quot;)">' +
+               '<img src="..//Content//Images//small-twitter-widget.jpg" /></a>' +
+               '<a class="small-social-button" href="javascript:alert(&quot;You posted to Google dawg!&quot;)">' +
+               '<img src="..//Content//Images//small-google-widget.jpg" /></a>' +
+            '</div>' +
+      '</div>';
+
+   return barString;
+}
+
+function getStarImageString() {
+   if ( liked ) {
+      return '<img id="yellow-star" class="like-star" src="' + yellowStarImage + '" onClick="likeClicked(this)" style="cursor: pointer;">' +
+             '<img id="gray-star" class="like-star" style="display:none" src="' + grayStarImage + '" onClick="likeClicked(this)" onmouseover="" style="cursor: pointer;">';
+   } else {
+      return '<img id="yellow-star" class="like-star" style="display:none" src="' + yellowStarImage + '" onClick="likeClicked(this)" style="cursor: pointer;">' +
+             '<img id="gray-star" class="like-star" src="' + grayStarImage + '" onClick="likeClicked(this)" style="cursor: pointer;">';
+   }
 }
 
 function getAdContentString() {
@@ -139,6 +172,25 @@ function getMoreLessLink() {
          return '<div class="more_link_container"><a href="#" class="morelink" onclick="moreToggle(this)">' + moretext + '</a></div>';
       }
    }
+}
+
+function likeClicked( img ) {
+   liked = !liked;
+
+   if ( liked ) {
+      numberOfLikes++;
+
+      $( "#gray-star" ).hide();
+      $( "#yellow-star" ).show();
+
+   } else {
+      numberOfLikes--;
+
+      $( "#yellow-star" ).hide();
+      $( "#gray-star" ).show();
+   }
+
+   $( ".like-text" ).text( numberOfLikes + " Likes");
 }
 
 //function fromLatLngToPoint( latLng, opt_point ) {
