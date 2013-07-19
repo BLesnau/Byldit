@@ -120,11 +120,11 @@ function getControlBarString() {
 
 function getStarImageString() {
    if ( liked ) {
-      return '<img id="yellow-star" class="like-star" src="' + yellowStarImage + '" onClick="likeClicked(this)" style="cursor: pointer;">' +
-             '<img id="gray-star" class="like-star" style="display:none" src="' + grayStarImage + '" onClick="likeClicked(this)" onmouseover="" style="cursor: pointer;">';
+      return '<a href="javascript:;"><img id="yellow-star" class="like-star" src="' + yellowStarImage + '" onClick="likeClicked(this)">' +
+             '<img id="gray-star" class="like-star" style="display:none" src="' + grayStarImage + '" onClick="likeClicked(this)"></a>';
    } else {
-      return '<img id="yellow-star" class="like-star" style="display:none" src="' + yellowStarImage + '" onClick="likeClicked(this)" style="cursor: pointer;">' +
-             '<img id="gray-star" class="like-star" src="' + grayStarImage + '" onClick="likeClicked(this)" style="cursor: pointer;">';
+      return '<a href="javascript:;"><img id="yellow-star" class="like-star" style="display:none" src="' + yellowStarImage + '" onClick="likeClicked(this)">' +
+             '<img id="gray-star" class="like-star" src="' + grayStarImage + '" onClick="likeClicked(this)"></a>';
    }
 }
 
@@ -190,7 +190,7 @@ function likeClicked( img ) {
       $( "#gray-star" ).show();
    }
 
-   $( ".like-text" ).text( numberOfLikes + " Likes");
+   $( ".like-text" ).text( numberOfLikes + " Likes" );
 }
 
 //function fromLatLngToPoint( latLng, opt_point ) {
