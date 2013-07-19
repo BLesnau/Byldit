@@ -170,8 +170,13 @@
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\facebook-widget.jpg" />
     <Content Include="Content\Images\google-widget.jpg" />
+    <Content Include="Content\Images\gray-star.png" />
     <Content Include="Content\Images\show-byldtags-text.png" />
+    <Content Include="Content\Images\small-facebook-widget.jpg" />
+    <Content Include="Content\Images\small-google-widget.jpg" />
+    <Content Include="Content\Images\small-twitter-widget.jpg" />
     <Content Include="Content\Images\twitter-widget.jpg" />
+    <Content Include="Content\Images\yellow-star.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
