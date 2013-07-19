@@ -54,13 +54,17 @@ header, footer, nav, section {
    color: white;
 }
 
-.floatRight {
+.float-right {
    float: right;
    white-space: nowrap;
 }
 
 .socialButton {
    margin-right: 7px;
+}
+
+.small-social-button {
+   margin-right: 5px;
 }
 
 .socialPaddingNotSignedIn {
@@ -155,7 +159,7 @@ header, footer, nav, section {
 }
 
 .more_link_container {
-   margin-bottom: 15px;
+   margin-bottom: 10px;
 }
 
 .morelink {
@@ -169,6 +173,27 @@ header, footer, nav, section {
 
 .morecontent {
    display: none;
+}
+
+.like-star {
+   margin-right: 10px;
+   vertical-align: middle;
+}
+
+.like-text {
+   vertical-align: middle;
+   color: white;
+}
+
+.control-bar {
+   margin-left: 10px;
+   margin-right: 10px;
+   margin-bottom: 15px;
+}
+
+.small-social-container {
+   position: relative;
+   top: 2px;
 }
 
 /* Styles for basic forms
