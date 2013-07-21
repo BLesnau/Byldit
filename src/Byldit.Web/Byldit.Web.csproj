@@ -175,6 +175,7 @@
     <Content Include="Content\Images\small-facebook-widget.jpg" />
     <Content Include="Content\Images\small-google-widget.jpg" />
     <Content Include="Content\Images\small-twitter-widget.jpg" />
+    <Content Include="Content\Images\small_byldtag_pin.png" />
     <Content Include="Content\Images\twitter-widget.jpg" />
     <Content Include="Content\Images\yellow-star.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
