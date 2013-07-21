@@ -21,6 +21,9 @@
   background-repeat: no-repeat;
   background-position: 4px center;
 }
+#gmap3-menu .item.addTag{
+  background-image: url(../../../../../Content/Images/small_byldtag_pin.png);
+}
 #gmap3-menu .item.itemA{
   background-image: url(images/icon_greenA.png);
 }

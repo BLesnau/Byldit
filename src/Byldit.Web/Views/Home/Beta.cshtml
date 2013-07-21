@@ -66,23 +66,17 @@
 
 @section scripts
 {
-    <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZMdkkoh0DdR8d06ifz0JeREYVdPsmpU&sensor=true&libraries=geometry,places">
-    </script>
-    <script type="text/javascript" src="~/Scripts/ShowTagsButton.js">
-    </script>
-    <script type="text/javascript" src="~/Scripts/SearchBox.js">
-    </script>
-    <script type="text/javascript" src="~/Scripts/infobubble-compiled.js">
-    </script>
-    <@*script type="text/javascript" src="~/Scripts/infobubble.js">
-    </@*script>*@
-    <script type="text/javascript" src="~/Scripts/PopupHelper.js">
-    </script>
-    <script type="text/javascript" src="~/Scripts/geolocationmarker-compiled.js">
-    </script>
-    <script type="text/javascript" src="~/Scripts/gmap3/gmap3.min.js">
-    </script>
+    <link href="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZMdkkoh0DdR8d06ifz0JeREYVdPsmpU&sensor=true&libraries=geometry,places"></script>
+    <script type="text/javascript" src="~/Scripts/ShowTagsButton.js"></script>
+    <script type="text/javascript" src="~/Scripts/SearchBox.js"></script>
+    <script type="text/javascript" src="~/Scripts/infobubble-compiled.js"></script>
+    <@*script type="text/javascript" src="~/Scripts/infobubble.js"></@*script>*@
+    <script type="text/javascript" src="~/Scripts/PopupHelper.js"></script>
+    <script type="text/javascript" src="~/Scripts/geolocationmarker-compiled.js"></script>
+    <script src="~/Scripts/gmap3/gmap3.min.js"></script>
+    <script src="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.js"></script>
+    <script type="text/javascript" src="~/Scripts/ContextMenu.js"></script>
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
@@ -111,14 +105,15 @@
                 map: {
                     options: mapOptions,
                     events: {
-                        click: function (map, event ) {
-                            placeMarker( event.latLng );
+                        click: function ( map, event ) {
+                            CloseContextMenu();
                         },
-                        rightclick: function(map, event) {
-                            alert( "rightclick" );
-                            alert( map + " " + event );
+                        rightclick: function ( map, event ) {
+                            if ( canPlaceMarker() ) {
+                                ShowContextMenu( $( "#map-canvas" ), event );
+                            }
                         },
-                        bounds_changed: function (map, event) {
+                        bounds_changed: function ( map, event ) {
                             var bounds = map.getBounds();
                             searchBox.setBounds( bounds );
                         }

@@ -236,6 +236,7 @@
     <Content Include="Configs\Local.mysettings" />
     <Content Include="Configs\Stage.mysettings" />
     <Content Include="Configs\Live.mysettings" />
+    <Content Include="Scripts\ContextMenu.js" />
     <Content Include="Scripts\gmap3\README.md" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\CommonCode.js" />

@@ -157,6 +157,10 @@ function storePosition(position) {
     //circle.bindTo('map', myLoc);
 }
 
+function canPlaceMarker() {
+   return isLoggedIn;
+}
+
 function placeMarker(location) {
     if (isLoggedIn) {
         var marker = new google.maps.Marker({
