@@ -64,6 +64,21 @@
     <div id="map-canvas" />
 </div>
 
+<div id="add-tag-dialog" title="This is a title">
+    <div>Hey</div>
+    <div>there</div>
+    <div>guy</div>
+    <div>Hey</div>
+    <div>there</div>
+    <div>guy</div>
+    <div>Hey</div>
+    <div>there</div>
+    <div>guy</div>
+    <div>Hey</div>
+    <div>there</div>
+    <div>guy</div>
+</div>
+
 @section scripts
 {
     <link href="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.css" rel="stylesheet" />
@@ -110,7 +125,7 @@
                         },
                         rightclick: function ( map, event ) {
                             if ( canPlaceMarker() ) {
-                                ShowContextMenu( $( "#map-canvas" ), event );
+                                ShowContextMenu( $( "#map-canvas" ), $( "#add-tag-dialog" ), event );
                             }
                         },
                         bounds_changed: function ( map, event ) {
@@ -161,6 +176,41 @@
 
                 googleMap.fitBounds( bounds );
                 googleMap.setZoom( 15 );
+            } );
+
+            $( "#add-tag-dialog" ).dialog( {
+                modal: true,
+                autoOpen: false,
+                resizable: false,
+                draggable: false,
+                closeText: "gsdgsd",
+                buttons: {
+                    "Create Tag": function () {
+                        $( this ).dialog( "close" );
+                    }
+                },
+                show: {
+                    effect: "fade",
+                    color: "red",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fade",
+                    color: "red",
+                    duration: 1000
+                },
+                open: function () {
+                    $( '.ui-widget-overlay' ).hide().fadeIn( 1000 );
+                },
+                beforeClose: function () {
+                    $( '.ui-widget-overlay:first' )
+                        .clone()
+                        .appendTo( 'body' )
+                        .show()
+                        .fadeOut( 1000, function () {
+                            $( this ).remove();
+                        } );
+                }
             } );
         }
         google.maps.event.addDomListener( window, 'load', initialize );

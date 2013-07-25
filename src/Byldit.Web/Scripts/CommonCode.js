@@ -162,8 +162,10 @@ function canPlaceMarker() {
    return isLoggedIn;
 }
 
-function placeMarker( location ) {
+function placeMarker( addTagDialog, location ) {
    if ( isLoggedIn ) {
+      addTagDialog.dialog("open");
+
       var marker = new google.maps.Marker( {
          position: location,
          map: googleMap,
