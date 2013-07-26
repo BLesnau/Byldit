@@ -164,7 +164,7 @@ function canPlaceMarker() {
 
 function placeMarker( addTagDialog, location ) {
    if ( isLoggedIn ) {
-      addTagDialog.dialog("open");
+      addTagDialog.dialog( "open" );
 
       var marker = new google.maps.Marker( {
          position: location,
@@ -178,7 +178,12 @@ function placeMarker( addTagDialog, location ) {
       var client = getMobileServicesClient();
 
       var pin = { latitude: location.lat().toString(), longitude: location.lng().toString() };
-      client.getTable( "Pin" ).insert( pin );
+      client.invokeApi( "byldtag", { body: pin, method: "post" } )
+         .done( function ( results )
+         {
+         }, function ( error ) {
+            alert( "error posting tag! " + error );
+         } );
    }
 }
 
@@ -187,15 +192,14 @@ function loadPins() {
 
    var currentCenter = googleMap.getCenter();
    var currentZoom = googleMap.getZoom();
-   var filter = currentCenter.lat().toString() + ", " + currentCenter.lng().toString() + ", " + getViewableMeters().toString();
-   //alert(filter);
-   client.getTable( "Pin" ).where( { Filter: filter } )
-       .read()
+   var params = { latitude: currentCenter.lat().toString(), longitude: currentCenter.lng().toString(), viewableMeters: getViewableMeters().toString() };
+   client.invokeApi( "byldtag", { parameters: params, method: "get" } )
        .done( function ( results ) {
-          if ( results.length > 0 ) {
+          var response = JSON.parse( results.response );
+          if ( response.length > 0 ) {
              clearMarkers();
-             for ( var i in results ) {
-                var pin = results[i];
+             for ( var i in response ) {
+                var pin = response[i];
 
                 var marker = new google.maps.Marker( {
                    clickable: true,
@@ -208,6 +212,8 @@ function loadPins() {
                 addMarker( marker );
              }
           }
+       }, function ( error ) {
+          alert( "error getting tags! " + error );
        } );
 }
 

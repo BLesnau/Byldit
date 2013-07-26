@@ -64,19 +64,27 @@
     <div id="map-canvas" />
 </div>
 
-<div id="add-tag-dialog" title="This is a title">
-    <div>Hey</div>
-    <div>there</div>
-    <div>guy</div>
-    <div>Hey</div>
-    <div>there</div>
-    <div>guy</div>
-    <div>Hey</div>
-    <div>there</div>
-    <div>guy</div>
-    <div>Hey</div>
-    <div>there</div>
-    <div>guy</div>
+<div id="add-tag-dialog" title="Add a ByldTag">
+    <table>
+        <tr>
+            <td align="right">
+                <label for="tagName">Name:</label>
+            </td>
+            <td align="left">
+                <input type="text" name="Name" id="tagName" size="50"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="right">
+                <label for="tagDesc">Description:</label>
+            </td>
+            <td align="left">
+                <textarea style="resize: none;" rows="10" cols="50" ></textarea>
+            </td>
+        </tr>
+    </table>
+
 </div>
 
 @section scripts
@@ -184,6 +192,10 @@
                 resizable: false,
                 draggable: false,
                 closeText: "gsdgsd",
+                width: "auto",
+                height: "auto",
+                maxWidth: 1000,
+                maxHeight: 1000,
                 buttons: {
                     "Create Tag": function () {
                         $( this ).dialog( "close" );
