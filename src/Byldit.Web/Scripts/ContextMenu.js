@@ -6,8 +6,10 @@ function ShowContextMenu( mapElement, addTagDialog, location ) {
 }
 
 function CloseContextMenu() {
-   currentContextMenu.close();
-   currentContextMenu = null;
+   if( currentContextMenu ) {
+      currentContextMenu.close();
+      currentContextMenu = null;
+   }
 }
 
 function ContextMenu( mapElement, addTagDialog ) {
@@ -19,7 +21,7 @@ function ContextMenu( mapElement, addTagDialog ) {
    menu.add( "Add ByldTag", "addTag",
       function () {
          menu.close();
-         placeMarker( addTagDialog, currentLocation.latLng );
+         showCreateByldTagDialog( addTagDialog, currentLocation.latLng );
       }
    );
 

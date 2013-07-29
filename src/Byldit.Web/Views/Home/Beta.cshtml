@@ -68,10 +68,10 @@
     <table>
         <tr>
             <td align="right">
-                <label for="tagName">Name:</label>
+                <label for="tagTitle">Title:</label>
             </td>
             <td align="left">
-                <input type="text" name="Name" id="tagName" size="50"/>
+                <input type="text" name="Name" id="tagTitle" size="50" />
             </td>
         </tr>
 
@@ -80,7 +80,7 @@
                 <label for="tagDesc">Description:</label>
             </td>
             <td align="left">
-                <textarea style="resize: none;" rows="10" cols="50" ></textarea>
+                <textarea id="tagDesc" style="resize: none;" rows="10" cols="50"></textarea>
             </td>
         </tr>
     </table>
@@ -198,6 +198,10 @@
                 maxHeight: 1000,
                 buttons: {
                     "Create Tag": function () {
+                        var location = $( this ).data( "location" );
+                        var title = $( "#tagTitle" ).val();
+                        var desc = $( "#tagDesc" ).val();
+                        createByldTag( location, title, desc );
                         $( this ).dialog( "close" );
                     }
                 },
