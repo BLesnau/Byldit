@@ -9,11 +9,13 @@ var currentPopup = null;
 var marker = null;
 var moreShown = false;
 var descriptionText = "";
+var titleText = "";
 var liked = false;
 var numberOfLikes = 87;
 
-function showTagInfo( mark, descText ) {
+function showTagInfo( mark, title, descText ) {
    descriptionText = descText;
+   titleText = title;
    marker = mark;
 
    if ( currentPopup != null ) {
@@ -84,7 +86,7 @@ function getContentString() {
 
    var contentString =
       '<div class="infoBubbleContainer">' +
-         '<div class="infoBubbleHeader">Cold Stone Creamery</div>' +
+         '<div class="infoBubbleHeader">' + titleText + '</div>' +
          '<div class="hashTagContainer">' +
          '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
          '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
@@ -146,19 +148,16 @@ function getDescTextHtml() {
          consolidatedDesc = consolidatedDesc + '<span class="moreellipses">' + ellipsestext + '</span>';
       }
    }
-
    return consolidatedDesc;
 }
 
 function getDescText() {
-   var consolidatedDesc = "";
 
-   if ( descriptionText.length > showChar ) {
-      if ( moreShown ) {
-         consolidatedDesc = descriptionText;
-      } else {
-         consolidatedDesc = descriptionText.substr( 0, showChar );
-      }
+   var consolidatedDesc = "";
+   if ( ( descriptionText.length > showChar ) && !moreShown ) {
+      consolidatedDesc = descriptionText.substr( 0, showChar );
+   } else {
+      var consolidatedDesc = descriptionText;
    }
 
    return consolidatedDesc;
