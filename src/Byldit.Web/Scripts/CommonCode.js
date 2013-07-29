@@ -162,28 +162,40 @@ function canPlaceMarker() {
    return isLoggedIn;
 }
 
-function placeMarker( addTagDialog, location ) {
+function showCreateByldTagDialog( addTagDialog, location ) {
    if ( isLoggedIn ) {
-      addTagDialog.dialog( "open" );
+      addTagDialog.data( "location", location ).dialog( "open" );
+   }
+}
 
+function createByldTag( location, title, description ) {
+   if ( isLoggedIn ) {
+      var client = getMobileServicesClient();
+
+      var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description };
+      client.invokeApi( "byldtag", { body: tag, method: "post" } )
+         .done( function ( results ) {
+            placeMarker( location, title, description );
+         }, function ( error ) {
+            alert( "error posting tag: " + error );
+         } );
+   }
+}
+
+function placeMarker( location, title, description ) {
+   if ( isLoggedIn ) {
       var marker = new google.maps.Marker( {
+         clickable: true,
          position: location,
+         zIndex: 999,
          map: googleMap,
-         icon: baseImagePath + "byldtag_pin.png"
+         icon: baseImagePath + "byldtag_pin.png",
+         title: title,
+         description: description
       } );
 
       addMarker( marker );
       //googleMap.setCenter(location);
-
-      var client = getMobileServicesClient();
-
-      var pin = { latitude: location.lat().toString(), longitude: location.lng().toString() };
-      client.invokeApi( "byldtag", { body: pin, method: "post" } )
-         .done( function ( results )
-         {
-         }, function ( error ) {
-            alert( "error posting tag! " + error );
-         } );
    }
 }
 
@@ -206,14 +218,16 @@ function loadPins() {
                    position: new google.maps.LatLng( pin.Latitude, pin.Longitude ),
                    zIndex: 999,
                    map: googleMap,
-                   icon: baseImagePath + "byldtag_pin.png"
+                   icon: baseImagePath + "byldtag_pin.png",
+                   title: pin.Title,
+                   description: pin.Description
                 } );
 
                 addMarker( marker );
              }
           }
        }, function ( error ) {
-          alert( "error getting tags! " + error );
+          alert( "error getting tags: " + error );
        } );
 }
 
@@ -241,16 +255,9 @@ function getViewableMeters() {
 
 function addMarker( marker ) {
    markers[markers.length] = marker;
-
    google.maps.event.addListener( marker, 'click', function () {
       //if (!infoBubble.isOpen()) {
-
-      var descText = 'This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. ' +
-      'Ditto everything from above. Ditto everything from above. Ditto everything from above. Ditto everything from above. ' +
-      'This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. ' +
-      'This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. This place is awesome. ';
-
-      showTagInfo( marker, descText );
+      showTagInfo( marker, marker.title, marker.description );
 
       //google.maps.event.addListener(infoBubble, 'domready', function () {
       //});
