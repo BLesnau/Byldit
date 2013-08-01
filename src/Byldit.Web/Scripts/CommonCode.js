@@ -175,19 +175,23 @@ function createByldTag( location, title, description ) {
       var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description };
       client.invokeApi( "byldtag", { body: tag, method: "post" } )
          .done( function ( results ) {
-            placeMarker( location );
+            placeMarker( location, title, description );
          }, function ( error ) {
             alert( "error posting tag: " + error );
          } );
    }
 }
 
-function placeMarker( location ) {
+function placeMarker( location, title, description ) {
    if ( isLoggedIn ) {
       var marker = new google.maps.Marker( {
+         clickable: true,
          position: location,
+         zIndex: 999,
          map: googleMap,
-         icon: baseImagePath + "byldtag_pin.png"
+         icon: baseImagePath + "byldtag_pin.png",
+         title: title,
+         description: description
       } );
 
       addMarker( marker );
