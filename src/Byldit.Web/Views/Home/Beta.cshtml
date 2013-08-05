@@ -129,11 +129,12 @@
                     options: mapOptions,
                     events: {
                         click: function ( map, event ) {
-                            CloseContextMenu();
+                            closeContextMenu();
+                            closeByldTag();
                         },
                         rightclick: function ( map, event ) {
                             if ( canPlaceMarker() ) {
-                                ShowContextMenu( $( "#map-canvas" ), $( "#add-tag-dialog" ), event );
+                                showContextMenu( $( "#map-canvas" ), $( "#add-tag-dialog" ), event );
                             }
                         },
                         bounds_changed: function ( map, event ) {
