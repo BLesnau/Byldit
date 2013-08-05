@@ -11,6 +11,7 @@ var tagId = null;
 var moreShown = false;
 var descriptionText = "";
 var titleText = "";
+var submitterName = "";
 var starred = false;
 var starCount = null;
 
@@ -19,10 +20,9 @@ function showTagInfo( mark ) {
    tagId = marker.tagId;
    descriptionText = mark.description;
    titleText = marker.title;
+   submitterName = marker.submitterName;
    starCount = null;
    starred = false;
-
-   console.log(tagId);
 
    var contentString = getAllContentString();
 
@@ -100,17 +100,20 @@ function getContentString() {
 
    var contentString =
       '<div class="infoBubbleContainer">' +
-         '<div class="infoBubbleHeader">' + titleText + '</div>' +
+         '<div class="submitter-container">' +   
+            '<div class="infoBubbleHeader">' + titleText + '</div>' +
+            '<div class="submitter-text">Submitted by: <a href="user/' + submitterName + '" class="submitter-link">' + submitterName + '</a></div>' +
+         '</div>' +
          '<div class="hashTagContainer">' +
-         '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
-         '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
-         '<a class="hashTag" href="tag/food">#food</a> ' +
+            '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
+            '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
+            '<a class="hashTag" href="tag/food">#food</a> ' +
          '</div>' +
          '<div class="infoBubbleContentContainer more">' +
-         descHtml +
+            descHtml +
          '</div>' +
          getMoreLessLink() +
-         '</div>';
+      '</div>';
 
    return contentString;
 }
@@ -200,7 +203,6 @@ function setStarInfo() {
        .done( function ( response ) {
           starCount = response.result.starCount;
           starred = response.result.starredByUser;
-          console.log( starred );
           updateStar();
        }, function ( error ) {
           alert( "error getting star info: " + error );
@@ -241,14 +243,10 @@ function starClicked() {
 
 function updateStar() {
    if ( starred ) {
-      console.log( "Starred" );
-
       $( "#gray-star" ).hide();
       $( "#yellow-star" ).show();
 
    } else {
-      console.log( "Not Starred" );
-
       $( "#yellow-star" ).hide();
       $( "#gray-star" ).show();
    }
