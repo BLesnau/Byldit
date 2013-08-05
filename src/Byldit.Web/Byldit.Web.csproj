@@ -160,6 +160,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="API\byldtag.js" />
     <Content Include="Content\emailform\byldit_logo.png" />
     <Content Include="Content\emailform\ga.js" />
     <Content Include="Content\emailform\style.css" />
