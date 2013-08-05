@@ -173,16 +173,16 @@ function createByldTag( location, title, description ) {
       var client = getMobileServicesClient();
 
       var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description };
-      client.invokeApi( "byldtag", { body: tag, method: "post" } )
-         .done( function ( results ) {
-            placeMarker( location, title, description );
+      client.invokeApi( "byldtag/", { body: tag, method: "post" } )
+         .done( function ( response ) {
+            placeMarker( location, response.result.tagId, title, description );
          }, function ( error ) {
             alert( "error posting tag: " + error );
          } );
    }
 }
 
-function placeMarker( location, title, description ) {
+function placeMarker( location, insertedTagId, title, description ) {
    if ( isLoggedIn ) {
       var marker = new google.maps.Marker( {
          clickable: true,
@@ -190,8 +190,11 @@ function placeMarker( location, title, description ) {
          zIndex: 999,
          map: googleMap,
          icon: baseImagePath + "byldtag_pin.png",
+         tagId: insertedTagId,
          title: title,
-         description: description
+         description: description,
+         starCount: 0,
+         starredByUser: false
       } );
 
       addMarker( marker );
@@ -205,7 +208,7 @@ function loadPins() {
    var currentCenter = googleMap.getCenter();
    var currentZoom = googleMap.getZoom();
    var params = { latitude: currentCenter.lat().toString(), longitude: currentCenter.lng().toString(), viewableMeters: getViewableMeters().toString() };
-   client.invokeApi( "byldtag", { parameters: params, method: "get" } )
+   client.invokeApi( "byldtag/", { parameters: params, method: "get" } )
        .done( function ( results ) {
           var response = JSON.parse( results.response );
           if ( response.length > 0 ) {
@@ -219,6 +222,7 @@ function loadPins() {
                    zIndex: 999,
                    map: googleMap,
                    icon: baseImagePath + "byldtag_pin.png",
+                   tagId: pin.id,
                    title: pin.Title,
                    description: pin.Description
                 } );
@@ -257,7 +261,7 @@ function addMarker( marker ) {
    markers[markers.length] = marker;
    google.maps.event.addListener( marker, 'click', function () {
       //if (!infoBubble.isOpen()) {
-      showTagInfo( marker, marker.title, marker.description );
+      showTagInfo( marker );
 
       //google.maps.event.addListener(infoBubble, 'domready', function () {
       //});
