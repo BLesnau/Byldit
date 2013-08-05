@@ -52,7 +52,12 @@ function showTagInfo( mark ) {
    currentPopup.setContent( contentString );
    currentPopup.open( googleMap, marker );
    setStarInfo();
+}
 
+function closeByldTag() {
+   if ( currentPopup != null ) {
+      currentPopup.close();
+   }
 }
 
 function moreToggle( obj ) {
