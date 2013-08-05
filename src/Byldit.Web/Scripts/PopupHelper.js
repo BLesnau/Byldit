@@ -7,43 +7,52 @@ var grayStarImage = "..//Content//Images//gray-star.png";
 
 var currentPopup = null;
 var marker = null;
+var tagId = null;
 var moreShown = false;
 var descriptionText = "";
 var titleText = "";
-var liked = false;
-var numberOfLikes = 87;
+var starred = false;
+var starCount = null;
 
-function showTagInfo( mark, title, descText ) {
-   descriptionText = descText;
-   titleText = title;
+function showTagInfo( mark ) {
    marker = mark;
+   tagId = marker.tagId;
+   descriptionText = mark.description;
+   titleText = marker.title;
+   starCount = null;
+   starred = false;
 
-   if ( currentPopup != null ) {
-      currentPopup.close();
-   }
+   console.log(tagId);
 
    var contentString = getAllContentString();
 
-   currentPopup = new InfoBubble( {
-      map: googleMap,
-      maxWidth: 450,
-      content: contentString,
-      shadowStyle: 0,
-      padding: 0,
-      backgroundColor: 'transparent',
-      borderRadius: 4,
-      arrowSize: 10,
-      borderWidth: 1,
-      borderColor: '#2c2c2c',
-      disableAutoPan: false,
-      hideCloseButton: true,
-      disableAnimation: false,
-      arrowPosition: 50,
-      backgroundClassName: 'infoBubbleBackground',
-      arrowStyle: 0
-   } );
+   if ( currentPopup != null ) {
+      currentPopup.close();
+   } else {
+      currentPopup = new InfoBubble( {
+         map: googleMap,
+         maxWidth: 450,
+         content: contentString,
+         shadowStyle: 0,
+         padding: 0,
+         backgroundColor: 'transparent',
+         borderRadius: 4,
+         arrowSize: 10,
+         borderWidth: 1,
+         borderColor: '#2c2c2c',
+         disableAutoPan: false,
+         hideCloseButton: true,
+         disableAnimation: false,
+         arrowPosition: 50,
+         backgroundClassName: 'infoBubbleBackground',
+         arrowStyle: 0
+      } );
+   }
 
+   currentPopup.setContent( contentString );
    currentPopup.open( googleMap, marker );
+   setStarInfo();
+
 }
 
 function moreToggle( obj ) {
@@ -102,10 +111,17 @@ function getContentString() {
 }
 
 function getControlBarString() {
+   var starText;
+   if ( starCount == null ) {
+      starText = '<span class="like-text"></span>';
+   } else {
+      starText = '<span class="like-text">' + starCount + ' Stars' + '</span>';
+   }
+
    var barString =
       '<div class="control-bar">' +
             getStarImageString() +
-            '<span class="like-text">' + numberOfLikes + ' Likes' + '</span>' +
+            starText +
 
             '<div class="small-social-container float-right">' +
                '<a class="small-social-button" href="javascript:alert(&quot;You posted to Facebook dawg!&quot;)">' +
@@ -121,12 +137,12 @@ function getControlBarString() {
 }
 
 function getStarImageString() {
-   if ( liked ) {
-      return '<a href="javascript:;"><img id="yellow-star" class="like-star" src="' + yellowStarImage + '" onClick="likeClicked(this)">' +
-             '<img id="gray-star" class="like-star" style="display:none" src="' + grayStarImage + '" onClick="likeClicked(this)"></a>';
+   if ( starred ) {
+      return '<a href="javascript:;"><img id="yellow-star" class="like-star" src="' + yellowStarImage + '" onClick="starClicked()">' +
+             '<img id="gray-star" class="like-star" style="display:none" src="' + grayStarImage + '" onClick="starClicked()"></a>';
    } else {
-      return '<a href="javascript:;"><img id="yellow-star" class="like-star" style="display:none" src="' + yellowStarImage + '" onClick="likeClicked(this)">' +
-             '<img id="gray-star" class="like-star" src="' + grayStarImage + '" onClick="likeClicked(this)"></a>';
+      return '<a href="javascript:;"><img id="yellow-star" class="like-star" style="display:none" src="' + yellowStarImage + '" onClick="starClicked()">' +
+             '<img id="gray-star" class="like-star" src="' + grayStarImage + '" onClick="starClicked()"></a>';
    }
 }
 
@@ -173,23 +189,66 @@ function getMoreLessLink() {
    }
 }
 
-function likeClicked( img ) {
-   liked = !liked;
+function setStarInfo() {
+   var client = getMobileServicesClient();
+   client.invokeApi( "byldtag/" + tagId + "/star", { method: "get" } )
+       .done( function ( response ) {
+          starCount = response.result.starCount;
+          starred = response.result.starredByUser;
+          console.log( starred );
+          updateStar();
+       }, function ( error ) {
+          alert( "error getting star info: " + error );
+       } );
+}
 
-   if ( liked ) {
-      numberOfLikes++;
+function starClicked() {
+   var client = getMobileServicesClient();
+   var method;
+   if ( starred ) {
+      method = "delete";
+   } else {
+      method = "post";
+   }
+
+   client.invokeApi( "byldtag/" + tagId + "/star", { method: method } )
+       .done( function () {
+          starred = !starred;
+
+          if ( starred ) {
+             starCount++;
+
+             $( "#gray-star" ).hide();
+             $( "#yellow-star" ).show();
+
+          } else {
+             starCount--;
+
+             $( "#yellow-star" ).hide();
+             $( "#gray-star" ).show();
+          }
+
+          $( ".like-text" ).text( starCount + " Stars" );
+       }, function ( error ) {
+          alert( "error getting star info: " + error );
+       } );
+}
+
+function updateStar() {
+   if ( starred ) {
+      console.log( "Starred" );
 
       $( "#gray-star" ).hide();
       $( "#yellow-star" ).show();
 
    } else {
-      numberOfLikes--;
+      console.log( "Not Starred" );
 
       $( "#yellow-star" ).hide();
       $( "#gray-star" ).show();
    }
 
-   $( ".like-text" ).text( numberOfLikes + " Likes" );
+   $( ".like-text" ).text( starCount + " Stars" );
 }
 
 //function fromLatLngToPoint( latLng, opt_point ) {
