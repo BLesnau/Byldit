@@ -215,6 +215,7 @@ function loadPins() {
              clearMarkers();
              for ( var i in response ) {
                 var pin = response[i];
+                console.log( pin );
 
                 var marker = new google.maps.Marker( {
                    clickable: true,
@@ -224,6 +225,7 @@ function loadPins() {
                    icon: baseImagePath + "byldtag_pin.png",
                    tagId: pin.id,
                    title: pin.Title,
+                   submitterName: pin.UserId,
                    description: pin.Description
                 } );
 
