@@ -1,11 +1,11 @@
 ﻿var currentContextMenu = null;
 
-function ShowContextMenu( mapElement, addTagDialog, location ) {
+function showContextMenu( mapElement, addTagDialog, location ) {
    currentContextMenu = new ContextMenu( mapElement, addTagDialog );
    currentContextMenu.show( location );
 }
 
-function CloseContextMenu() {
+function closeContextMenu() {
    if( currentContextMenu ) {
       currentContextMenu.close();
       currentContextMenu = null;
