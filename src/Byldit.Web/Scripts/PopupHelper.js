@@ -21,34 +21,38 @@ function showTagInfo( mark ) {
    titleText = marker.title;
    starCount = null;
    starred = false;
-   setStarInfo();
 
-   if ( currentPopup != null ) {
-      currentPopup.close();
-   }
+   console.log(tagId);
 
    var contentString = getAllContentString();
 
-   currentPopup = new InfoBubble( {
-      map: googleMap,
-      maxWidth: 450,
-      content: contentString,
-      shadowStyle: 0,
-      padding: 0,
-      backgroundColor: 'transparent',
-      borderRadius: 4,
-      arrowSize: 10,
-      borderWidth: 1,
-      borderColor: '#2c2c2c',
-      disableAutoPan: false,
-      hideCloseButton: true,
-      disableAnimation: false,
-      arrowPosition: 50,
-      backgroundClassName: 'infoBubbleBackground',
-      arrowStyle: 0
-   } );
+   if ( currentPopup != null ) {
+      currentPopup.close();
+   } else {
+      currentPopup = new InfoBubble( {
+         map: googleMap,
+         maxWidth: 450,
+         content: contentString,
+         shadowStyle: 0,
+         padding: 0,
+         backgroundColor: 'transparent',
+         borderRadius: 4,
+         arrowSize: 10,
+         borderWidth: 1,
+         borderColor: '#2c2c2c',
+         disableAutoPan: false,
+         hideCloseButton: true,
+         disableAnimation: false,
+         arrowPosition: 50,
+         backgroundClassName: 'infoBubbleBackground',
+         arrowStyle: 0
+      } );
+   }
 
+   currentPopup.setContent( contentString );
    currentPopup.open( googleMap, marker );
+   setStarInfo();
+
 }
 
 function moreToggle( obj ) {
@@ -191,6 +195,7 @@ function setStarInfo() {
        .done( function ( response ) {
           starCount = response.result.starCount;
           starred = response.result.starredByUser;
+          console.log( starred );
           updateStar();
        }, function ( error ) {
           alert( "error getting star info: " + error );
@@ -200,12 +205,12 @@ function setStarInfo() {
 function starClicked() {
    var client = getMobileServicesClient();
    var method;
-   if( starred ) {
+   if ( starred ) {
       method = "delete";
    } else {
       method = "post";
    }
-   
+
    client.invokeApi( "byldtag/" + tagId + "/star", { method: method } )
        .done( function () {
           starred = !starred;
@@ -231,11 +236,13 @@ function starClicked() {
 
 function updateStar() {
    if ( starred ) {
+      console.log( "Starred" );
 
       $( "#gray-star" ).hide();
       $( "#yellow-star" ).show();
 
    } else {
+      console.log( "Not Starred" );
 
       $( "#yellow-star" ).hide();
       $( "#gray-star" ).show();
