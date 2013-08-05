@@ -196,6 +196,25 @@ header, footer, nav, section {
    top: 2px;
 }
 
+.submitter-container {
+   margin-bottom: 3px;
+}
+
+.submitter-text {
+   font-size: 0.9em;
+   color: gray;
+}
+
+.submitter-link {
+   font-size: 0.9em;
+   color: gray;
+   text-decoration: none;
+}
+
+.submitter-link:hover {
+   color: orange;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset {
