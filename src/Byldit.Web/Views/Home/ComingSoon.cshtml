@@ -1,0 +1,79 @@
+﻿@using Byldit.Web.Configs
+@{
+    
+}
+
+<div id="topBarContainer">
+    <div class="lockedHeader">
+        <img class="logoPadding" src="~/Content/Images/byldit-header-logo-combined.png" />
+
+        <div class="float-right">
+            <div id="notSignedIn" class="socialPaddingNotSignedIn">
+                <div class="signInText">Sign in</div>
+                <a class="socialButton" href="javascript:login(&quot;facebook&quot;)">
+                    <img src="~/Content/Images/facebook-widget.jpg" /></a>
+                <a class="socialButton" href="javascript:login(&quot;twitter&quot;)">
+                    <img src="~/Content/Images/twitter-widget.jpg" /></a>
+                <a class="socialButton" href="javascript:login(&quot;google&quot;)">
+                    <img src="~/Content/Images/google-widget.jpg" /></a>
+
+                <br />
+
+                <label class="signInText">
+                    <input id="rememberMeCheck" type="checkbox" name="rememberMe" value="value" />Remember me</label>
+            </div>
+
+            <div id="signedIn" class="socialPaddingSignedIn">
+                <div>
+                    <label class="signInTextBig vertMiddle">Signed in with</label>
+                    <img id="fbLogo" class="providerIcon vertMiddle" src="~/Content/Images/facebook-widget.jpg" />
+                    <img id="twitterLogo" class="providerIcon vertMiddle" src="~/Content/Images/twitter-widget.jpg" />
+                    <img id="googleLogo" class="providerIcon vertMiddle" src="~/Content/Images/google-widget.jpg" />
+                </div>
+                <div class="signOutTextPadding">
+                    <a class="signOutText" href="javascript:logout();">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="completely-centered">
+        <img src="~/Content/Images/coming-soon.png" />
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $( function () {
+            $( "#signedIn" ).hide();
+            $( "#notSignedIn" ).hide();
+
+            mobileServicesUrl = "@GlobalConfig.GetString( "AzureMobileServiceUrl" )";
+            mobileServicesKey = "@GlobalConfig.GetString( "AzureMobileServiceKey" )";
+            baseImagePath = "@GlobalConfig.GetString( "BaseImagePath" )";
+
+            LoadSettings();
+
+            $( "#content" ).height( $( window ).height() - 85 );
+            $( window ).resize( function () {
+                $( "#content" ).height( $( window ).height() - 85 );
+
+                updateCenterImage();
+            } );
+
+            updateCenterImage();
+        } );
+
+        function updateCenterImage() {
+            console.log( $( '.completely-centered' ).outerWidth() );
+            $( '.completely-centered' ).css( {
+                position: 'absolute',
+                left: ( $( "#content" ).width() - 404 ) / 2,
+                top: Math.max( 85, ( $( "#content" ).height() - 550 ) / 2 )
+            } );
+        }
+    </script>
+}

@@ -42,5 +42,25 @@ namespace Byldit.Web.Controllers
 
          return View();
       }
+
+      public ActionResult Keyword( string keyword )
+      {
+         var model = new KeywordViewModel
+         {
+            Keyword = keyword
+         };
+
+         return View( "ComingSoon" );
+      }
+
+      public ActionResult User( string userId )
+      {
+         var model = new UserViewModel
+         {
+            UserId = userId
+         };
+
+         return View( "ComingSoon" );
+      }
    }
 }
