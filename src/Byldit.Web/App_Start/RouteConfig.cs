@@ -16,6 +16,18 @@ namespace Byldit.Web.App_Start
          );
 
          routes.MapRoute(
+             name: "Keyword",
+             url: "keyword/{keyword}",
+             defaults: new { controller = "Home", action = "Keyword" }
+         );
+
+         routes.MapRoute(
+             name: "User",
+             url: "user/{userId}",
+             defaults: new { controller = "Home", action = "User" }
+         );
+
+         routes.MapRoute(
              name: "Default",
              url: "{controller}/{action}/{id}",
              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
