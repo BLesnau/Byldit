@@ -66,8 +66,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeywordViewModel.cs" />
     <Compile Include="SubmitEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

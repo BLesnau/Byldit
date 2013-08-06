@@ -97,17 +97,18 @@ function getAllContentString() {
 
 function getContentString() {
    var descHtml = getDescTextHtml();
+   var nameNoColon = submitterName.replace(':', '');
 
    var contentString =
       '<div class="infoBubbleContainer">' +
-         '<div class="submitter-container">' +   
+         '<div class="submitter-container">' +
             '<div class="infoBubbleHeader">' + titleText + '</div>' +
-            '<div class="submitter-text">Submitted by: <a href="user/' + submitterName + '" class="submitter-link">' + submitterName + '</a></div>' +
+            '<div class="submitter-text">Submitted by: <a href="user/' + nameNoColon + '" class="submitter-link">' + nameNoColon + '</a></div>' +
          '</div>' +
          '<div class="hashTagContainer">' +
-            '<a class="hashTag" href="tag/coldstone">#coldstone</a> ' +
-            '<a class="hashTag" href="tag/icecream">#icecream</a> ' +
-            '<a class="hashTag" href="tag/food">#food</a> ' +
+            '<a class="hashTag" href="keyword/coldstone">#coldstone</a> ' +
+            '<a class="hashTag" href="keyword/icecream">#icecream</a> ' +
+            '<a class="hashTag" href="keyword/food">#food</a> ' +
          '</div>' +
          '<div class="infoBubbleContentContainer more">' +
             descHtml +
@@ -195,6 +196,8 @@ function getMoreLessLink() {
          return '<div class="more_link_container"><a href="#" class="morelink" onclick="moreToggle(this)">' + moretext + '</a></div>';
       }
    }
+
+   return '';
 }
 
 function setStarInfo() {
