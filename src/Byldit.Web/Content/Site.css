@@ -154,9 +154,9 @@ header, footer, nav, section {
    text-decoration: none;
 }
 
-.hashTag:hover {
-   color: orange;
-}
+   .hashTag:hover {
+      color: orange;
+   }
 
 .more_link_container {
    margin-bottom: 10px;
@@ -167,9 +167,9 @@ header, footer, nav, section {
    text-decoration: none;
 }
 
-.morelink:hover {
-   color: orange;
-}
+   .morelink:hover {
+      color: orange;
+   }
 
 .morecontent {
    display: none;
@@ -211,8 +211,12 @@ header, footer, nav, section {
    text-decoration: none;
 }
 
-.submitter-link:hover {
-   color: orange;
+   .submitter-link:hover {
+      color: orange;
+   }
+
+.completely-centered {
+
 }
 
 /* Styles for basic forms
