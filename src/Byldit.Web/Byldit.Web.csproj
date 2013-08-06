@@ -168,6 +168,7 @@
     <Content Include="Content\Images\byldit-header-logo-combined.png" />
     <Content Include="Content\Images\byldtag_pin.png" />
     <Content Include="Content\Images\coldstone.png" />
+    <Content Include="Content\Images\coming-soon.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\facebook-widget.jpg" />
     <Content Include="Content\Images\google-widget.jpg" />
@@ -377,6 +378,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Beta.cshtml" />
+    <Content Include="Views\Home\ComingSoon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
