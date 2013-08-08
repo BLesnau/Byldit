@@ -173,6 +173,7 @@
     <Content Include="Content\Images\facebook-widget.jpg" />
     <Content Include="Content\Images\google-widget.jpg" />
     <Content Include="Content\Images\gray-star.png" />
+    <Content Include="Content\Images\group-tag.png" />
     <Content Include="Content\Images\show-byldtags-text.png" />
     <Content Include="Content\Images\small-facebook-widget.jpg" />
     <Content Include="Content\Images\small-google-widget.jpg" />
@@ -356,6 +357,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\markerclusterer.js" />
+    <Content Include="Scripts\markerclusterer_packed.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\PopupHelper.js" />
     <Content Include="Scripts\require.js" />
