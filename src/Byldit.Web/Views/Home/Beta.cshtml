@@ -148,19 +148,52 @@
 
             googleMap = $( "#map-canvas" ).gmap3( "get" );
 
-            var styles = [{
-                url: '../Content/Images/group-tag.png',
-                width: 36,
-                height: 51,
-                anchor: [9, 0],
-                anchorIcon: [51, 0],
-                textColor: '#000000',
-                textSize: 16
-            }];
+            var styles = [
+                {
+                    url: '../Content/Images/group-tag.png',
+                    width: 36,
+                    height: 51,
+                    anchor: [9, 0],
+                    anchorIcon: [51, 0],
+                    textColor: '#000000',
+                    textSize: 16
+                },
+                {
+                    url: '../Content/Images/group-tag.png',
+                    width: 36,
+                    height: 51,
+                    anchor: [11, 0],
+                    anchorIcon: [51, 0],
+                    textColor: '#000000',
+                    textSize: 12
+                },
+                {
+                    url: '../Content/Images/group-tag.png',
+                    width: 36,
+                    height: 51,
+                    anchor: [13, 0],
+                    anchorIcon: [51, 0],
+                    textColor: '#000000',
+                    textSize: 8
+                }
+            ];
 
-            
+            var clusterCalc = function ( markers, styleCount ) {
+                var index = 0;
 
-            clusterer = new MarkerClusterer( googleMap, null, { averageCenter: true, maxZoom: 20, styles: styles } );
+                if ( markers.length < 100 ) {
+                    index = 1;
+                } else if ( markers.length >= 100 && markers.length < 1000 ) {
+                    index = 2;
+                }
+                else if ( markers.length >= 10000 ) {
+                    index = 3;
+                }
+
+                return { index: index, text: markers.length };
+            };
+
+            clusterer = new MarkerClusterer( googleMap, null, { averageCenter: true, maxZoom: 20, styles: styles, calculator: clusterCalc } );
 
             //google.maps.event.addListener( googleMap, 'click', function ( event ) {
             //    placeMarker( event.latLng );
