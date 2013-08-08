@@ -100,6 +100,7 @@
     <script src="~/Scripts/gmap3/gmap3.min.js"></script>
     <script src="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.js"></script>
     <script type="text/javascript" src="~/Scripts/ContextMenu.js"></script>
+    <script type="text/javascript" src="~/Scripts/markerclusterer_packed.js"></script>
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
@@ -146,6 +147,7 @@
             } );
 
             googleMap = $( "#map-canvas" ).gmap3( "get" );
+            clusterer = new MarkerClusterer( googleMap );
 
             //google.maps.event.addListener( googleMap, 'click', function ( event ) {
             //    placeMarker( event.latLng );
