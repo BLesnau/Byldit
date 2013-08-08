@@ -2,6 +2,7 @@
 var locLat = 37;
 var locLon = -40;
 var googleMap = null;
+var clusterer = null;
 var markers = [];
 var mobileServicesUrl = "";
 var mobileServicesKey = "";
@@ -188,7 +189,6 @@ function placeMarker( location, insertedTagId, title, description ) {
          clickable: true,
          position: location,
          zIndex: 999,
-         map: googleMap,
          icon: baseImagePath + "byldtag_pin.png",
          tagId: insertedTagId,
          title: title,
@@ -221,7 +221,6 @@ function loadPins() {
                    clickable: true,
                    position: new google.maps.LatLng( pin.Latitude, pin.Longitude ),
                    zIndex: 999,
-                   map: googleMap,
                    icon: baseImagePath + "byldtag_pin.png",
                    tagId: pin.id,
                    title: pin.Title,
@@ -261,6 +260,7 @@ function getViewableMeters() {
 
 function addMarker( marker ) {
    markers[markers.length] = marker;
+   clusterer.addMarker( marker );
    google.maps.event.addListener( marker, 'click', function () {
       //if (!infoBubble.isOpen()) {
       showTagInfo( marker );
