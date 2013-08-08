@@ -147,7 +147,20 @@
             } );
 
             googleMap = $( "#map-canvas" ).gmap3( "get" );
-            clusterer = new MarkerClusterer( googleMap, null, { maxZoom: 20 } );
+
+            var styles = [{
+                url: '../Content/Images/group-tag.png',
+                width: 36,
+                height: 51,
+                anchor: [9, 0],
+                anchorIcon: [51, 0],
+                textColor: '#000000',
+                textSize: 16
+            }];
+
+            
+
+            clusterer = new MarkerClusterer( googleMap, null, { averageCenter: true, maxZoom: 20, styles: styles } );
 
             //google.maps.event.addListener( googleMap, 'click', function ( event ) {
             //    placeMarker( event.latLng );

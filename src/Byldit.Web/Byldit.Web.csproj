@@ -173,6 +173,7 @@
     <Content Include="Content\Images\facebook-widget.jpg" />
     <Content Include="Content\Images\google-widget.jpg" />
     <Content Include="Content\Images\gray-star.png" />
+    <Content Include="Content\Images\group-tag.png" />
     <Content Include="Content\Images\show-byldtags-text.png" />
     <Content Include="Content\Images\small-facebook-widget.jpg" />
     <Content Include="Content\Images\small-google-widget.jpg" />
