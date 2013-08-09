@@ -272,8 +272,6 @@ function addMarker( marker ) {
 }
 
 function clearMarkers() {
-   for ( var i = 0; i < markers.length; i++ ) {
-      markers[i].setMap( null );
-   }
+   clusterer.clearMarkers();
    markers = new Array();
 }
