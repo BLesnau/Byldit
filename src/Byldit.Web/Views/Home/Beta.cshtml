@@ -141,6 +141,9 @@
                         bounds_changed: function ( map, event ) {
                             var bounds = map.getBounds();
                             searchBox.setBounds( bounds );
+                        },
+                        zoom_changed: function( map, event ) {
+                            clusterAll();
                         }
                     }
                 }
