@@ -4,6 +4,7 @@ var locLon = -40;
 var googleMap = null;
 var clusterer = null;
 var markers = [];
+var soloMarkers = [];
 var mobileServicesUrl = "";
 var mobileServicesKey = "";
 
@@ -197,7 +198,7 @@ function placeMarker( location, insertedTagId, title, description ) {
          starredByUser: false
       } );
 
-      addMarker( marker );
+      addMarker( marker, false );
       //googleMap.setCenter(location);
    }
 }
@@ -228,7 +229,7 @@ function loadPins() {
                    description: pin.Description
                 } );
 
-                addMarker( marker );
+                addMarker( marker, true );
              }
           }
        }, function ( error ) {
@@ -258,9 +259,15 @@ function getViewableMeters() {
    return proximityMeters;
 }
 
-function addMarker( marker ) {
-   markers[markers.length] = marker;
-   clusterer.addMarker( marker );
+function addMarker( marker, shouldCluster ) {
+   if ( shouldCluster ) {
+      markers[markers.length] = marker;
+      clusterer.addMarker( marker );
+   } else {
+      soloMarkers[soloMarkers.length] = marker;
+      marker.setMap( googleMap );
+   }
+
    google.maps.event.addListener( marker, 'click', function () {
       //if (!infoBubble.isOpen()) {
       showTagInfo( marker );
@@ -272,8 +279,23 @@ function addMarker( marker ) {
 }
 
 function clearMarkers() {
-   for ( var i = 0; i < markers.length; i++ ) {
-      markers[i].setMap( null );
+   clusterer.clearMarkers();
+
+   for ( var i = 0; i < soloMarkers.length; i++ ) {
+      soloMarkers[i].setMap( null );
    }
+
    markers = new Array();
+   soloMarkers = new Array();
+}
+
+function clusterAll() {
+   for ( var i = 0; i < soloMarkers.length; i++ ) {
+      marker = soloMarkers[i];
+      marker.setMap( null );
+      markers[markers.length] = marker;
+      clusterer.addMarker( marker );
+   }
+
+   soloMarkers = new Array();
 }
