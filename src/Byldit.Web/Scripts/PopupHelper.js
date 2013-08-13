@@ -133,11 +133,11 @@ function getControlBarString() {
             starText +
 
             '<div class="small-social-container float-right">' +
-               '<a class="small-social-button" href="javascript:alert(&quot;You posted to Facebook dawg!&quot;)">' +
+               '<a class="small-social-button" href="javascript:shareToFacebook(' + tagId + ')">' +
                '<img src="..//Content//Images//small-facebook-widget.jpg" /></a>' +
-               '<a class="small-social-button" href="javascript:alert(&quot;You posted to Twitter dawg!&quot;)">' +
+               '<a class="small-social-button" href="javascript:shareToTwitter(' + tagId + ')">' +
                '<img src="..//Content//Images//small-twitter-widget.jpg" /></a>' +
-               '<a class="small-social-button" href="javascript:alert(&quot;You posted to Google dawg!&quot;)">' +
+               '<a class="small-social-button" href="javascript:shareToGoogle(' + tagId + ')">' +
                '<img src="..//Content//Images//small-google-widget.jpg" /></a>' +
             '</div>' +
       '</div>';
