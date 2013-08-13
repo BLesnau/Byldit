@@ -3,3 +3,4 @@
 <AzureMobileServiceUrl> https://byldit.azure-mobile.net/
 <AzureMobileServiceKey> bduEIkOePLucjzWXwVUBmevdjzTReh22
 <BaseImagePath> http://www.byld.it/Content/Images/
+<BaseUrl> http://byld.it/beta

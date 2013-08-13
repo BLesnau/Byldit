@@ -101,6 +101,7 @@
     <script src="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.js"></script>
     <script type="text/javascript" src="~/Scripts/ContextMenu.js"></script>
     <script type="text/javascript" src="~/Scripts/markerclusterer_packed.js"></script>
+    <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
@@ -109,6 +110,7 @@
             mobileServicesUrl = "@GlobalConfig.GetString( "AzureMobileServiceUrl" )";
             mobileServicesKey = "@GlobalConfig.GetString( "AzureMobileServiceKey" )";
             baseImagePath = "@GlobalConfig.GetString( "BaseImagePath" )";
+            baseUrl = "@GlobalConfig.GetString( "BaseUrl" )";
 
             LoadSettings();
 
@@ -142,7 +144,7 @@
                             var bounds = map.getBounds();
                             searchBox.setBounds( bounds );
                         },
-                        zoom_changed: function( map, event ) {
+                        zoom_changed: function ( map, event ) {
                             clusterAll();
                         }
                     }
