@@ -5,6 +5,12 @@
 }
 @section header
 {
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Help us build it!" />
+    <meta property="og:image" content="~/Content/Images/shareLogo.png" />
+    <meta property="og:description" content="Byldit gives communities a voice in what businesses they want." />
+    @*<meta property="og:url" content="https://www.parse.com">*@
+
     @*<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />*@
     <meta name="viewport" content="width=device-width" />
     <style type="text/css">
@@ -101,6 +107,7 @@
     <script src="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.js"></script>
     <script type="text/javascript" src="~/Scripts/ContextMenu.js"></script>
     <script type="text/javascript" src="~/Scripts/markerclusterer_packed.js"></script>
+    <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
@@ -109,6 +116,7 @@
             mobileServicesUrl = "@GlobalConfig.GetString( "AzureMobileServiceUrl" )";
             mobileServicesKey = "@GlobalConfig.GetString( "AzureMobileServiceKey" )";
             baseImagePath = "@GlobalConfig.GetString( "BaseImagePath" )";
+            baseUrl = "@GlobalConfig.GetString( "BaseUrl" )";
 
             LoadSettings();
 
@@ -142,7 +150,7 @@
                             var bounds = map.getBounds();
                             searchBox.setBounds( bounds );
                         },
-                        zoom_changed: function( map, event ) {
+                        zoom_changed: function ( map, event ) {
                             clusterAll();
                         }
                     }
