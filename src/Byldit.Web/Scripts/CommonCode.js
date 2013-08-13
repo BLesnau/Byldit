@@ -5,10 +5,11 @@ var googleMap = null;
 var clusterer = null;
 var markers = [];
 var soloMarkers = [];
+
 var mobileServicesUrl = "";
 var mobileServicesKey = "";
-
 var baseImagePath = "";
+var baseUrl = "";
 
 function getMobileServicesClient() {
    if ( mobileServicesClient == null ) {
