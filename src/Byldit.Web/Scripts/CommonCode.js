@@ -9,6 +9,7 @@ var soloMarkers = [];
 var mobileServicesUrl = "";
 var mobileServicesKey = "";
 var baseImagePath = "";
+var baseShareUrl = "";
 var baseUrl = "";
 
 function getMobileServicesClient() {
