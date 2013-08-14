@@ -40,5 +40,10 @@ function getUrlToShare( tagId ) {
 }
 
 function openLink( link ) {
-   window.open(link);
+   //window.open( link, "share-dialog", "width=626,height=436" );
+   var width = 626;
+   var height = 436;
+   var left = ( screen.width / 2 ) - ( width / 2 );
+   var top = ( screen.height / 2 ) - ( height / 2 );
+   window.open( link, "share-dialog", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left );
 }
