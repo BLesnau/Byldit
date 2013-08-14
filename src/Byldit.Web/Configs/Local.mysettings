@@ -4,3 +4,4 @@
 <AzureMobileServiceKey> YLBZpaVeaaSyBDgrPjlfRLnQfXkuxS49
 <BaseImagePath> http://localhost:53421/Content/Images/
 <BaseUrl> http://localhost:53421/beta
+<BaseShareUrl> http://localhost:53421
