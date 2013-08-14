@@ -3,3 +3,4 @@
 <AzureMobileServiceUrl> https://bylditstage.azure-mobile.net/
 <AzureMobileServiceKey> YLBZpaVeaaSyBDgrPjlfRLnQfXkuxS49
 <BaseImagePath> http://bylditstage.azurewebsites.net/Content/Images/
+<BaseUrl> http://bylditstage.azurewebsites.net/beta
