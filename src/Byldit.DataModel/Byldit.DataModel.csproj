@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByldTagViewModel.cs" />
     <Compile Include="KeywordViewModel.cs" />
     <Compile Include="SubmitEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

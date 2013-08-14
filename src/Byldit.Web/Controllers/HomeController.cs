@@ -43,6 +43,16 @@ namespace Byldit.Web.Controllers
          return View();
       }
 
+      public ActionResult ByldTag( string tagId )
+      {
+         var model = new ByldTagViewModel
+         {
+            TagId = tagId
+         };
+
+         return View( "Beta", model );
+      }
+
       public ActionResult Keyword( string keyword )
       {
          var model = new KeywordViewModel

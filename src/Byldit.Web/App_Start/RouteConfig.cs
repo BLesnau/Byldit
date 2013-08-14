@@ -28,6 +28,12 @@ namespace Byldit.Web.App_Start
          );
 
          routes.MapRoute(
+             name: "ByldTag",
+             url: "byldtag/{tagId}",
+             defaults: new { controller = "Home", action = "ByldTag" }
+         );
+
+         routes.MapRoute(
              name: "Default",
              url: "{controller}/{action}/{id}",
              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
