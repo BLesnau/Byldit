@@ -36,7 +36,7 @@ function getGoogleShareLink( url ) {
 }
 
 function getUrlToShare( tagId ) {
-   return baseUrl + "/byldtag/" + tagId;
+   return baseShareUrl + "/byldtag/" + tagId;
 }
 
 function openLink( link ) {
