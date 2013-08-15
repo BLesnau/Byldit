@@ -40,7 +40,6 @@ function getUrlToShare( tagId ) {
 }
 
 function openLink( link ) {
-   //window.open( link, "share-dialog", "width=626,height=436" );
    var width = 626;
    var height = 436;
    var left = ( screen.width / 2 ) - ( width / 2 );

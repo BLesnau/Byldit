@@ -19,7 +19,7 @@
 function ShowTagsButton(controlDiv, map, clickHandler) {
 
     var showTagsImage = document.createElement("img");
-    showTagsImage.src = "Content/Images/show-byldtags-text.png";
+    showTagsImage.src = baseImagePath + "show-byldtags-text.png";
     showTagsImage.style.cursor = 'pointer';
     showTagsImage.style.marginRight = "10px";
     
