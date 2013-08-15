@@ -179,33 +179,62 @@ function createByldTag( location, title, description ) {
       var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description };
       client.invokeApi( "byldtag/", { body: tag, method: "post" } )
          .done( function ( response ) {
-            placeMarker( location, response.result.tagId, title, description );
+            placeMarker( location, response.result.tagId, title, description, userId );
          }, function ( error ) {
             alert( "error posting tag: " + error );
          } );
    }
 }
 
-function placeMarker( location, insertedTagId, title, description ) {
-   if ( isLoggedIn ) {
-      var marker = new google.maps.Marker( {
-         clickable: true,
-         position: location,
-         zIndex: 999,
-         icon: baseImagePath + "byldtag_pin.png",
-         tagId: insertedTagId,
-         title: title,
-         description: description,
-         starCount: 0,
-         starredByUser: false
-      } );
+function placeMarker( location, insertedTagId, title, description, submitterName ) {
+   var marker = new google.maps.Marker( {
+      clickable: true,
+      position: location,
+      zIndex: 999,
+      icon: baseImagePath + "byldtag_pin.png",
+      tagId: insertedTagId,
+      title: title,
+      description: description,
+      submitterName: submitterName,
+      starCount: 0,
+      starredByUser: false
+   } );
 
-      addMarker( marker, false );
-      //googleMap.setCenter(location);
+   addMarker( marker, false );
+   //googleMap.setCenter(location);
+}
+
+function showTag( tagId ) {
+   var client = getMobileServicesClient();
+
+   client.invokeApi( "byldtag/" + tagId, { method: "get" } )
+       .done( function ( response ) {
+          var result = response.result;
+          var location = new google.maps.LatLng( result.Latitude, result.Longitude );
+          loadPins( result.id );
+
+          if ( !tagExists( result.id ) ) {
+             placeMarker( location, result.id, result.Title, result.Description, result.UserId );
+          }
+
+          openTag( result.id, true );
+       }, function ( error ) {
+          alert( "error getting tag: " + error );
+       } );
+}
+
+function openTag( tagId, zoomIn ) {
+   var marker = getMarker( tagId );
+   if ( marker ) {
+      if ( zoomIn ) {
+         googleMap.setZoom( 20 );
+      }
+
+      showTagInfo( marker );
    }
 }
 
-function loadPins() {
+function loadPins( unclusteredId ) {
    var client = getMobileServicesClient();
 
    var currentCenter = googleMap.getCenter();
@@ -215,28 +244,52 @@ function loadPins() {
        .done( function ( results ) {
           var response = JSON.parse( results.response );
           if ( response.length > 0 ) {
-             clearMarkers();
              for ( var i in response ) {
                 var pin = response[i];
-                console.log( pin );
 
-                var marker = new google.maps.Marker( {
-                   clickable: true,
-                   position: new google.maps.LatLng( pin.Latitude, pin.Longitude ),
-                   zIndex: 999,
-                   icon: baseImagePath + "byldtag_pin.png",
-                   tagId: pin.id,
-                   title: pin.Title,
-                   submitterName: pin.UserId,
-                   description: pin.Description
-                } );
+                if ( ( !unclusteredId || unclusteredId != pin.id ) && !tagExists( pin.id ) ) {
+                   var marker = new google.maps.Marker( {
+                      clickable: true,
+                      position: new google.maps.LatLng( pin.Latitude, pin.Longitude ),
+                      zIndex: 999,
+                      icon: baseImagePath + "byldtag_pin.png",
+                      tagId: pin.id,
+                      title: pin.Title,
+                      submitterName: pin.UserId,
+                      description: pin.Description
+                   } );
 
-                addMarker( marker, true );
+                   addMarker( marker, true, false );
+                }
              }
           }
        }, function ( error ) {
           alert( "error getting tags: " + error );
        } );
+}
+
+function getMarker( tagId ) {
+   for ( var i = 0; i < soloMarkers.length; i++ ) {
+      if ( soloMarkers[i].tagId == tagId ) {
+         return soloMarkers[i];
+      }
+   }
+
+   for ( var i = 0; i < markers.length; i++ ) {
+      if ( markers[i].tagId == tagId ) {
+         return markers[i];
+      }
+   }
+
+   return null;
+}
+
+function tagExists( tagId ) {
+   if ( getMarker( tagId ) ) {
+      return true;
+   } else {
+      return false;
+   }
 }
 
 function getViewableMeters() {
@@ -261,7 +314,7 @@ function getViewableMeters() {
    return proximityMeters;
 }
 
-function addMarker( marker, shouldCluster ) {
+function addMarker( marker, shouldCluster, openTag ) {
    if ( shouldCluster ) {
       markers[markers.length] = marker;
       clusterer.addMarker( marker );

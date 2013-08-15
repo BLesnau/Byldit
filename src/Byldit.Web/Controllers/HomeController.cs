@@ -37,10 +37,12 @@ namespace Byldit.Web.Controllers
 
       public ActionResult Beta()
       {
-         ViewBag.AzureMobileServiceUrl = GlobalConfig.GetString( "AzureMobileServiceUrl" );
-         ViewBag.AzureMobileServiceKey = GlobalConfig.GetString( "AzureMobileServiceKey" );
+         var model = new ByldTagViewModel
+         {
+            TagId = null
+         };
 
-         return View();
+         return View( model );
       }
 
       public ActionResult ByldTag( string tagId )
