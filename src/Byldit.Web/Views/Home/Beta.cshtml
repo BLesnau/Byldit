@@ -10,7 +10,6 @@
     <meta property="og:title" content="Help us build it!" />
     <meta property="og:image" content="@GlobalConfig.GetString( "BaseImagePath" )shareLogo.png" />
     <meta property="og:description" content="Byldit gives communities a voice in what businesses they want." />
-    @*<meta property="og:url" content="https://www.parse.com">*@
 
     @*<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />*@
     <meta name="viewport" content="width=device-width" />
@@ -290,12 +289,16 @@
                         } );
                 }
             } );
+
+            if ( "@Model.TagId" ) {
+                showTag( @Model.TagId );
+            }
         }
 
         google.maps.event.addDomListener( window, 'load', initialize );
 
         function showTagsClicked() {
-            loadPins();
+            loadPins( null );
         }
     </script>
 }
