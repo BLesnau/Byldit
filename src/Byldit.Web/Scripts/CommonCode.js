@@ -172,6 +172,18 @@ function showCreateByldTagDialog( addTagDialog, location ) {
    }
 }
 
+function showEditByldTagDialog( updateTagDialog, location, titleText, descriptionText, tagId ) {
+   if ( isLoggedIn ) {
+      updateTagDialog.data( "location", location ).
+         data( "title", titleText ).
+         data( "description", descriptionText ).
+         data( "tagId", tagId ).
+         dialog( "open" );
+   } else {
+      alert( "You need to be logged in." );
+   }
+}
+
 function createByldTag( location, title, description ) {
    if ( isLoggedIn ) {
       var client = getMobileServicesClient();
@@ -182,6 +194,20 @@ function createByldTag( location, title, description ) {
             placeMarker( location, response.result.tagId, title, description, userId );
          }, function ( error ) {
             alert( "error posting tag: " + error );
+         } );
+   }
+}
+
+function updateByldTag( location, title, description, tagId ) {
+   if ( isLoggedIn ) {
+      var client = getMobileServicesClient();
+
+      var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description };
+      client.invokeApi( "byldtag/" + tagId, { body: tag, method: "put" } )
+         .done( function ( response ) {
+            updateMarker( location, tagId, title, description, userId );
+         }, function ( error ) {
+            alert( "error updating tag: " + error );
          } );
    }
 }
@@ -201,6 +227,19 @@ function placeMarker( location, insertedTagId, title, description, submitterName
    } );
 
    addMarker( marker, false );
+   //googleMap.setCenter(location);
+}
+
+function updateMarker( location, tagId, title, description, submitterName ) {
+   var marker = getMarker( tagId );
+   marker.position = location;
+   marker.tagId = tagId;
+   marker.title = title;
+   marker.description = description;
+   marker.submitterName = submitterName;
+
+   closeByldTag();
+   openTag( tagId, false );
    //googleMap.setCenter(location);
 }
 
