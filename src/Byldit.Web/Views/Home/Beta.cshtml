@@ -7,7 +7,7 @@
 @section header
 {
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Help us build it!" />
+    <meta property="og:title" content="Let's Byldit!" />
     <meta property="og:image" content="@GlobalConfig.GetString( "BaseImagePath" )shareLogo.png" />
     <meta property="og:description" content="Byldit gives communities a voice in what businesses they want." />
 
@@ -90,12 +90,33 @@
             </td>
         </tr>
     </table>
+</div>
 
+<div id="update-tag-dialog" title="Edit ByldTag">
+    <table>
+        <tr>
+            <td align="right">
+                <label for="tagTitleUpdate">Title:</label>
+            </td>
+            <td align="left">
+                <input type="text" name="Name" id="tagTitleUpdate" size="50" />
+            </td>
+        </tr>
+
+        <tr>
+            <td align="right">
+                <label for="tagDescUpdate">Description:</label>
+            </td>
+            <td align="left">
+                <textarea id="tagDescUpdate" style="resize: none;" rows="10" cols="50"></textarea>
+            </td>
+        </tr>
+    </table>
 </div>
 
 @section scripts
 {
-    <link href="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.css" rel="stylesheet" />
+    @*<link href="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.css" rel="stylesheet" />*@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZMdkkoh0DdR8d06ifz0JeREYVdPsmpU&sensor=true&libraries=geometry,places"></script>
     <script type="text/javascript" src="~/Scripts/ShowTagsButton.js"></script>
     <script type="text/javascript" src="~/Scripts/SearchBox.js"></script>
@@ -252,7 +273,7 @@
                 autoOpen: false,
                 resizable: false,
                 draggable: false,
-                closeText: "gsdgsd",
+                closeText: "close",
                 width: "auto",
                 height: "auto",
                 maxWidth: 1000,
@@ -277,6 +298,52 @@
                     duration: 1000
                 },
                 open: function () {
+                    $( '.ui-widget-overlay' ).hide().fadeIn( 1000 );
+                },
+                beforeClose: function () {
+                    $( '.ui-widget-overlay:first' )
+                        .clone()
+                        .appendTo( 'body' )
+                        .show()
+                        .fadeOut( 1000, function () {
+                            $( this ).remove();
+                        } );
+                }
+            } );
+
+            $( "#update-tag-dialog" ).dialog( {
+                modal: true,
+                autoOpen: false,
+                resizable: false,
+                draggable: false,
+                closeText: "close",
+                width: "auto",
+                height: "auto",
+                maxWidth: 1000,
+                maxHeight: 1000,
+                buttons: {
+                    "Update Tag": function () {
+                        var location = $( this ).data( "location" );
+                        var tagId = $( this ).data( "tagId" );
+                        var title = $( "#tagTitleUpdate" ).val();
+                        var desc = $( "#tagDescUpdate" ).val();
+                        updateByldTag( location, title, desc, tagId );
+                        $( this ).dialog( "close" );
+                    }
+                },
+                show: {
+                    effect: "fade",
+                    color: "red",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fade",
+                    color: "red",
+                    duration: 1000
+                },
+                open: function () {
+                    $( "#tagTitleUpdate" ).val( $( this ).data( "title" ) );
+                    $( "#tagDescUpdate" ).val( $( this ).data( "description" ) );
                     $( '.ui-widget-overlay' ).hide().fadeIn( 1000 );
                 },
                 beforeClose: function () {
