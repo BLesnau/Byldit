@@ -102,7 +102,10 @@ function getContentString() {
    var contentString =
       '<div class="infoBubbleContainer">' +
          '<div class="submitter-container">' +
-            '<div class="infoBubbleHeader">' + titleText + '<a href="javascript:editTag()">Edit</a></div>' +
+            '<div class="infoBubbleHeader">' + titleText +
+               '<a class="edit-pic" href="javascript:editTag()">' +
+               '<img src="' + baseImagePath + 'edit-logo.png" /></a>' +
+            '</div>' +
             '<div class="submitter-text">Submitted by: <a href="user/' + nameNoColon + '" class="submitter-link">' + nameNoColon + '</a></div>' +
          '</div>' +
          '<div class="hashTagContainer">' +

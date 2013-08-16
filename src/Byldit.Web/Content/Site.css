@@ -110,6 +110,10 @@ header, footer, nav, section {
    color: white;
 }
 
+.edit-pic {
+   margin-left: 5px;
+}
+
 .infoBubbleContentContainer {
    margin-bottom: 3px;
    font-size: 1.0em;
@@ -216,7 +220,6 @@ header, footer, nav, section {
    }
 
 .completely-centered {
-
 }
 
 /* Styles for basic forms

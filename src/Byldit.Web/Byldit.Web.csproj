@@ -169,6 +169,7 @@
     <Content Include="Content\Images\byldtag_pin.png" />
     <Content Include="Content\Images\coldstone.png" />
     <Content Include="Content\Images\coming-soon.png" />
+    <Content Include="Content\Images\edit-logo.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\facebook-widget.jpg" />
     <Content Include="Content\Images\google-widget.jpg" />
