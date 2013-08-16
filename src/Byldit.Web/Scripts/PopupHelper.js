@@ -97,12 +97,12 @@ function getAllContentString() {
 
 function getContentString() {
    var descHtml = getDescTextHtml();
-   var nameNoColon = submitterName.replace(':', '');
+   var nameNoColon = submitterName.replace( ':', '' );
 
    var contentString =
       '<div class="infoBubbleContainer">' +
          '<div class="submitter-container">' +
-            '<div class="infoBubbleHeader">' + titleText + '</div>' +
+            '<div class="infoBubbleHeader">' + titleText + '<a href="javascript:editTag()">Edit</a></div>' +
             '<div class="submitter-text">Submitted by: <a href="user/' + nameNoColon + '" class="submitter-link">' + nameNoColon + '</a></div>' +
          '</div>' +
          '<div class="hashTagContainer">' +
@@ -257,21 +257,9 @@ function updateStar() {
    $( ".like-text" ).text( starCount + " Stars" );
 }
 
-//function fromLatLngToPoint( latLng, opt_point ) {
-//   var me = this;
-//   var point = opt_point || new google.maps.Point( 0, 0 );
-//   var origin = me.pixelOrigin_;
-
-//   point.x = origin.x + latLng.lng() * me.pixelsPerLonDegree_;
-
-//   // Truncating to 0.9999 effectively limits latitude to 89.189. This is
-//   // about a third of a tile past the edge of the world tile.
-//   var siny = bound( Math.sin( degreesToRadians( latLng.lat() ) ), -0.9999,
-//       0.9999 );
-//   point.y = origin.y + 0.5 * Math.log(( 1 + siny ) / ( 1 - siny ) ) *
-//       -me.pixelsPerLonRadian_;
-//   return point;
-//};
+function editTag() {
+   showEditByldTagDialog( $( "#update-tag-dialog" ), marker.position, titleText, descriptionText, tagId );
+}
 
 function fromPointToLatLng( point ) {
    var TILE_SIZE = 256;
