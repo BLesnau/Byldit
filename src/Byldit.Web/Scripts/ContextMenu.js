@@ -37,5 +37,3 @@ function ContextMenu( mapElement, addTagDialog ) {
 
    return module;
 }
-
-var menu = new Gmap3Menu( $( "#test" ) );
