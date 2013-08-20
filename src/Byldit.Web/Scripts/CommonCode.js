@@ -393,3 +393,7 @@ function clusterAll() {
 
    soloMarkers = new Array();
 }
+
+function removeGoogleStyles() {
+   $( '.gm-style' ).removeClass( 'gm-style' );
+}
