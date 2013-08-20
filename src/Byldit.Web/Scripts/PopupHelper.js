@@ -52,6 +52,8 @@ function showTagInfo( mark ) {
    currentPopup.setContent( contentString );
    currentPopup.open( googleMap, marker );
    setStarInfo();
+
+   removeGoogleStyles();
 }
 
 function closeByldTag() {
