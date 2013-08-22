@@ -104,10 +104,7 @@ function getContentString() {
    var contentString =
       '<div class="infoBubbleContainer">' +
          '<div class="submitter-container">' +
-            '<div class="infoBubbleHeader">' + titleText +
-               '<a class="edit-pic" href="javascript:editTag()">' +
-               '<img src="' + baseImagePath + 'edit-logo.png" /></a>' +
-            '</div>' +
+            getHeaderString() +
             '<div class="submitter-text">Submitted by: <a href="user/' + nameNoColon + '" class="submitter-link">' + nameNoColon + '</a></div>' +
          '</div>' +
          '<div class="hashTagContainer">' +
@@ -122,6 +119,19 @@ function getContentString() {
       '</div>';
 
    return contentString;
+}
+
+function getHeaderString() {
+   var headerText = '<div class="infoBubbleHeader">' + titleText;
+
+   if ( submitterName = userId ) {
+      headerText += '<a class="edit-pic" href="javascript:editTag()">' +
+         '<img src="' + baseImagePath + 'edit-logo.png" /></a>';
+   }
+
+   headerText += '</div>';
+
+   return headerText;
 }
 
 function getControlBarString() {
