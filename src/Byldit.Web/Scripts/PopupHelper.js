@@ -124,7 +124,7 @@ function getContentString() {
 function getHeaderString() {
    var headerText = '<div class="infoBubbleHeader">' + titleText;
 
-   if ( submitterName = userId ) {
+   if ( isLoggedIn && submitterName == userId ) {
       headerText += '<a class="edit-pic" href="javascript:editTag()">' +
          '<img src="' + baseImagePath + 'edit-logo.png" /></a>';
    }
