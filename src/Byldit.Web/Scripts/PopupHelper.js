@@ -31,7 +31,7 @@ function showTagInfo( mark ) {
    } else {
       currentPopup = new InfoBubble( {
          map: googleMap,
-         maxWidth: 450,
+         maxWidth: 485,
          content: contentString,
          shadowStyle: 0,
          padding: 0,
@@ -171,9 +171,10 @@ function getStarImageString() {
 }
 
 function getAdContentString() {
+   var ad = getAd();
    var contentString =
       '<div class="adContainer">' +
-           '<a href="http://www.coldstonecreamery.com/"><img class="adImage" src="..//Content//Images//coldstone.png" /></a>' +
+           '<a href="' + ad.link + '"><img class="adImage" src="' + baseImagePath + ad.path + '" /></a>' +
        '</div>';
 
    return contentString;
