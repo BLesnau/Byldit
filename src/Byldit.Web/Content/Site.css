@@ -18,18 +18,18 @@ header, footer, nav, section {
    height: 100%;
    width: 100%;
    position: fixed;
-   top: 85px;
+   top: 47px;
    left: 0;
 }
 
 .lockedHeader {
    margin: 0;
-   background: #3b8daf url(Images/byldit-header-background-teal.jpg) repeat;
+   background: #3b8daf url(Images/byldit-header-background-teal.png) repeat;
    position: fixed;
    top: 0;
    left: 0;
    width: 100%;
-   height: 85px; /* Height of the footer */
+   height: 47px; /* Height of the footer */
 }
 
 .signInText {
@@ -78,7 +78,6 @@ header, footer, nav, section {
 
 .logoPadding {
    margin-left: 5px;
-   margin-top: 5px;
 }
 
 .vertMiddle {

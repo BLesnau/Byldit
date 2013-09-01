@@ -57,9 +57,9 @@
 
             LoadSettings();
 
-            $( "#content" ).height( $( window ).height() - 85 );
+            $( "#content" ).height( $( window ).height() - 47 );
             $( window ).resize( function () {
-                $( "#content" ).height( $( window ).height() - 85 );
+                $( "#content" ).height( $( window ).height() - 47 );
 
                 updateCenterImage();
             } );
@@ -71,7 +71,7 @@
             $( '.completely-centered' ).css( {
                 position: 'absolute',
                 left: ( $( "#content" ).width() - 404 ) / 2,
-                top: Math.max( 85, ( $( "#content" ).height() - 550 ) / 2 )
+                top: Math.max( 47, ( $( "#content" ).height() - 550 ) / 2 )
             } );
         }
     </script>
