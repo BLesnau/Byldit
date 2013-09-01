@@ -34,30 +34,15 @@
     <div class="lockedHeader">
         <img class="logoPadding" src="~/Content/Images/byldit-header-logo-combined.png" />
 
-        <div class="float-right">
+        <div class="float-right bar-right-content">
             <div id="notSignedIn" class="socialPaddingNotSignedIn">
-                <div class="signInText">Sign in</div>
-                <a class="socialButton" href="javascript:login(&quot;facebook&quot;)">
-                    <img src="~/Content/Images/facebook-widget.jpg" /></a>
-                <a class="socialButton" href="javascript:login(&quot;twitter&quot;)">
-                    <img src="~/Content/Images/twitter-widget.jpg" /></a>
-                <a class="socialButton" href="javascript:login(&quot;google&quot;)">
-                    <img src="~/Content/Images/google-widget.jpg" /></a>
-
-                <br />
-
-                <label class="signInText">
-                    <input id="rememberMeCheck" type="checkbox" name="rememberMe" value="value" />Remember me</label>
+                <a class="signInTextLink" href="javascript:signIn()">Sign In</a>
             </div>
 
             <div id="signedIn" class="socialPaddingSignedIn">
-                <div>
-                    <label class="signInTextBig vertMiddle">Signed in with</label>
-                    <img id="fbLogo" class="providerIcon vertMiddle" src="~/Content/Images/facebook-widget.jpg" />
-                    <img id="twitterLogo" class="providerIcon vertMiddle" src="~/Content/Images/twitter-widget.jpg" />
-                    <img id="googleLogo" class="providerIcon vertMiddle" src="~/Content/Images/google-widget.jpg" />
-                </div>
-                <div class="signOutTextPadding">
+                <div class="signInTextBig vertMiddle">
+                    <span>Welcome </span>
+                    <span id="signedInName"></span>
                     <a class="signOutText" href="javascript:logout();">Sign out</a>
                 </div>
             </div>

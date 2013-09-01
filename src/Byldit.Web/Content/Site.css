@@ -32,12 +32,17 @@ header, footer, nav, section {
    height: 47px; /* Height of the footer */
 }
 
-.signInText {
+.signInTextLink {
    margin-top: 3px;
    margin-bottom: 3px;
    font-size: 1.0em;
    color: white;
+   text-decoration: none;
 }
+
+   .signInTextLink:hover {
+      text-decoration: underline;
+   }
 
 .signOutText {
    font-size: 1.0em;
@@ -59,6 +64,12 @@ header, footer, nav, section {
    white-space: nowrap;
 }
 
+.bar-right-content {
+   height: 47px;
+   line-height: 47px;
+   font-weight: bold;
+}
+
 .socialButton {
    margin-right: 7px;
 }
@@ -68,7 +79,7 @@ header, footer, nav, section {
 }
 
 .socialPaddingNotSignedIn {
-   margin-right: 3px;
+   margin-right: 10px;
 }
 
 .socialPaddingSignedIn {
