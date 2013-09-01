@@ -200,6 +200,7 @@
     <Content Include="Content\Images\Ads\target_002.gif" />
     <Content Include="Content\Images\Ads\toysrus_001.jpg" />
     <Content Include="Content\Images\Ads\walmart_001.gif" />
+    <Content Include="Content\Images\byldit-header-background-teal.png" />
     <Content Include="Content\Images\byldit-header-logo-combined.png" />
     <Content Include="Content\Images\byldtag_pin.png" />
     <Content Include="Content\Images\coldstone.png" />
@@ -387,6 +388,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.popupoverlay.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
