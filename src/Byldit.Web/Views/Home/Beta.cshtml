@@ -55,7 +55,7 @@
     <div id="map-canvas"></div>
 </div>
 
-<div id="add-tag-dialog" title="Add a ByldTag">
+<div id="add-tag-dialog" title="Add a ByldTag" style="display: none">
     <table>
         <tr>
             <td align="right">
@@ -77,7 +77,7 @@
     </table>
 </div>
 
-<div id="update-tag-dialog" title="Edit ByldTag">
+<div id="update-tag-dialog" title="Edit ByldTag" style="display: none">
     <table>
         <tr>
             <td align="right">
@@ -99,6 +99,12 @@
     </table>
 </div>
 
+<div style="display: none">
+    <div id="signin-popup" style="padding: 10px; background: #fff;">
+        <div>HEY</div>
+    </div>
+</div>
+
 @section scripts
 {
     <link href="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.css" rel="stylesheet" />
@@ -106,7 +112,6 @@
     <script type="text/javascript" src="~/Scripts/ShowTagsButton.js"></script>
     <script type="text/javascript" src="~/Scripts/SearchBox.js"></script>
     <script type="text/javascript" src="~/Scripts/infobubble-compiled.js"></script>
-    @*<script type="text/javascript" src="~/Scripts/infobubble.js"></@*script>*@
     <script type="text/javascript" src="~/Scripts/PopupHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/geolocationmarker-compiled.js"></script>
     <script src="~/Scripts/gmap3/gmap3.min.js"></script>
@@ -115,6 +120,7 @@
     <script type="text/javascript" src="~/Scripts/markerclusterer_packed.js"></script>
     <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/AdHelper.js"></script>
+    <script src="~/Scripts/jquery.omniwindow.js"></script>f
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
