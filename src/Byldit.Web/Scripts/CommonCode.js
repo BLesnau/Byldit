@@ -23,6 +23,12 @@ function getMobileServicesClient() {
    return mobileServicesClient;
 }
 
+function signIn() {
+   //$( ".signin-popup" ).show();
+   $( ".signin-popup" ).omniWindow() // create modal
+    .trigger( 'show' ); // and show it
+}
+
 function login( provider ) {
    var client = getMobileServicesClient();
 
