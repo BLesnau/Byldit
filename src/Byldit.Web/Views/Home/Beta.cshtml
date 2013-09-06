@@ -34,31 +34,16 @@
     <div class="lockedHeader">
         <img class="logoPadding" src="~/Content/Images/byldit-header-logo-combined.png" />
 
-        <div class="float-right">
+        <div class="float-right bar-right-content">
             <div id="notSignedIn" class="socialPaddingNotSignedIn">
-                <div class="signInText">Sign in</div>
-                <a class="socialButton" href="javascript:login(&quot;facebook&quot;)">
-                    <img src="~/Content/Images/facebook-widget.jpg" /></a>
-                <a class="socialButton" href="javascript:login(&quot;twitter&quot;)">
-                    <img src="~/Content/Images/twitter-widget.jpg" /></a>
-                <a class="socialButton" href="javascript:login(&quot;google&quot;)">
-                    <img src="~/Content/Images/google-widget.jpg" /></a>
-
-                <br />
-
-                <label class="signInText">
-                    <input id="rememberMeCheck" type="checkbox" name="rememberMe" value="value" />Remember me</label>
+                <a class="signInTextLink" href="javascript:signIn()">Sign In</a>
             </div>
 
-            <div id="signedIn" class="socialPaddingSignedIn">
-                <div>
-                    <label class="signInTextBig vertMiddle">Signed in with</label>
-                    <img id="fbLogo" class="providerIcon vertMiddle" src="~/Content/Images/facebook-widget.jpg" />
-                    <img id="twitterLogo" class="providerIcon vertMiddle" src="~/Content/Images/twitter-widget.jpg" />
-                    <img id="googleLogo" class="providerIcon vertMiddle" src="~/Content/Images/google-widget.jpg" />
-                </div>
-                <div class="signOutTextPadding">
-                    <a class="signOutText" href="javascript:logout();">Sign out</a>
+            <div id="signedIn" class="socialPaddingNotSignedIn">
+                <div class="signOutText vertMiddle">
+                    <span>Welcome </span>
+                    <span id="signedInName"></span>
+                    <a class="signInTextLink" href="javascript:logout();"> (Sign out?)</a>
                 </div>
             </div>
         </div>
@@ -70,7 +55,7 @@
     <div id="map-canvas"></div>
 </div>
 
-<div id="add-tag-dialog" title="Add a ByldTag">
+<div id="add-tag-dialog" title="Add a ByldTag" style="display: none">
     <table>
         <tr>
             <td align="right">
@@ -92,7 +77,7 @@
     </table>
 </div>
 
-<div id="update-tag-dialog" title="Edit ByldTag">
+<div id="update-tag-dialog" title="Edit ByldTag" style="display: none">
     <table>
         <tr>
             <td align="right">
@@ -114,6 +99,18 @@
     </table>
 </div>
 
+<div class="ow-overlay ow-closed"></div>
+<div class="signin-popup ow-closed">
+    <div class="loginContainer">
+        <a class="loginButton" href="javascript:login(&quot;facebook&quot;)">
+            <img src="~/Content/Images/facebook-big.png" /></a>
+        <a class="loginButton" href="javascript:login(&quot;twitter&quot;)">
+            <img src="~/Content/Images/twitter-big.png" /></a>
+        <a class="loginButton" href="javascript:login(&quot;google&quot;)">
+            <img src="~/Content/Images/google-big.png" /></a>
+    </div>
+</div>
+
 @section scripts
 {
     <link href="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.css" rel="stylesheet" />
@@ -121,7 +118,6 @@
     <script type="text/javascript" src="~/Scripts/ShowTagsButton.js"></script>
     <script type="text/javascript" src="~/Scripts/SearchBox.js"></script>
     <script type="text/javascript" src="~/Scripts/infobubble-compiled.js"></script>
-    @*<script type="text/javascript" src="~/Scripts/infobubble.js"></@*script>*@
     <script type="text/javascript" src="~/Scripts/PopupHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/geolocationmarker-compiled.js"></script>
     <script src="~/Scripts/gmap3/gmap3.min.js"></script>
@@ -130,6 +126,8 @@
     <script type="text/javascript" src="~/Scripts/markerclusterer_packed.js"></script>
     <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/AdHelper.js"></script>
+    <script src="~/Scripts/jquery.omniwindow.js"></script>
+    f
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
@@ -237,9 +235,9 @@
 
             google.maps.event.trigger( googleMap, 'resize' );
 
-            $( "#content" ).height( $( window ).height() - 85 );
+            $( "#content" ).height( $( window ).height() - 47 );
             $( window ).resize( function () {
-                $( "#content" ).height( $( window ).height() - 85 );
+                $( "#content" ).height( $( window ).height() - 47 );
             } );
 
             var showTagControlDiv = document.createElement( 'div' );
