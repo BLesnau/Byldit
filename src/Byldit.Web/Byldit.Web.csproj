@@ -206,8 +206,10 @@
     <Content Include="Content\Images\coldstone.png" />
     <Content Include="Content\Images\coming-soon.png" />
     <Content Include="Content\Images\edit-logo.png" />
+    <Content Include="Content\Images\facebook-big.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\facebook-widget.jpg" />
+    <Content Include="Content\Images\google-big.png" />
     <Content Include="Content\Images\google-widget.jpg" />
     <Content Include="Content\Images\gray-star.png" />
     <Content Include="Content\Images\group-tag.png" />
@@ -217,6 +219,7 @@
     <Content Include="Content\Images\small-google-widget.jpg" />
     <Content Include="Content\Images\small-twitter-widget.jpg" />
     <Content Include="Content\Images\small_byldtag_pin.png" />
+    <Content Include="Content\Images\twitter-big.png" />
     <Content Include="Content\Images\twitter-widget.jpg" />
     <Content Include="Content\Images\yellow-star.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
