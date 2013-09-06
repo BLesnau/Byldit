@@ -74,6 +74,16 @@ header, footer, nav, section {
    margin-right: 7px;
 }
 
+.loginContainer {
+   margin-left: 15px;
+   margin-top: 43px;
+   text-align: center;
+}
+
+.loginButton {
+   margin-right: 15px;
+}
+
 .small-social-button {
    margin-right: 5px;
 }
@@ -254,10 +264,10 @@ header, footer, nav, section {
 .signin-popup {
   position: fixed;
   z-index: 20;
-  height: 300px;
+  width: 500px;
+  height: 200px;
   left: 50%;
-  top: 50px;
-  width: 300px;
+  top: 50%;
 
   background-color: #fff
 }

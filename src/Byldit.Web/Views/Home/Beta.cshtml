@@ -101,7 +101,14 @@
 
 <div class="ow-overlay ow-closed"></div>
 <div class="signin-popup ow-closed">
-    <span>HEY</span>
+    <div class="loginContainer">
+        <a class="loginButton" href="javascript:login(&quot;facebook&quot;)">
+            <img src="~/Content/Images/facebook-big.png" /></a>
+        <a class="loginButton" href="javascript:login(&quot;twitter&quot;)">
+            <img src="~/Content/Images/twitter-big.png" /></a>
+        <a class="loginButton" href="javascript:login(&quot;google&quot;)">
+            <img src="~/Content/Images/google-big.png" /></a>
+    </div>
 </div>
 
 @section scripts
@@ -119,7 +126,8 @@
     <script type="text/javascript" src="~/Scripts/markerclusterer_packed.js"></script>
     <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/AdHelper.js"></script>
-    <script src="~/Scripts/jquery.omniwindow.js"></script>f
+    <script src="~/Scripts/jquery.omniwindow.js"></script>
+    f
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();

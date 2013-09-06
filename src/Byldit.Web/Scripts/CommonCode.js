@@ -51,6 +51,9 @@ function login( provider ) {
 }
 
 function setLoginUI( animate ) {
+   var $modal = $( '.signin-popup' ).omniWindow();
+   $modal.trigger( 'hide' );
+
    if ( animate ) {
       $( "#notSignedIn" ).hide( "1000" );
    } else {
@@ -58,24 +61,6 @@ function setLoginUI( animate ) {
    }
 
    $( "#signedIn" ).show();
-   if ( loginProvider == "facebook" ) {
-      $( "#fbLogo" ).show();
-   }
-   else {
-      $( "#fbLogo" ).hide();
-   }
-
-   if ( loginProvider == "twitter" ) {
-      $( "#twitterLogo" ).show();
-   } else {
-      $( "#twitterLogo" ).hide();
-   }
-
-   if ( loginProvider == "google" ) {
-      $( "#googleLogo" ).show();
-   } else {
-      $( "#googleLogo" ).hide();
-   }
 }
 
 function setNotLoggedUI( animate ) {

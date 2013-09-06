@@ -82,7 +82,8 @@
               });
             },
             positioning: function(subjects) {
-              subjects.modal.css('margin-left', Math.round(subjects.modal.outerWidth() / -2));
+               subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
+               subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) ); // BRETT_CODE
             },
             beforeHide: function(subjects) {
               if (subjects.modal.data(options.modal.internal.stateAttribute)) {
