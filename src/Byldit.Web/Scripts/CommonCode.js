@@ -54,6 +54,8 @@ function setLoginUI( animate ) {
    var $modal = $( '.signin-popup' ).omniWindow();
    $modal.trigger( 'hide' );
 
+   $( "#signedInName" ).text( userId );
+
    if ( animate ) {
       $( "#notSignedIn" ).hide( "1000" );
    } else {
