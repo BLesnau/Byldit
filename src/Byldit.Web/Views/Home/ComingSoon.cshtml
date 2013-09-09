@@ -9,7 +9,7 @@
 
         <div class="float-right">
             <div id="notSignedIn" class="socialPaddingNotSignedIn">
-                <div class="signInText">Sign in</div>
+                <div class="title-bar-link">Sign in</div>
                 <a class="socialButton" href="javascript:login(&quot;facebook&quot;)">
                     <img src="~/Content/Images/facebook-widget.jpg" /></a>
                 <a class="socialButton" href="javascript:login(&quot;twitter&quot;)">
@@ -19,7 +19,7 @@
 
                 <br />
 
-                <label class="signInText">
+                <label class="title-bar-link">
                     <input id="rememberMeCheck" type="checkbox" name="rememberMe" value="value" />Remember me</label>
             </div>
 
@@ -31,7 +31,7 @@
                     <img id="googleLogo" class="providerIcon vertMiddle" src="~/Content/Images/google-widget.jpg" />
                 </div>
                 <div class="signOutTextPadding">
-                    <a class="signOutText" href="javascript:logout();">Sign out</a>
+                    <a class="title-bar-text" href="javascript:logout();">Sign out</a>
                 </div>
             </div>
         </div>
@@ -57,9 +57,9 @@
 
             LoadSettings();
 
-            $( "#content" ).height( $( window ).height() - 85 );
+            $( "#content" ).height( $( window ).height() - 47 );
             $( window ).resize( function () {
-                $( "#content" ).height( $( window ).height() - 85 );
+                $( "#content" ).height( $( window ).height() - 47 );
 
                 updateCenterImage();
             } );
@@ -71,7 +71,7 @@
             $( '.completely-centered' ).css( {
                 position: 'absolute',
                 left: ( $( "#content" ).width() - 404 ) / 2,
-                top: Math.max( 85, ( $( "#content" ).height() - 550 ) / 2 )
+                top: Math.max( 47, ( $( "#content" ).height() - 550 ) / 2 )
             } );
         }
     </script>
