@@ -32,19 +32,15 @@ header, footer, nav, section {
    height: 47px; /* Height of the footer */
 }
 
-.signInTextLink {
-   margin-top: 3px;
-   margin-bottom: 3px;
-   font-size: 1.0em;
-   color: white;
+.title-bar-link {
    text-decoration: none;
 }
 
-   .signInTextLink:hover {
+   .title-bar-link:hover {
       text-decoration: underline;
    }
 
-.signOutText {
+.title-bar-text {
    font-size: 1.0em;
    color: white;
 }
@@ -64,7 +60,18 @@ header, footer, nav, section {
    white-space: nowrap;
 }
 
+.float-left {
+   float: left;
+   white-space: nowrap;
+}
+
 .bar-right-content {
+   height: 47px;
+   line-height: 47px;
+   font-weight: bold;
+}
+
+.bar-left-content {
    height: 47px;
    line-height: 47px;
    font-weight: bold;
@@ -94,6 +101,7 @@ header, footer, nav, section {
 
 .logoPadding {
    margin-left: 5px;
+   margin-right: 25px;
 }
 
 .vertMiddle {
@@ -235,6 +243,10 @@ header, footer, nav, section {
    }
 
 .completely-centered {
+}
+
+.left-link {
+   margin-right: 10px;
 }
 
 /* Default class for an overlay */
