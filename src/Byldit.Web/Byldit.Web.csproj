@@ -74,9 +74,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -200,14 +197,16 @@
     <Content Include="Content\Images\Ads\target_002.gif" />
     <Content Include="Content\Images\Ads\toysrus_001.jpg" />
     <Content Include="Content\Images\Ads\walmart_001.gif" />
-    <Content Include="Content\Images\byldit-header-background-teal.jpg" />
+    <Content Include="Content\Images\byldit-header-background-teal.png" />
     <Content Include="Content\Images\byldit-header-logo-combined.png" />
     <Content Include="Content\Images\byldtag_pin.png" />
     <Content Include="Content\Images\coldstone.png" />
     <Content Include="Content\Images\coming-soon.png" />
     <Content Include="Content\Images\edit-logo.png" />
+    <Content Include="Content\Images\facebook-big.png" />
     <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\facebook-widget.jpg" />
+    <Content Include="Content\Images\google-big.png" />
     <Content Include="Content\Images\google-widget.jpg" />
     <Content Include="Content\Images\gray-star.png" />
     <Content Include="Content\Images\group-tag.png" />
@@ -217,6 +216,7 @@
     <Content Include="Content\Images\small-google-widget.jpg" />
     <Content Include="Content\Images\small-twitter-widget.jpg" />
     <Content Include="Content\Images\small_byldtag_pin.png" />
+    <Content Include="Content\Images\twitter-big.png" />
     <Content Include="Content\Images\twitter-widget.jpg" />
     <Content Include="Content\Images\yellow-star.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -388,6 +388,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.omniwindow.js" />
+    <Content Include="Scripts\jquery.popupoverlay.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />

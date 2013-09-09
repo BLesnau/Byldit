@@ -8,8 +8,8 @@ namespace Byldit.Web.App_Start
       public static void RegisterBundles( BundleCollection bundles )
       {
          bundles.Add( new ScriptBundle( "~/bundles/lib" ).Include(
-                     "~/Scripts/jquery-{version}.js", 
-                     "~/Scripts/require.js" ) );
+                     "~/Scripts/jquery-{version}.js" 
+                     /*"~/Scripts/require.js"*/ ) );
 
          bundles.Add( new ScriptBundle( "~/bundles/jqueryui" ).Include(
                      "~/Scripts/jquery-ui-{version}.js" ) );
