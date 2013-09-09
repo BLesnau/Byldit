@@ -24,7 +24,41 @@ function getMobileServicesClient() {
 }
 
 function signIn() {
-   $( ".signin-popup" ).omniWindow( {
+   $( "#signin-popup" ).omniWindow( {
+      overlay: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      },
+      modal: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.modal.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.modal.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      }
+   } ) // create modal
+   .trigger( 'show' ); // and show it
+}
+
+function comingSoon() {
+   $( "#coming-soon-popup" ).omniWindow( {
       overlay: {
          animations: {
             hide: function ( subjects, internalCallback ) {
@@ -79,7 +113,7 @@ function login( provider ) {
 }
 
 function setLoginUI( animate ) {
-   var $modal = $( '.signin-popup' ).omniWindow();
+   var $modal = $( '#signin-popup' ).omniWindow();
    $modal.trigger( 'hide' );
 
    $( "#signedInName" ).text( userId );

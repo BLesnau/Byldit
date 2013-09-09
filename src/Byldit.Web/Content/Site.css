@@ -84,7 +84,11 @@ header, footer, nav, section {
 .loginContainer {
    margin-left: 15px;
    margin-top: 43px;
+}
+
+.horiz-center {
    text-align: center;
+   
 }
 
 .loginButton {
@@ -268,11 +272,22 @@ header, footer, nav, section {
 }
 
 /* Default class for modal window */
-.signin-popup {
+.default-popup {
   position: fixed;
   z-index: 20;
   width: 500px;
   height: 200px;
+  left: 50%;
+  top: 50%;
+
+  background-color: #fff
+}
+
+.coming-soon {
+  position: fixed;
+  z-index: 20;
+  width: 500px;
+  height: 550px;
   left: 50%;
   top: 50%;
 
