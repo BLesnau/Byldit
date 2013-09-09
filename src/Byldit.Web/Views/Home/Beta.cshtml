@@ -31,18 +31,26 @@
 
 <div id="topBarContainer">
     <div class="lockedHeader">
-        <img class="logoPadding" src="~/Content/Images/byldit-header-logo-combined.png" />
+        <img class="float-left logoPadding" src="~/Content/Images/byldit-header-logo-combined.png" />
+
+        <div class="float-left bar-left-content">
+            <div class="vertMiddle">
+                <a class="left-link title-bar-text title-bar-link" href="@GlobalConfig.GetString( "BaseUrl" )">Home</a>
+                <a class="left-link title-bar-text title-bar-link" href="javascript:comingSoon();">My Byldit</a>
+                <a class="left-link title-bar-text title-bar-link" href="http://byldit.tumblr.com/">About</a>
+            </div>
+        </div>
 
         <div class="float-right bar-right-content">
             <div id="notSignedIn" class="socialPaddingNotSignedIn">
-                <a class="signInTextLink" href="javascript:signIn()">Sign In</a>
+                <a class="title-bar-text title-bar-link" href="javascript:signIn()">Sign In</a>
             </div>
 
             <div id="signedIn" class="socialPaddingNotSignedIn">
-                <div class="signOutText vertMiddle">
-                    <span>Welcome </span>
-                    <span id="signedInName"></span>
-                    <a class="signInTextLink" href="javascript:logout();"> (Sign out?)</a>
+                <div class="vertMiddle">
+                    <span class="title-bar-text">Welcome </span>
+                    <span class="title-bar-text" id="signedInName"></span>
+                    <a class="title-bar-text title-bar-link" href="javascript:logout();">(Sign out?)</a>
                 </div>
             </div>
         </div>
@@ -99,14 +107,22 @@
 </div>
 
 <div class="ow-overlay ow-closed"></div>
-<div class="signin-popup ow-closed">
-    <div class="loginContainer">
+<div id="signin-popup" class="default-popup ow-closed">
+    <div class="loginContainer horiz-center">
+        <div class="sign-in-title">How do you want to sign in?</div>
+
         <a class="loginButton" href="javascript:login(&quot;facebook&quot;)">
             <img src="~/Content/Images/facebook-big.png" /></a>
         <a class="loginButton" href="javascript:login(&quot;twitter&quot;)">
             <img src="~/Content/Images/twitter-big.png" /></a>
         <a class="loginButton" href="javascript:login(&quot;google&quot;)">
             <img src="~/Content/Images/google-big.png" /></a>
+    </div>
+</div>
+
+<div id="coming-soon-popup" class="coming-soon ow-closed">
+    <div class="horiz-center">
+        <img src="~/Content/Images/coming-soon.png" />
     </div>
 </div>
 
@@ -357,6 +373,10 @@
 
             if ( "@Model.TagId" ) {
                 showTag( @Model.TagId );
+            }
+            
+            if( !isLoggedIn ) {
+                signIn();
             }
         }
 
