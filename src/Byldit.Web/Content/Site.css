@@ -83,12 +83,11 @@ header, footer, nav, section {
 
 .loginContainer {
    margin-left: 15px;
-   margin-top: 43px;
+   margin-top: 15px;
 }
 
 .horiz-center {
    text-align: center;
-   
 }
 
 .loginButton {
@@ -253,6 +252,12 @@ header, footer, nav, section {
    margin-right: 10px;
 }
 
+.sign-in-title {
+   font-size: 2.5em;
+   color: black;
+   margin-bottom: 15px;
+}
+
 /* Default class for an overlay */
 .ow-overlay {
   position: fixed;
@@ -276,7 +281,7 @@ header, footer, nav, section {
   position: fixed;
   z-index: 20;
   width: 500px;
-  height: 200px;
+  height: 220px;
   left: 50%;
   top: 50%;
 
