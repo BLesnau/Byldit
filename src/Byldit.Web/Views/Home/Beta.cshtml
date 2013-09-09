@@ -372,6 +372,10 @@
             if ( "@Model.TagId" ) {
                 showTag( @Model.TagId );
             }
+            
+            if( !isLoggedIn ) {
+                signIn();
+            }
         }
 
         google.maps.event.addDomListener( window, 'load', initialize );
