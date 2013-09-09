@@ -100,11 +100,14 @@ function login( provider ) {
       userId = results.userId;
       amsAccessToken = results.mobileServiceAuthenticationToken;
 
-      var remember = $( "#rememberMeCheck" ).is( ':checked' );
-      if ( remember ) {
-         rememberMe = true;
-         SaveSettings();
-      }
+      rememberMe = true;
+      SaveSettings();
+
+      //var remember = $( "#rememberMeCheck" ).is( ':checked' );
+      //if ( remember ) {
+      //   rememberMe = true;
+      //   SaveSettings();
+      //}
 
       setLoginUI( true );
    }, function ( err ) {
