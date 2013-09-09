@@ -105,12 +105,13 @@ function getContentString() {
       '<div class="infoBubbleContainer">' +
          '<div class="submitter-container">' +
             getHeaderString() +
-            '<div class="submitter-text">Submitted by: <a href="user/' + nameNoColon + '" class="submitter-link">' + nameNoColon + '</a></div>' +
+            '<div class="submitter-text">Submitted by: <a href="javascript:comingSoon();" class="submitter-link">' + nameNoColon + '</a></div>' +
+            //'<div class="submitter-text">Submitted by: <a href="user/' + nameNoColon + '" class="submitter-link">' + nameNoColon + '</a></div>' +
          '</div>' +
          '<div class="hashTagContainer">' +
-            '<a class="hashTag" href="keyword/coldstone">#coldstone</a> ' +
-            '<a class="hashTag" href="keyword/icecream">#icecream</a> ' +
-            '<a class="hashTag" href="keyword/food">#food</a> ' +
+            '<a class="hashTag" href="javascript:comingSoon();">#coldstone</a> ' +
+            '<a class="hashTag" href="javascript:comingSoon();">#icecream</a> ' +
+            '<a class="hashTag" href="javascript:comingSoon();">#food</a> ' +
          '</div>' +
          '<div class="infoBubbleContentContainer more">' +
             descHtml +
