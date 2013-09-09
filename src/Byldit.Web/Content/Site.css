@@ -250,6 +250,7 @@ header, footer, nav, section {
 
 .left-link {
    margin-right: 10px;
+   text-shadow:1px 1px 1px black;
 }
 
 .sign-in-title {
