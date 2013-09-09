@@ -24,9 +24,37 @@ function getMobileServicesClient() {
 }
 
 function signIn() {
-   //$( ".signin-popup" ).show();
-   $( ".signin-popup" ).omniWindow() // create modal
-    .trigger( 'show' ); // and show it
+   $( ".signin-popup" ).omniWindow( {
+      overlay: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      },
+      modal: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.modal.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.modal.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      }
+   } ) // create modal
+   .trigger( 'show' ); // and show it
 }
 
 function login( provider ) {
