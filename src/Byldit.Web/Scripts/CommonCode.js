@@ -23,6 +23,74 @@ function getMobileServicesClient() {
    return mobileServicesClient;
 }
 
+function signIn() {
+   $( "#signin-popup" ).omniWindow( {
+      overlay: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      },
+      modal: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.modal.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.modal.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      }
+   } ) // create modal
+   .trigger( 'show' ); // and show it
+}
+
+function comingSoon() {
+   $( "#coming-soon-popup" ).omniWindow( {
+      overlay: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.overlay.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      },
+      modal: {
+         animations: {
+            hide: function ( subjects, internalCallback ) {
+               subjects.modal.fadeOut( 250, function () {
+                  internalCallback( subjects );
+               } );
+            },
+            show: function ( subjects, internalCallback ) {
+               subjects.modal.fadeIn( 250, function () {
+                  internalCallback( subjects );
+               } );
+            }
+         }
+      }
+   } ) // create modal
+   .trigger( 'show' ); // and show it
+}
+
 function login( provider ) {
    var client = getMobileServicesClient();
 
@@ -32,11 +100,14 @@ function login( provider ) {
       userId = results.userId;
       amsAccessToken = results.mobileServiceAuthenticationToken;
 
-      var remember = $( "#rememberMeCheck" ).is( ':checked' );
-      if ( remember ) {
-         rememberMe = true;
-         SaveSettings();
-      }
+      rememberMe = true;
+      SaveSettings();
+
+      //var remember = $( "#rememberMeCheck" ).is( ':checked' );
+      //if ( remember ) {
+      //   rememberMe = true;
+      //   SaveSettings();
+      //}
 
       setLoginUI( true );
    }, function ( err ) {
@@ -45,6 +116,11 @@ function login( provider ) {
 }
 
 function setLoginUI( animate ) {
+   var $modal = $( '#signin-popup' ).omniWindow();
+   $modal.trigger( 'hide' );
+
+   $( "#signedInName" ).text( userId );
+
    if ( animate ) {
       $( "#notSignedIn" ).hide( "1000" );
    } else {
@@ -52,24 +128,6 @@ function setLoginUI( animate ) {
    }
 
    $( "#signedIn" ).show();
-   if ( loginProvider == "facebook" ) {
-      $( "#fbLogo" ).show();
-   }
-   else {
-      $( "#fbLogo" ).hide();
-   }
-
-   if ( loginProvider == "twitter" ) {
-      $( "#twitterLogo" ).show();
-   } else {
-      $( "#twitterLogo" ).hide();
-   }
-
-   if ( loginProvider == "google" ) {
-      $( "#googleLogo" ).show();
-   } else {
-      $( "#googleLogo" ).hide();
-   }
 }
 
 function setNotLoggedUI( animate ) {

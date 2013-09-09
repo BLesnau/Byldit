@@ -18,28 +18,29 @@ header, footer, nav, section {
    height: 100%;
    width: 100%;
    position: fixed;
-   top: 85px;
+   top: 47px;
    left: 0;
 }
 
 .lockedHeader {
    margin: 0;
-   background: #3b8daf url(Images/byldit-header-background-teal.jpg) repeat;
+   background: #3b8daf url(Images/byldit-header-background-teal.png) repeat;
    position: fixed;
    top: 0;
    left: 0;
    width: 100%;
-   height: 85px; /* Height of the footer */
+   height: 47px; /* Height of the footer */
 }
 
-.signInText {
-   margin-top: 3px;
-   margin-bottom: 3px;
-   font-size: 1.0em;
-   color: white;
+.title-bar-link {
+   text-decoration: none;
 }
 
-.signOutText {
+   .title-bar-link:hover {
+      text-decoration: underline;
+   }
+
+.title-bar-text {
    font-size: 1.0em;
    color: white;
 }
@@ -59,8 +60,38 @@ header, footer, nav, section {
    white-space: nowrap;
 }
 
+.float-left {
+   float: left;
+   white-space: nowrap;
+}
+
+.bar-right-content {
+   height: 47px;
+   line-height: 47px;
+   font-weight: bold;
+}
+
+.bar-left-content {
+   height: 47px;
+   line-height: 47px;
+   font-weight: bold;
+}
+
 .socialButton {
    margin-right: 7px;
+}
+
+.loginContainer {
+   margin-left: 15px;
+   margin-top: 15px;
+}
+
+.horiz-center {
+   text-align: center;
+}
+
+.loginButton {
+   margin-right: 15px;
 }
 
 .small-social-button {
@@ -68,17 +99,12 @@ header, footer, nav, section {
 }
 
 .socialPaddingNotSignedIn {
-   margin-right: 3px;
-}
-
-.socialPaddingSignedIn {
    margin-right: 10px;
-   margin-top: 15px;
 }
 
 .logoPadding {
    margin-left: 5px;
-   margin-top: 5px;
+   margin-right: 25px;
 }
 
 .vertMiddle {
@@ -220,6 +246,58 @@ header, footer, nav, section {
    }
 
 .completely-centered {
+}
+
+.left-link {
+   margin-right: 10px;
+   text-shadow:1px 1px 1px black;
+}
+
+.sign-in-title {
+   font-size: 2.5em;
+   color: black;
+   margin-bottom: 15px;
+}
+
+/* Default class for an overlay */
+.ow-overlay {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background: #000;
+  opacity: 0.8;
+}
+
+/* Default class for both hidden overlay and modal window */
+.ow-closed {
+  display: none;
+}
+
+/* Default class for modal window */
+.default-popup {
+  position: fixed;
+  z-index: 20;
+  width: 500px;
+  height: 220px;
+  left: 50%;
+  top: 50%;
+
+  background-color: #fff
+}
+
+.coming-soon {
+  position: fixed;
+  z-index: 20;
+  width: 500px;
+  height: 550px;
+  left: 50%;
+  top: 50%;
+
+  background-color: #fff
 }
 
 /* Styles for basic forms
