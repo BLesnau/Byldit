@@ -54,7 +54,7 @@ function signIn() {
          }
       },
       callbacks: {
-         positioning: function( subjects, internalCallback ) {
+         positioning: function ( subjects, internalCallback ) {
             subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
             subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) );
          }
@@ -92,9 +92,62 @@ function comingSoon() {
                } );
             }
          }
+      },
+      callbacks: {
+         positioning: function ( subjects, internalCallback ) {
+            subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
+            subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) );
+         }
       }
    } ) // create modal
    .trigger( 'show' ); // and show it
+}
+
+function loadTags( show ) {
+   if ( show ) {
+      $( "#load-tags-overlay" ).omniWindow( {
+         //overlay: {
+         //   animations: {
+         //      hide: function ( subjects, internalCallback ) {
+         //         subjects.overlay.fadeOut( 250, function () {
+         //            internalCallback( subjects );
+         //         } );
+         //      },
+         //      show: function ( subjects, internalCallback ) {
+         //         subjects.overlay.fadeIn( 250, function () {
+         //            internalCallback( subjects );
+         //         } );
+         //      }
+         //   }
+         //},
+         overlay: {
+            selector: ''
+         },
+         modal: {
+            animations: {
+               hide: function ( subjects, internalCallback ) {
+                  subjects.modal.fadeOut( 250, function () {
+                     internalCallback( subjects );
+                  } );
+               },
+               show: function ( subjects, internalCallback ) {
+                  subjects.modal.fadeIn( 250, function () {
+                     internalCallback( subjects );
+                  } );
+               }
+            }
+         },
+         callbacks: {
+            positioning: function ( subjects, internalCallback ) {
+               //subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
+               //subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) );
+            }
+         }
+      } ) // create modal
+         .trigger( 'show' ); // and show it
+   } else {
+      $( "#load-tags-overlay" ).omniWindow().trigger( 'hide' );
+   }
 }
 
 function login( provider ) {
@@ -338,6 +391,8 @@ function openTag( tagId, zoomIn ) {
 }
 
 function loadPins( unclusteredId ) {
+   loadTags( true );
+
    var client = getMobileServicesClient();
 
    var currentCenter = googleMap.getCenter();
@@ -366,8 +421,11 @@ function loadPins( unclusteredId ) {
                 }
              }
           }
+          
+          loadTags( false );
        }, function ( error ) {
           alert( "error getting tags: " + error );
+          loadTags( false );
        } );
 }
 
