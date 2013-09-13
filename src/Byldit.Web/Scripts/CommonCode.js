@@ -52,6 +52,12 @@ function signIn() {
                } );
             }
          }
+      },
+      callbacks: {
+         positioning: function( subjects, internalCallback ) {
+            subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
+            subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) );
+         }
       }
    } ) // create modal
    .trigger( 'show' ); // and show it
