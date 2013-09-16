@@ -407,6 +407,7 @@
     <Content Include="Scripts\ShowMoreLess.js" />
     <Content Include="Scripts\ShowTagsButton.js" />
     <Content Include="Scripts\SocialShareHelper.js" />
+    <Content Include="Scripts\TagLoader.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

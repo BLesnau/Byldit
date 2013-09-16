@@ -148,6 +148,7 @@
     <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/AdHelper.js"></script>
     <script src="~/Scripts/jquery.omniwindow.js"></script>
+    <script src="~/Scripts/TagLoader.js"></script>
     f
     <script type="text/javascript">
         function initialize() {
@@ -194,6 +195,9 @@
                         },
                         zoom_changed: function ( map, event ) {
                             clusterAll();
+                        },
+                        idle: function( map ) {
+                            console.log("Idle");
                         }
                     }
                 }
