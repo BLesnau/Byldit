@@ -5,6 +5,16 @@ var showTimer = null;
 var hideTimer = null;
 var pendingTimer = null;
 
+var idleTimer = null;
+
+function startIdleTagLoadWait() {
+   clearIdleTimer();
+   
+   idleTimer = setTimeout( function () {
+      loadPins();
+   }, 1000 );
+}
+
 function loadPins( unclusteredId ) {
    if ( currentlyLoading || waitingToHide ) {
       setPendingLoad( false );
@@ -142,16 +152,23 @@ function reset() {
    clearHideTimer();
 }
 
-function clearShowTimer( timer ) {
+function clearShowTimer() {
    if ( showTimer != null ) {
       clearInterval( showTimer );
       showTimer = null;
    }
 }
 
-function clearHideTimer( timer ) {
+function clearHideTimer() {
    if ( hideTimer != null ) {
       clearInterval( hideTimer );
       hideTimer = null;
+   }
+}
+
+function clearIdleTimer() {
+   if ( idleTimer != null ) {
+      clearInterval( idleTimer );
+      idleTimer = null;
    }
 }
