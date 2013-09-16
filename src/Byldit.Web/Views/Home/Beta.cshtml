@@ -148,6 +148,7 @@
     <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/AdHelper.js"></script>
     <script src="~/Scripts/jquery.omniwindow.js"></script>
+    <script src="~/Scripts/TagLoader.js"></script>
     f
     <script type="text/javascript">
         function initialize() {
@@ -194,6 +195,9 @@
                         },
                         zoom_changed: function ( map, event ) {
                             clusterAll();
+                        },
+                        idle: function( map ) {
+                            startIdleTagLoadWait();
                         }
                     }
                 }
@@ -262,7 +266,6 @@
             } );
 
             var showTagControlDiv = document.createElement( 'div' );
-            var showTagButton = new ShowTagsButton( showTagControlDiv, googleMap, showTagsClicked );
 
             var searchBoxDiv = document.createElement( 'div' );
             var searchBoxControl = new SearchBox( searchBoxDiv );
@@ -387,9 +390,5 @@
         }
 
         google.maps.event.addDomListener( window, 'load', initialize );
-
-        function showTagsClicked() {
-            loadPins( null );
-        }
     </script>
 }

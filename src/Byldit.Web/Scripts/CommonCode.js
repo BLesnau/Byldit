@@ -103,53 +103,6 @@ function comingSoon() {
    .trigger( 'show' ); // and show it
 }
 
-function loadTags( show ) {
-   if ( show ) {
-      $( "#load-tags-overlay" ).omniWindow( {
-         //overlay: {
-         //   animations: {
-         //      hide: function ( subjects, internalCallback ) {
-         //         subjects.overlay.fadeOut( 250, function () {
-         //            internalCallback( subjects );
-         //         } );
-         //      },
-         //      show: function ( subjects, internalCallback ) {
-         //         subjects.overlay.fadeIn( 250, function () {
-         //            internalCallback( subjects );
-         //         } );
-         //      }
-         //   }
-         //},
-         overlay: {
-            selector: ''
-         },
-         modal: {
-            animations: {
-               hide: function ( subjects, internalCallback ) {
-                  subjects.modal.fadeOut( 250, function () {
-                     internalCallback( subjects );
-                  } );
-               },
-               show: function ( subjects, internalCallback ) {
-                  subjects.modal.fadeIn( 250, function () {
-                     internalCallback( subjects );
-                  } );
-               }
-            }
-         },
-         callbacks: {
-            positioning: function ( subjects, internalCallback ) {
-               //subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
-               //subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) );
-            }
-         }
-      } ) // create modal
-         .trigger( 'show' ); // and show it
-   } else {
-      $( "#load-tags-overlay" ).omniWindow().trigger( 'hide' );
-   }
-}
-
 function login( provider ) {
    var client = getMobileServicesClient();
 
@@ -390,45 +343,6 @@ function openTag( tagId, zoomIn ) {
    }
 }
 
-function loadPins( unclusteredId ) {
-   loadTags( true );
-
-   var client = getMobileServicesClient();
-
-   var currentCenter = googleMap.getCenter();
-   var currentZoom = googleMap.getZoom();
-   var params = { latitude: currentCenter.lat().toString(), longitude: currentCenter.lng().toString(), viewableMeters: getViewableMeters().toString() };
-   client.invokeApi( "byldtag/", { parameters: params, method: "get" } )
-       .done( function ( results ) {
-          var response = JSON.parse( results.response );
-          if ( response.length > 0 ) {
-             for ( var i in response ) {
-                var pin = response[i];
-
-                if ( ( !unclusteredId || unclusteredId != pin.id ) && !tagExists( pin.id ) ) {
-                   var marker = new google.maps.Marker( {
-                      clickable: true,
-                      position: new google.maps.LatLng( pin.Latitude, pin.Longitude ),
-                      zIndex: 999,
-                      icon: baseImagePath + "byldtag_pin.png",
-                      tagId: pin.id,
-                      title: pin.Title,
-                      submitterName: pin.UserId,
-                      description: pin.Description
-                   } );
-
-                   addMarker( marker, true, false );
-                }
-             }
-          }
-          
-          loadTags( false );
-       }, function ( error ) {
-          alert( "error getting tags: " + error );
-          loadTags( false );
-       } );
-}
-
 function getMarker( tagId ) {
    for ( var i = 0; i < soloMarkers.length; i++ ) {
       if ( soloMarkers[i].tagId == tagId ) {
@@ -518,4 +432,11 @@ function clusterAll() {
 
 function removeGoogleStyles() {
    $( '.gm-style' ).removeClass( 'gm-style' );
+}
+
+function sleep( millis ) {
+   var date = new Date();
+   var curDate = null;
+   do { curDate = new Date(); }
+   while ( curDate - date < millis );
 }
