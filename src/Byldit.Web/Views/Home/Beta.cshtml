@@ -126,6 +126,12 @@
     </div>
 </div>
 
+<div id="load-tags-overlay" class="load-tags ow-closed">
+    <div class="horiz-center vert-center-50px loading-text">
+        <span id="loading-text">Loading ByldTags</span>
+    </div>
+</div>
+
 @section scripts
 {
     <link href="~/Scripts/gmap3/examples/context-menu/menu/gmap3-menu.css" rel="stylesheet" />
@@ -142,6 +148,8 @@
     <script type="text/javascript" src="~/Scripts/SocialShareHelper.js"></script>
     <script type="text/javascript" src="~/Scripts/AdHelper.js"></script>
     <script src="~/Scripts/jquery.omniwindow.js"></script>
+    <script src="~/Scripts/TagLoader.js"></script>
+    <script src="~/Scripts/jquery.loadingdotdotdot.js"></script>
     f
     <script type="text/javascript">
         function initialize() {
@@ -188,6 +196,9 @@
                         },
                         zoom_changed: function ( map, event ) {
                             clusterAll();
+                        },
+                        idle: function( map ) {
+                            startIdleTagLoadWait();
                         }
                     }
                 }
@@ -256,7 +267,6 @@
             } );
 
             var showTagControlDiv = document.createElement( 'div' );
-            var showTagButton = new ShowTagsButton( showTagControlDiv, googleMap, showTagsClicked );
 
             var searchBoxDiv = document.createElement( 'div' );
             var searchBoxControl = new SearchBox( searchBoxDiv );
@@ -381,9 +391,5 @@
         }
 
         google.maps.event.addDomListener( window, 'load', initialize );
-
-        function showTagsClicked() {
-            loadPins( null );
-        }
     </script>
 }

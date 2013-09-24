@@ -388,6 +388,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.loadingdotdotdot.js" />
     <Content Include="Scripts\jquery.omniwindow.js" />
     <Content Include="Scripts\jquery.popupoverlay.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -407,6 +408,7 @@
     <Content Include="Scripts\ShowMoreLess.js" />
     <Content Include="Scripts\ShowTagsButton.js" />
     <Content Include="Scripts\SocialShareHelper.js" />
+    <Content Include="Scripts\TagLoader.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
