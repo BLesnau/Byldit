@@ -9,7 +9,7 @@ var idleTimer = null;
 
 function startIdleTagLoadWait() {
    clearIdleTimer();
-   
+
    idleTimer = setTimeout( function () {
       loadPins();
    }, 1000 );
@@ -24,7 +24,9 @@ function loadPins( unclusteredId ) {
    }
 
    //console.log("LOAD START");
+   //showLoadTagOverlay();
 
+   startLoadingAnim();
    currentlyLoading = true;
    showTimer = setTimeout( function () {
       showLoadTagOverlay();
@@ -95,6 +97,7 @@ function showLoadTagOverlay() {
 }
 
 function hideLoadTagOverlay() {
+   //return;
    waitingToHide = false;
 
    if ( currentlyLoading ) {
@@ -136,6 +139,7 @@ function createLoadOverlay() {
 function doneLoading() {
    //console.log( "LOAD DONE" );
 
+   stopLoadingAnim();
    currentlyLoading = false;
    clearShowTimer();
 
@@ -171,4 +175,17 @@ function clearIdleTimer() {
       clearInterval( idleTimer );
       idleTimer = null;
    }
+}
+
+function startLoadingAnim() {
+   $( "#loading-text" ).Loadingdotdotdot( {
+      "speed": 400,
+      "maxDots": 5,
+      "word": "Loading"
+   } );
+}
+
+function stopLoadingAnim() {
+   //return;
+   $( "#loading-text" ).Loadingdotdotdot( "Stop" );
 }

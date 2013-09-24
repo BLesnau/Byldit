@@ -388,6 +388,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.loadingdotdotdot.js" />
     <Content Include="Scripts\jquery.omniwindow.js" />
     <Content Include="Scripts\jquery.popupoverlay.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
