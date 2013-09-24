@@ -3,6 +3,18 @@
 // @author:   Rudenka Alexander (mur.mailbox@gmail.com)
 // @license:  MIT
 
+var ANCHOR_POSITION = {
+   NorthWest: "NW",
+   North: "N",
+   NorthEast: "NE",
+   West: "W",
+   Center: "C",
+   East: "E",
+   SouthWest: "SW",
+   South: "S",
+   SouthEast: "SE",
+}
+
 ;(function (root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD. Register as an anonymous module.
     define(['jquery'], function(jQuery) {
@@ -83,7 +95,6 @@
             },
             positioning: function(subjects) {
                subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
-               subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) ); // BRETT_CODE
             },
             beforeHide: function(subjects) {
               if (subjects.modal.data(options.modal.internal.stateAttribute)) {
