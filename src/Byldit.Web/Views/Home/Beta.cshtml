@@ -81,6 +81,17 @@
                 <textarea id="tagDesc" style="resize: none;" rows="10" cols="50"></textarea>
             </td>
         </tr>
+        <tr>
+            <td align="right">
+                <span title="Maximum of 3 separated by commas or spaces.">
+                    <img src="~/Content/Images/info-i.jpg" width="12" height="12" />
+                </span>
+                <label for="tagDesc">Keywords:</label>
+            </td>
+            <td align="left">
+                <input type="text" id="tagKeywords" style="resize: none;" size="50" />
+            </td>
+        </tr>
     </table>
 </div>
 
@@ -197,7 +208,7 @@
                         zoom_changed: function ( map, event ) {
                             clusterAll();
                         },
-                        idle: function( map ) {
+                        idle: function ( map ) {
                             startIdleTagLoadWait();
                         }
                     }
@@ -384,8 +395,8 @@
             if ( "@Model.TagId" ) {
                 showTag( @Model.TagId );
             }
-            
-            if( !isLoggedIn ) {
+
+            if ( !isLoggedIn ) {
                 signIn();
             }
         }

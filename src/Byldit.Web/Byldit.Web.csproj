@@ -210,6 +210,7 @@
     <Content Include="Content\Images\google-widget.jpg" />
     <Content Include="Content\Images\gray-star.png" />
     <Content Include="Content\Images\group-tag.png" />
+    <Content Include="Content\Images\info-i.jpg" />
     <Content Include="Content\Images\shareLogo.png" />
     <Content Include="Content\Images\show-byldtags-text.png" />
     <Content Include="Content\Images\small-facebook-widget.jpg" />
