@@ -261,7 +261,7 @@ function createByldTag( location, title, description, keywords ) {
       var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description, keywords: keywords };
       client.invokeApi( "byldtag/", { body: tag, method: "post" } )
          .done( function ( response ) {
-            placeMarker( location, response.result.tagId, title, description, userId );
+            placeMarker( location, response.result.tagId, title, description, userId, keywords );
          }, function ( error ) {
             alert( "error posting tag: " + error );
          } );
@@ -282,7 +282,7 @@ function updateByldTag( location, title, description, tagId ) {
    }
 }
 
-function placeMarker( location, insertedTagId, title, description, submitterName ) {
+function placeMarker( location, insertedTagId, title, description, submitterName, keywords ) {
    var marker = new google.maps.Marker( {
       clickable: true,
       position: location,
@@ -292,6 +292,7 @@ function placeMarker( location, insertedTagId, title, description, submitterName
       title: title,
       description: description,
       submitterName: submitterName,
+      keywords: keywords,
       starCount: 0,
       starredByUser: false
    } );
@@ -323,7 +324,7 @@ function showTag( tagId ) {
           loadPins( result.id );
 
           if ( !tagExists( result.id ) ) {
-             placeMarker( location, result.id, result.Title, result.Description, result.UserId );
+             placeMarker( location, result.id, result.Title, result.Description, result.UserId, result.Keywords );
           }
 
           openTag( result.id, true );
