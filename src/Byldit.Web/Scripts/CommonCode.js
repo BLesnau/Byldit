@@ -254,11 +254,11 @@ function showEditByldTagDialog( updateTagDialog, location, titleText, descriptio
    }
 }
 
-function createByldTag( location, title, description ) {
+function createByldTag( location, title, description, keywords ) {
    if ( isLoggedIn ) {
       var client = getMobileServicesClient();
 
-      var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description };
+      var tag = { latitude: location.lat().toString(), longitude: location.lng().toString(), title: title, description: description, keywords: keywords };
       client.invokeApi( "byldtag/", { body: tag, method: "post" } )
          .done( function ( response ) {
             placeMarker( location, response.result.tagId, title, description, userId );

@@ -161,7 +161,8 @@
     <script src="~/Scripts/jquery.omniwindow.js"></script>
     <script src="~/Scripts/TagLoader.js"></script>
     <script src="~/Scripts/jquery.loadingdotdotdot.js"></script>
-    f
+    <script src="~/Scripts/validation-helper.js"></script>
+
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
@@ -318,8 +319,12 @@
                         var location = $( this ).data( "location" );
                         var title = $( "#tagTitle" ).val();
                         var desc = $( "#tagDesc" ).val();
-                        createByldTag( location, title, desc );
-                        $( this ).dialog( "close" );
+                        var keywords = $( "#tagKeywords" ).val();
+
+                        if ( validateTagTitle( title ) && validateTagDescription( desc ) && validateTagKeywords( keywords ) ) {
+                            createByldTag( location, title, desc, getValidKeywordString( keywords ) );
+                            $( this ).dialog( "close" );
+                        }
                     }
                 },
                 show: {
