@@ -278,7 +278,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Configs\Local.mysettings" />
-    <Content Include="Configs\Stage.mysettings" />
+    <Content Include="Configs\Stage.mysettings">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Configs\Live.mysettings" />
     <Content Include="Scripts\AdHelper.js" />
     <Content Include="Scripts\ContextMenu.js" />
