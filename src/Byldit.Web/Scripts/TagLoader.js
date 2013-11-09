@@ -53,7 +53,8 @@ function loadPins( unclusteredId ) {
                       tagId: pin.id,
                       title: pin.Title,
                       submitterName: pin.UserId,
-                      description: pin.Description
+                      description: pin.Description,
+                      keywords: pin.Keywords
                    } );
 
                    addMarker( marker, true, false );
