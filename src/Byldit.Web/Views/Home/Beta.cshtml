@@ -81,6 +81,17 @@
                 <textarea id="tagDesc" style="resize: none;" rows="10" cols="50"></textarea>
             </td>
         </tr>
+        <tr>
+            <td align="right">
+                <span title="Maximum of 3 separated by commas or spaces.">
+                    <img src="~/Content/Images/info-i.jpg" width="12" height="12" />
+                </span>
+                <label for="tagDesc">Keywords:</label>
+            </td>
+            <td align="left">
+                <input type="text" id="tagKeywords" style="resize: none;" size="50" />
+            </td>
+        </tr>
     </table>
 </div>
 
@@ -150,7 +161,8 @@
     <script src="~/Scripts/jquery.omniwindow.js"></script>
     <script src="~/Scripts/TagLoader.js"></script>
     <script src="~/Scripts/jquery.loadingdotdotdot.js"></script>
-    f
+    <script src="~/Scripts/validation-helper.js"></script>
+
     <script type="text/javascript">
         function initialize() {
             $( "#signedIn" ).hide();
@@ -197,7 +209,7 @@
                         zoom_changed: function ( map, event ) {
                             clusterAll();
                         },
-                        idle: function( map ) {
+                        idle: function ( map ) {
                             startIdleTagLoadWait();
                         }
                     }
@@ -307,8 +319,12 @@
                         var location = $( this ).data( "location" );
                         var title = $( "#tagTitle" ).val();
                         var desc = $( "#tagDesc" ).val();
-                        createByldTag( location, title, desc );
-                        $( this ).dialog( "close" );
+                        var keywords = $( "#tagKeywords" ).val();
+
+                        if ( validateTagTitle( title ) && validateTagDescription( desc ) && validateTagKeywords( keywords ) ) {
+                            createByldTag( location, title, desc, getValidKeywordString( keywords ) );
+                            $( this ).dialog( "close" );
+                        }
                     }
                 },
                 show: {
@@ -384,8 +400,8 @@
             if ( "@Model.TagId" ) {
                 showTag( @Model.TagId );
             }
-            
-            if( !isLoggedIn ) {
+
+            if ( !isLoggedIn ) {
                 signIn();
             }
         }

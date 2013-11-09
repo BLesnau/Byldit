@@ -12,6 +12,7 @@ var moreShown = false;
 var descriptionText = "";
 var titleText = "";
 var submitterName = "";
+var keywords = "";
 var starred = false;
 var starCount = null;
 
@@ -21,6 +22,7 @@ function showTagInfo( mark ) {
    descriptionText = mark.description;
    titleText = marker.title;
    submitterName = marker.submitterName;
+   keywords = marker.keywords;
    starCount = null;
    starred = false;
 
@@ -108,11 +110,7 @@ function getContentString() {
             '<div class="submitter-text">Submitted by: <a href="javascript:comingSoon();" class="submitter-link">' + nameNoColon + '</a></div>' +
             //'<div class="submitter-text">Submitted by: <a href="user/' + nameNoColon + '" class="submitter-link">' + nameNoColon + '</a></div>' +
          '</div>' +
-         '<div class="hashTagContainer">' +
-            '<a class="hashTag" href="javascript:comingSoon();">#coldstone</a> ' +
-            '<a class="hashTag" href="javascript:comingSoon();">#icecream</a> ' +
-            '<a class="hashTag" href="javascript:comingSoon();">#food</a> ' +
-         '</div>' +
+         getHashTagString() +
          '<div class="infoBubbleContentContainer more">' +
             descHtml +
          '</div>' +
@@ -120,6 +118,23 @@ function getContentString() {
       '</div>';
 
    return contentString;
+}
+
+function getHashTagString() {
+   var str = '<div class="hashTagContainer">';
+
+   if ( keywords ) {
+      var keyArray = keywords.split( /(?:,| )+/ );
+      for ( var i = 0; i < keyArray.length; i++ ) {
+         if( keyArray[i].length > 0 ) {
+            str += '<a class="hashTag" href="javascript:comingSoon();">#' + keyArray[i] + '</a> ';
+         }
+      }
+   }
+
+   str += '</div>';
+
+   return str;
 }
 
 function getHeaderString() {
