@@ -256,6 +256,24 @@ header, footer, nav, section {
 
 .sign-in-title {
    font-size: 2.5em;
+   font-weight: bold;
+   color: black;
+}
+
+.sign-in-sub-text {
+   font-size: 1.2em;
+   font-weight: bold;
+   color: black;
+   margin-bottom: 15px;
+}
+
+.sign-in-desc {
+   color: black;
+   margin-bottom: 15px;
+}
+
+.sign-in-question {
+   font-size: 2.0em;
    color: black;
    margin-bottom: 15px;
 }
@@ -291,7 +309,7 @@ header, footer, nav, section {
    position: fixed;
    z-index: 20;
    width: 500px;
-   height: 220px;
+   height: 365px;
    left: 50%;
    top: 50%;
    background-color: #fff;
