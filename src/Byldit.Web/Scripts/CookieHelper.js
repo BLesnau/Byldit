@@ -2,6 +2,7 @@
 var rememberMe = false;
 var loginProvider = null;
 var userId = null;
+var accountName = null;
 var amsAccessToken = null;
 
 function LoadSettings() {
@@ -33,7 +34,7 @@ function LoadSettings() {
 
     if (rememberMe && loginProvider != null && userId != null && amsAccessToken != null) {
         isLoggedIn = true;
-        setUser(userId, amsAccessToken);
+        setUser( userId, amsAccessToken );
     } else {
         setNotLoggedUI(false);
     }
