@@ -107,13 +107,66 @@ function login( provider ) {
    var client = getMobileServicesClient();
 
    client.login( provider ).done( function ( results ) {
-      isLoggedIn = true;
+      //isLoggedIn = true;
       loginProvider = provider;
       userId = results.userId;
       amsAccessToken = results.mobileServiceAuthenticationToken;
 
-      rememberMe = true;
-      SaveSettings();
+      //rememberMe = true;
+      //SaveSettings();
+
+      var $modal = $( '#signin-popup' ).omniWindow();
+      $modal.trigger( 'hide' );
+
+      client.invokeApi( "user/" + userId, { method: "get" } )
+       .done( function ( response ) {
+          accountName = response.result.AccountName;
+          rememberMe = true;
+          SaveSettings();
+
+          setLoginUI( true );
+       }, function ( error ) {
+          if ( error.request.status == 404 ) {
+             $( "#enter-account-info-popup" ).omniWindow( {
+                overlay: {
+                   selector: '.acct-overlay',
+                   animations: {
+                      hide: function ( subjects, internalCallback ) {
+                         subjects.overlay.fadeOut( 250, function () {
+                            internalCallback( subjects );
+                         } );
+                      },
+                      show: function ( subjects, internalCallback ) {
+                         subjects.overlay.fadeIn( 250, function () {
+                            internalCallback( subjects );
+                         } );
+                      }
+                   }
+                },
+                modal: {
+                   animations: {
+                      hide: function ( subjects, internalCallback ) {
+                         subjects.modal.fadeOut( 250, function () {
+                            internalCallback( subjects );
+                         } );
+                      },
+                      show: function ( subjects, internalCallback ) {
+                         subjects.modal.fadeIn( 250, function () {
+                            internalCallback( subjects );
+                         } );
+                      }
+                   }
+                },
+                callbacks: {
+                   positioning: function ( subjects, internalCallback ) {
+                      subjects.modal.css( 'margin-left', Math.round( subjects.modal.outerWidth() / -2 ) );
+                      subjects.modal.css( 'margin-top', Math.round( subjects.modal.outerHeight() / -2 ) );
+                   }
+                }
+             } ) // create modal
+   .trigger( 'show' ); // and show it
+          }
+       } );
 
       //var remember = $( "#rememberMeCheck" ).is( ':checked' );
       //if ( remember ) {
@@ -121,17 +174,17 @@ function login( provider ) {
       //   SaveSettings();
       //}
 
-      setLoginUI( true );
+      //setLoginUI( true );
    }, function ( err ) {
       alert( "Error: " + err );
    } );
 }
 
 function setLoginUI( animate ) {
-   var $modal = $( '#signin-popup' ).omniWindow();
+   var $modal = $( '#enter-account-info-popup' ).omniWindow();
    $modal.trigger( 'hide' );
 
-   $( "#signedInName" ).text( userId );
+   $( "#signedInName" ).text( accountName );
 
    if ( animate ) {
       $( "#notSignedIn" ).hide( "1000" );
@@ -163,6 +216,55 @@ function logout() {
    setNotLoggedUI( true );
 }
 
+function finishAccountInfo() {
+   acctName = $( '#acctName' ).val();
+
+   if ( isValidAcctName( acctName ) )
+   {
+      var client = getMobileServicesClient();
+
+      client.invokeApi( "user/" + acctName, { method: "get" } )
+       .done( function ( response ) {       
+       }, function ( error ) {
+          if ( error.request.status == 404 ) {
+             var user = { accountName: acctName };
+             client.invokeApi( "user/", { body: user, method: "post" } )
+                .done( function ( response ) {
+                   isLoggedIn = true;
+                   rememberMe = true;
+                   accountName = acctName;
+                   SaveSettings();
+
+                   setLoginUI( true );
+                }, function ( error ) {
+                   alert( "error creating user: " + error );
+                } ); 
+          }
+       } );
+
+         
+   }
+}
+
+function isValidAcctName( str ) {
+   var error = false;
+   var illegalChars = /\W/; // allow letters, numbers, and underscores
+
+   if ( str == "" ) {
+      error = true;
+   } else if ( ( str.length < 5 ) || ( str.length > 15 ) ) {
+      error = true;
+   } else if ( illegalChars.test( str ) ) {
+      error = true;
+   } 
+
+   if ( error ) {
+      alert("Your account name must be 5-15 characters long and contain only letters, numbers, and underscores");
+   }
+
+   return !error;
+}
+
 function setUser( userName, token ) {
    var client = getMobileServicesClient();
    client.currentUser = {
@@ -170,7 +272,15 @@ function setUser( userName, token ) {
       mobileServiceAuthenticationToken: token
    };
 
-   setLoginUI( false );
+   var client = getMobileServicesClient();
+
+   client.invokeApi( "user/" + userName, { method: "get" } )
+       .done( function ( response ) {
+          accountName = response.result.AccountName;
+          setLoginUI( false );
+       }, function ( error ) {
+          setLoginUI( false );
+       } );
 }
 
 function getLocation() {
