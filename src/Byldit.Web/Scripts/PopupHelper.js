@@ -17,45 +17,90 @@ var starred = false;
 var starCount = null;
 
 function showTagInfo( mark ) {
-   marker = mark;
-   tagId = marker.tagId;
-   descriptionText = mark.description;
-   titleText = marker.title;
-   submitterName = marker.submitterName;
-   keywords = marker.keywords;
-   starCount = null;
-   starred = false;
+   var client = getMobileServicesClient();
+   client.invokeApi( "user/" + mark.submitterName, { method: "get" } )
+       .done( function ( response ) {
+          marker = mark;
+          tagId = marker.tagId;
+          descriptionText = mark.description;
+          titleText = marker.title;
+          submitterName = response.result.AccountName;
+          keywords = marker.keywords;
+          starCount = null;
+          starred = false;
 
-   var contentString = getAllContentString();
+          var contentString = getAllContentString();
 
-   if ( currentPopup != null ) {
-      currentPopup.close();
-   } else {
-      currentPopup = new InfoBubble( {
-         map: googleMap,
-         maxWidth: 485,
-         content: contentString,
-         shadowStyle: 0,
-         padding: 0,
-         backgroundColor: 'transparent',
-         borderRadius: 4,
-         arrowSize: 10,
-         borderWidth: 1,
-         borderColor: '#2c2c2c',
-         disableAutoPan: false,
-         hideCloseButton: true,
-         disableAnimation: false,
-         arrowPosition: 50,
-         backgroundClassName: 'infoBubbleBackground',
-         arrowStyle: 0
-      } );
-   }
+          if ( currentPopup != null ) {
+             currentPopup.close();
+          } else {
+             currentPopup = new InfoBubble( {
+                map: googleMap,
+                maxWidth: 485,
+                content: contentString,
+                shadowStyle: 0,
+                padding: 0,
+                backgroundColor: 'transparent',
+                borderRadius: 4,
+                arrowSize: 10,
+                borderWidth: 1,
+                borderColor: '#2c2c2c',
+                disableAutoPan: false,
+                hideCloseButton: true,
+                disableAnimation: false,
+                arrowPosition: 50,
+                backgroundClassName: 'infoBubbleBackground',
+                arrowStyle: 0
+             } );
+          }
 
-   currentPopup.setContent( contentString );
-   currentPopup.open( googleMap, marker );
-   setStarInfo();
+          currentPopup.setContent( contentString );
+          currentPopup.open( googleMap, marker );
+          setStarInfo();
 
-   removeGoogleStyles();
+          removeGoogleStyles();
+
+       }, function ( error ) {
+          marker = mark;
+          tagId = marker.tagId;
+          descriptionText = mark.description;
+          titleText = marker.title;
+          submitterName = marker.submitterName;
+          keywords = marker.keywords;
+          starCount = null;
+          starred = false;
+
+          var contentString = getAllContentString();
+
+          if ( currentPopup != null ) {
+             currentPopup.close();
+          } else {
+             currentPopup = new InfoBubble( {
+                map: googleMap,
+                maxWidth: 485,
+                content: contentString,
+                shadowStyle: 0,
+                padding: 0,
+                backgroundColor: 'transparent',
+                borderRadius: 4,
+                arrowSize: 10,
+                borderWidth: 1,
+                borderColor: '#2c2c2c',
+                disableAutoPan: false,
+                hideCloseButton: true,
+                disableAnimation: false,
+                arrowPosition: 50,
+                backgroundClassName: 'infoBubbleBackground',
+                arrowStyle: 0
+             } );
+          }
+
+          currentPopup.setContent( contentString );
+          currentPopup.open( googleMap, marker );
+          setStarInfo();
+
+          removeGoogleStyles();
+       } ); 
 }
 
 function closeByldTag() {
