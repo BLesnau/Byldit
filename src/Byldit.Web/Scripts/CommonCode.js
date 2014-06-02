@@ -294,9 +294,10 @@ function storePosition( position ) {
    locLon = position.coords.longitude;
 
    var position = new google.maps.LatLng( locLat, locLon );
+   var mapPos = new google.maps.LatLng( 39, -98 );
 
-   googleMap.setCenter( position );
-   googleMap.setZoom( 15 );
+   googleMap.setCenter( mapPos );
+   googleMap.setZoom( 4 );
 
    var myLoc = new google.maps.Marker( {
       position: position,
